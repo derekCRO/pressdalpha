@@ -1,0 +1,48 @@
+<div class="page-heading">
+            <h3>
+                Content Management
+            </h3>
+            <ul class="breadcrumb">
+                
+            </ul>
+			<p id="notice"><%= notice %></p>
+</div>
+<div class="wrapper">
+        <div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading">
+						<%= 'Contents List' %>
+					</header>
+					<div class="panel-body">
+						<table class="table table-bordered table-striped table-condensed">
+						  <thead>
+						  <tr>
+								<th>Id</th>
+								<th>Title</th>
+								<th>Action</th>
+						  </tr>
+						  </thead>
+						  
+						<tbody>	
+						<% @posts.each do |post| %>
+						<tr>
+						    <td><%= post.id %></td>
+							<td><%= post.title %></td>
+							
+						  <td><%= link_to 'Show', admin_post_path(post) %> |<%= link_to 'Edit', edit_admin_post_path(post) %> | <%= link_to 'Destroy', admin_post_path(post), data: { confirm: 'Are you sure?' }, :method => :delete %></td>
+						</tr>
+						<% end %>
+						<tbody>
+						</table>
+
+						<br />
+
+						
+					</div>
+				</section>
+			</div>
+		</div>
+</div>
+
+

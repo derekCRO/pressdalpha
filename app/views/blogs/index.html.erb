@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="col-sm-10 col-sm-offset-1 col-xs-12 blog-content">
+    <% @blogs.each do |blog| %>
+    <div class="col-xs-12">
+      <div class="text-center">
+        <h2><%= blog.title %></h2>
+        <h6><%= blog.created_at.strftime('%b %d, %Y') %></h6>
+      </div>
+
+      <div>
+        <%= raw(blog.description).truncate(358) %>
+      </div>
+
+      <div class="text-center">
+        <%= link_to "READ MORE", blog_path(blog) %>
+      </div>
+      <br>
+    </div>
+    <% end %>
+  </div>
+</div>

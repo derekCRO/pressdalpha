@@ -1,0 +1,20 @@
+<nav id="sidebar" class="px-0 bg-dark bg-gradient sidebar mCustomScrollbar _mCS_5 mCS-autoHide" style="height: 592px;"><button class="hamburger hamburger--slider" type="button" data-target=".sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle Sidebar"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button><div id="mCSB_5" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0" style="max-height: none;"><div id="mCSB_5_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+				<ul class="nav nav-pills flex-column">
+					<li class="logo-nav-item">
+						<a class="navbar-brand" href="">
+							<div class="profile-picture profile-picture-lg">
+								<%= image_tag current_staff.image.url(:small), :class => 'img-responsive' %>
+							</div>
+              <h3 class="nav-header"><%= current_staff.first_name%> <%= current_staff.last_name%></h3>
+						</a>
+					</li>
+					<br>
+					<li><h6 class="nav-header" style="text-align: left;">Main Menu</h6></li>
+					<li class="nav-item"><%= active_link_to staff_staff_dashboard_path, class: "nav-link" do %><i class="fas fa-tachometer-alt fapadding"></i>Dashboard<% end %></li>
+          <li class="nav-item"><%= active_link_to staff_jobs_list_path, class: "nav-link" do %><i class="fa fa-shopping-cart fapadding"></i>Bookings<% end %></li>
+          <li class="nav-item"><%= active_link_to staff_add_company_hours_path, class: "nav-link" do %><i class="fa fa-calendar fapadding"></i>Working Hours<% end %></li>
+        <br>
+        <br>
+        <br>
+      </ul>
+    </div></div></nav>

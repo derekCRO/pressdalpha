@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Transactions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer</th>
+      <th>Partner</th>
+      <th>Company</th>
+      <th>Job</th>
+      <th>Date</th>
+      <th>Total amount</th>
+      <th>Company amount</th>
+      <th>Admin amount</th>
+      <th>Status</th>
+      <th>Transaction</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.customer_id %></td>
+        <td><%= transaction.partner_id %></td>
+        <td><%= transaction.company_id %></td>
+        <td><%= transaction.job_id %></td>
+        <td><%= transaction.date %></td>
+        <td><%= transaction.total_amount %></td>
+        <td><%= transaction.company_amount %></td>
+        <td><%= transaction.admin_amount %></td>
+        <td><%= transaction.status %></td>
+        <td><%= transaction.transaction_id %></td>
+        <td><%= link_to 'Show', transaction %></td>
+        <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
+        <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transaction', new_transaction_path %>

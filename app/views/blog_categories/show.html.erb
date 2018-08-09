@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @blog_category.name %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @blog_category.is_active %>
+</p>
+
+<%= link_to 'Edit', edit_blog_category_path(@blog_category) %> |
+<%= link_to 'Back', blog_categories_path %>

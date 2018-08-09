@@ -1,0 +1,108 @@
+<section class="trackerstyle">
+  <div class="container">
+    <div class="col-md-12">
+
+      <!-- Page Title-->
+      <div class="page-title">
+        <div class="container">
+          <div class="column">
+            <h1>my account</h1>
+          </div>
+           <div class="column">
+            <ul class="breadcrumbs hideonmobile">
+              <li><a href="index.html">home</a>
+              </li>
+              <li class="separator">&nbsp;</li>
+              <li>my account</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+</div>
+</section>
+<section class="split-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-sm-12">
+      <!-- Services-->
+      <div class="container padding-bottom-3x mb-2">
+       <div class="row">
+       	<%= render :partial => 'layouts/accountsidepannel' %>
+
+        <div class="col-lg-8">
+          <p id="notice"><%= notice %></p>
+          <div class="padding-top-2x mt-2 hidden-lg-up"></div>
+
+          <%= form_for(@user, :url => users_updateaccount_path(@user.id), :id => @user.id, :html => {:class => 'row', :multipart => true}) do |f| %>
+          <%= f.hidden_field :user_id, :value => @user.id %>
+
+            <div class="form-group col-md-6">
+              <label>First Name</label>
+              <input class="form-control" required="required" type="text" value="<%= @user.first_name %>" name="customer[first_name]" id="customer_email">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label>Last Name</label>
+              <input class="form-control" required="required" type="text" value="<%= @user.last_name %>" name="customer[last_name]" id="customer_email">
+            </div>
+
+            <div class="form-group col-md-6">
++		           <label>Email</label>
++		           <input class="form-control" required="required" type="email" value="<%= @user.email %>" name="customer[email]" id="customer_email">
++		        </div>
+
+            <div class="form-group col-md-6">
+              <label>Mobile Number</label>
+              <input class="form-control" required="required" type="text" value="<%= @user.phone %>" name="customer[phone]" id="customer_phone">
+            </div>
+
+            <div class="form-group col-md-6">
+              <label>Image</label>
+              <input class="form-control" type="file" name="customer[image]" id="customer_image">
+            </div>
+
+            <div class="form-group col-md-6 overflow-hidden">
+              <label>Address 1</label>
+              <input class="form-control" required="required" type="text" value="<%= @user.address1 %>" name="customer[address1]" id="customer_address1">
+
+            </div>
+            <div class="form-group col-md-6 overflow-hidden">
+              <label>Address 2</label>
+              <input class="form-control" required="required" type="text" value="<%= @user.address2 %>" name="customer[address2]" id="customer_address2">
+
+            </div>
+
+            <div class="form-group col-md-6 overflow-hidden">
+              <label>City</label>
+              <input class="form-control" required="required" type="text" value="<%= @user.city %>" name="customer[city]" id="customer_city">
+            </div>
+
+            <div class="form-group col-md-6 overflow-hidden">
+              <label>Country</label>
+              <input class="form-control" required="required" type="text" value="<%= @user.country %>" name="customer[country]" id="customer_country">
+            </div>
+
+            <div class="form-group col-md-6 overflow-hidden">
+              <label>ZipCode</label>
+              <input class="form-control" required="required" type="text" value="<%= @user.zipcode %>" name="customer[zipcode]" id="customer_zipcode">
+            </div>
+
+            <div class="form-group col-md-12 overflow-hidden">
+              <label>About Me</label>
+              <textarea class="form-control" name="customer[about_me]" id="customer_about_me"><%= @user.about_me %></textarea>
+            </div>
+
+            <div class="form-group col-md-12 overflow-hidden">
+              <button class="btn btn-color upper findservicesbtn no-radius" data-custom-bg="#00a54e" type="submit" style="background-color: rgb(112, 112, 111);">update info</button>
+            </div>
+          <% end %>
+          <hr>
+
+        </div>
+      </div>
+        <div class="row"><br></div>
+    </div>
+</div></div></div>
+</section>

@@ -1,0 +1,101 @@
+
+
+<section class="trackerstyle">
+  <div class="container">
+    <div class="col-md-12">
+      <!-- Page Title-->
+      <div class="page-title">
+        <div class="container">
+          <div class="column">
+            <h1>my account</h1>
+          </div>
+          <div class="column">
+            <ul class="breadcrumbs hideonmobile">
+              <li>
+                <a href="index.html">home</a>
+              </li>
+              <li class="separator">&nbsp;</li>
+              <li>my account</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="split-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-sm-12">
+        <!-- Services-->
+        <div class="container padding-bottom-3x mb-2">
+          <div class="row">
+            <%= render :partial => 'layouts/accountsidepannel' %>
+
+            <div class="col-lg-8">
+              <p id="notice"><%= notice %></p>
+              <div class="padding-top-2x mt-2 hidden-lg-up"></div>
+              <div class="table-responsive">
+                <table class="table table-hover margin-bottom-none">
+                  <thead>
+                    <tr>
+                      <th>Order #</th>
+                      <th>Type of Service</th>
+                      <th>Date of Service</th>
+                      <th>Date Purchased</th>
+                      <th>Status</th>
+                      <th>Total</th>
+                      <th>Partner</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if @tasks.length > 0  %>
+                      <% @tasks.each do |task| %>
+                        <tr>
+                          <td>
+                            <%= link_to task.id, customer_job_detail_path(id: task.id), class: "text-medium navi-link", remote: true, type: "button", "data-toggle": "modal" %>
+                            <!-- <a class="" href="#" data-toggle="modal" type="button" data-target="#orderDetails"><%= task.id %></a> -->
+                          </td>
+                          <td><%= task.category.name %></td>
+                          <td><%= task.booking_date %> @ <%= task.booking_time %></td>
+                          <td><%= task.post_date %></td>
+                          <td>
+                            <span class="<%= task.status == 'Pending' ? 'text-danger' : 'text-success' %>">
+                              <%= task.status %>
+                            </span>
+                          </td>
+                          <td><span class="text-medium">£<%= task.price %></span></td>
+                          <td><%= task.company.company_name %></td>
+                        </tr>
+                      <% end %>
+                    <% else %>
+                        <tr>
+                          <td colspan="5"> No Bookings Found. </td>
+                        </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="modal fade" role="dialog" id="orderDetails" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Order No  - 34VB5540K83</h4>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+
+      </div>
+    </div>
+  </div>
+</div>

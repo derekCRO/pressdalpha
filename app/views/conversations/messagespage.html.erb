@@ -1,0 +1,54 @@
+<section class="trackerstyle">
+  <div class="container">
+    <div class="col-md-12">
+      <div class="page-title">
+        <div class="container">
+          <div class="column">
+            <h1>my account</h1>
+          </div>
+          <div class="column">
+            <ul class="breadcrumbs hideonmobile">
+              <li><a href="index.html">home</a></li>
+              <li class="separator">&nbsp;</li>
+              <li>my account</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="split-section">
+  <div class="container app">
+    <div class="row app-one">
+      <div class="col-sm-4 side">
+        <%= render "sidebar" %>
+      </div>
+
+      <div class="col-sm-8 conversation">
+        <%= render "specific_conversation", conversation: @conversations.first,
+          message: @message,
+          context_user: current_customer if @conversations.any? %>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  $(document).on('click', '.toggle-window', function(e) {
+    e.preventDefault();
+    var panel = $(this).parent().parent();
+    var messages_list = panel.find('.messages-list');
+
+    panel.find('.panel-body').toggle();
+    panel.attr('class', 'panel panel-default');
+
+    if (panel.find('.panel-body').is(':visible')) {
+      var height = messages_list[0].scrollHeight;
+      messages_list.scrollTop(height);
+    }
+  });
+})();
+</script>

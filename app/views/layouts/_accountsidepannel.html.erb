@@ -1,0 +1,16 @@
+<div class="col-lg-3">
+	<aside class="user-info-wrapper">
+		<div class="user-info">
+			<div class="user-avatar"><%= image_tag current_customer.image.url(:small) %></div>
+			<div class="user-data">
+				<h4>daniel smith</h4><span>joined february 06, 2017</span>
+			</div>
+		</div>
+	</aside>
+	<nav class="list-group">
+		<a class="list-group-item with-badge <%= 'active' if params[:controller] == 'users' && (params[:action] == 'list' || params[:action] == 'task_details') %>" href="/customer/list"><i class="hc-shopping-bag"></i>orders<span class="badge badge-primary badge-pill">6</span></a>
+		<a class="list-group-item <%= 'active' if params[:controller] == 'users' && params[:action] == 'my_account' %>" href="/customer/my_account"><i class="hc-person"></i>account information</a>
+		<a class="list-group-item <%= 'active' if params[:controller] == 'users' && params[:action] == 'transaction' %>" href="/customer/transaction"><i class="hc-creditcard"></i>my transactions</a>
+		<a class="list-group-item with-badge" href="account-refer.html"><i class="hc-man"></i>refer a friend<span class="badge badge-primary badge-pill">3</span></a>
+	</nav>
+</div>

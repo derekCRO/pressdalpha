@@ -1,0 +1,182 @@
+<main class="main-content p-5" role="main">
+					<div class="row">
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-primary bg-gradient text-center animated bounceInDown">
+								<div class="card-body p-4">
+									<!-- Accepts .invisible: Makes the items. Use this only when you want to have an animation called on it later -->
+									<div class="tile-left">
+										<i class="fas fa-coins fa-4x"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number">£<%= Transaction.transaction_revenue_last_week %></div>
+										<div class="tile-description">Income (last 7 days)</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-secondary bg-gradient text-center animated bounceInDown">
+								<div class="card-body p-4">
+									<div class="tile-left">
+										<i class="fas fa-users fa-4x"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number"><%= Staff.count %></div>
+										<div class="tile-description">Active Staff</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-primary bg-gradient text-center animated bounceInDown">
+								<div class="card-body p-4">
+									<div class="tile-left">
+										<i class="fas fa-people-carry fa-4x"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number"><%= Job.jobs_created_last_week %></div>
+										<div class="tile-description">Bookings (last 7 days)</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-secondary bg-gradient text-center animated bounceInDown">
+								<div class="card-body p-4">
+									<div class="tile-left">
+										<i class="fas fa-thumbs-up fa-4x"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number"><%= Job.count %></div>
+										<div class="tile-description">Bookings Completed (all time)</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+            <div class="col-md-6 col-lg-6 col-xl-8 mb-5">
+							<div class="card animated pulse">
+								<div class="card-header">
+									Bookings (last 7 days)
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+										<%= line_chart "/partner/reports/overall_bookings_last_week_json", xtitle: "Date by Day", ytitle: "Total Bookings", label: "Bookings this Day" %>
+									</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-4 mb-5">
+							<div class="card animated pulse">
+								<div class="card-header">
+									New vs Returning Customer (last 7 days)
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+										<%= pie_chart "/partner/reports/recurring_vs_new_customers_bookings_last_week_json", donut: true, xtitle: "Date by Day", ytitle: "Total Bookings (Count)", label: "Bookings this day" %>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-lg-4 mb-5">
+							<div class="card card-sm bg-primary bg-gradient animated pulse">
+								<div class="card-header">
+									Current Company Rating
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+										<div id="rateYo"></div>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-4 mb-5">
+							<div class="card card-sm animated pulse">
+								<div class="card-header">
+									Current Company Status
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab" style="padding-top: 0rem;padding-left: 2%;padding-right: 2%;">
+											<table class="table" style="width:100%">
+										  <thead>
+												<tr>
+										    <th style="font-size: 0.8rem;">Cancellation Rate</th>
+										    <th style="font-size: 0.8rem;">Customer Rating</th>
+										    <th style="font-size: 0.8rem;">Instant Book</th>
+												<th style="font-size: 0.8rem;">Using Promo Materials</th>
+												<th style="font-size: 0.8rem;">Preferred Partner</th>
+										  </tr>
+											</thead>
+											<tbody>
+										  <tr>
+										    <td style="text-align: center;">	<% if current_partner.company.cancellation_rate.to_f < 0.05 %>
+													<i class="fas fa-check-circle fa-3x" style="color: #00a54e!important"></i>
+												<% else %>
+													<i class="fas fa-times-circle fa-3x" style="color: #f43a59!important"></i>
+												<% end %></td>
+												<td style="text-align: center;">	<% if current_partner.company.average_rating.to_f > 3.9 %>
+													<i class="fas fa-check-circle fa-3x" style="color: #00a54e!important"></i>
+												<% else %>
+													<i class="fas fa-times-circle fa-3x" style="color: #f43a59!important"></i>
+												<% end %></td>
+												<td style="text-align: center;">	<% if current_partner.company.instant_book == true %>
+													<i class="fas fa-check-circle fa-3x" style="color: #00a54e!important"></i>
+												<% else %>
+													<i class="fas fa-times-circle fa-3x" style="color: #f43a59!important"></i>
+												<% end %></td>
+												<td style="text-align: center;">	<% if current_partner.company.using_promo_material == true %>
+													<i class="fas fa-check-circle fa-3x" style="color: #00a54e!important"></i>
+												<% else %>
+													<i class="fas fa-times-circle fa-3x" style="color: #f43a59!important"></i>
+												<% end %></td>
+												<td style="text-align: center;">	<% if current_partner.company.preferred_partner == true %>
+													<i class="fas fa-check-circle fa-3x" style="color: #00a54e!important"></i>
+												<% else %>
+													<i class="fas fa-times-circle fa-3x" style="color: #f43a59!important"></i>
+												<% end %></td>
+										  </tr>
+											</tbody>
+										</table>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-4 mb-5">
+							<div class="card card-sm bg-primary bg-gradient animated pulse">
+								<div class="card-header">
+									Blank Card
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<script>
+					//Star Rating script
+					$(function () {
+
+					$("#rateYo").rateYo({
+					  rating: <%= current_partner.company.average_rating %>,
+						readOnly: true
+					});
+
+					});
+					</script>
+				</main>

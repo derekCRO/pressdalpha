@@ -1,0 +1,110 @@
+<main class="main-content p-5" role="main">
+  <div class="row">
+    <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/partner">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Transaction History</li>
+      </ol>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>
+            &nbsp; Transaction History</h1>
+        </div>
+      </div>
+      <br>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body product-page">
+          <div class="tab-content" id="JobsTabContent">
+						<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+            <div class="table-responsive">
+              <table class="table table-striped dataTables-example">
+                <thead>
+                  <tr>
+                    <th>Transaction ID</th>
+                    <th>Paid Amount</th>
+                    <th>Transaction Fee</th>
+                    <th>Your Amount</th>
+                    <th>Paid Date</th>
+                    <th>Booking Id</th>
+                    <th>Booked for</th>
+                    <th>Location</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if @transactions.length > 0  %>
+                    <% @transactions.each do |tasks| %>
+                      <tr>
+                        <td><%= tasks.id %></td>
+                        <td><%= tasks.total_amount %></a>
+                      </td>
+                      <td><%= tasks.admin_amount %></a>
+                    </td>
+                    <td><%= tasks.company_amount %></a>
+                  </td>
+                  <td><%= tasks.date.strftime('%d %b,%Y') %></td>
+                  <td>
+                    <a><%= tasks.job_id %></a>
+                  </td>
+                  <td>
+                    <%#= tasks.job.booking_date %>
+                      -
+                      <%#= tasks.job.booking_time %>
+                      </td>
+                      <td>
+                        <%#= tasks.job.address %>,
+                          <%#= tasks.job.zipcode %>
+                          </td>
+                        </tr>
+                      <% end %>
+                    </tbody>
+                  <% else %>
+                    <tbody>
+                      <tr></tr>
+                    </tbody>
+                  <% end %>
+                </table>
+              </div>
+            </div>
+						</div>
+          </div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+
+        $(function () {
+
+          $('.dataTables-example').DataTable({
+            pageLength: 25,
+            orderable: true,
+            rowReorder: {
+              selector: 'td:first-child'
+            },
+            responsive: true,
+            dom: '<"html5buttons"B>lTfgitp',
+            buttons: [
+              {
+                extend: 'copy'
+              }, {
+                extend: 'csv',
+                title: 'Selected Customers'
+              }, {
+                extend: 'excel',
+                title: 'Selected Customers'
+              }, {
+                extend: 'pdf',
+                title: 'Selected Customers'
+              }, {
+                extend: 'print'
+              }
+            ]
+
+          });
+
+        });
+      </script>
+    </main>

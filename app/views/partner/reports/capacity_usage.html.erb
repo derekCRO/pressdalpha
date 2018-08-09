@@ -1,0 +1,24 @@
+<div class="page-heading">
+            <h3>
+                Capacity Usage (%)
+            </h3>
+            <ul class="breadcrumb">
+
+            </ul>
+			<p id="notice"><%= notice %></p>
+</div>
+<div class="wrapper">
+        <div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading">
+					</header>
+					<div class="panel-body">
+
+              <%= line_chart "/partner/reports/overall_revenue_json" %>
+						<br />
+					</div>
+				</section>
+			</div>
+		</div>
+</div>

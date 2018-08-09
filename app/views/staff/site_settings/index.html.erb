@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Site Settings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @site_settings.each do |site_setting| %>
+      <tr>
+        <td><%= link_to 'Show', admin_site_settings_path %></td>
+        <td><%= link_to 'Edit', edit_admin_site_setting_path(site_setting) %></td>
+        <td><%= link_to 'Destroy', admin_site_settings_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Site Setting', new_admin_site_setting_path %>

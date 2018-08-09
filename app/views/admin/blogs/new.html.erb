@@ -1,0 +1,30 @@
+  <main class="main-content p-5" role="main">
+  	<div class="row">
+  		<div class="col-md-12">
+  			<ol class="breadcrumb">
+  				<li class="breadcrumb-item">
+  					<a href="/admin">Dashboard</a>
+  				</li>
+          <li class="breadcrumb-item"><a href="/admin/blogs">Blogs</a></li>
+  				<li class="breadcrumb-item active">Blogs</li>
+  			</ol>
+  			<div class="row">
+  				<div class="col-md-12">
+  					<h1>
+  						&nbsp; Add New Blog</h1>
+  				</div>
+  			</div>
+  			<br>
+  		</div>
+  		<div class="col-md-12">
+  			<div class="card">
+  				<div class="card-body product-page">
+  					<div class="tab-content" id="JobsTabContent">
+  						<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+  							<%= render 'form', content: @blog %>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  	</main>

@@ -1,0 +1,94 @@
+<h1></h1>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+      <div class="col-lg-10">
+          <h2>Category Options</h2>
+          
+      </div>
+      <div class="col-lg-2">
+
+      </div>
+</div>
+
+<div class="wrapper wrapper-content">
+       	<div class="row">
+       	<% @category.errors.full_messages.each do |msg| %>
+			    <li class="error msg"><%= msg %></li>
+		    <% end %>
+				<!--Left Side Start-->
+				<div class="col-lg-12">
+		           <div class="ibox float-e-margins">
+		               <div class="ibox-title">
+		                   <h5>Edit Category Option & respected Questions </h5>
+		                   <div class="ibox-tools">
+		                       <a class="collapse-link">
+		                           <i class="fa fa-chevron-up"></i>
+		                       </a>
+		                       
+		                       
+		                   </div>
+		               </div>
+		               <div class="ibox-content">
+		                   <!--<div class="row">
+		                       <div class="col-sm-12 b-r">
+		                       	  <%= render 'subupdate', category: @category %>
+		                           
+		                       </div>
+		                   </div>!-->
+								<div class="project-list table-responsive">
+								<div class="html5buttons">
+								<div class="dt-buttons btn-group">
+
+								</div>
+								</div>
+								<table class="table table-hover">
+								<thead>
+								<tr>
+									<th>#</th>
+									<th>Name</th>
+									<th>Hour Per Item</th>
+									<th>Material Cost</th>
+									<th>Do You Provide Service</th>
+									<th>Action</th>
+								
+								</tr>
+								</thead>
+								<tbody>
+								<% if @catattributes.empty? %>
+									<tr><td colspan="3">No Categories Attribute yet posted</td></tr>
+								<% else %>
+								<% @count = 0 %>
+								<% @catattributes.each do |catattribute| %>
+								<tr>
+<%= form_for(catattribute, :url => partner_update_category_attribute_path(@categorycomp.id), :id =>@categorycomp.id, :html => {:class => 'form-horizontal'}) do |f|  %>
+                                   <input type="hidden" name="company_selected_category[companycatatt_attributes][id]" value="<%= catattribute.id %>">
+                                   <input type="hidden" name="company_selected_category[id]" value="<%= @categorycomp.id %>">
+								   <td class="project-title"><%= @count += 1 %></td>
+								   <td class="project-title"><%= catattribute.name %></td>
+								   <td class="project-title"><input type="text" name="company_selected_category[companycatatt_attributes][hour_per_item]" class="form-control" value="<%= catattribute.hour_per_item %>" required="required"></td>
+								   <td class="project-title"><input type="text" name="company_selected_category[companycatatt_attributes][material_cost]" class="form-control" value="<%= catattribute.material_cost %>" required="required"></td>
+								   <td class="project-title">
+								   	<select name="company_selected_category[companycatatt_attributes][is_company_support]" class="form-control">
+								   		<option value="TRUE" <%= if catattribute.is_company_support==TRUE then 'selected' else '' end %>>Yes</option>
+								   		<option value="FALSE" <%= if catattribute.is_company_support==FALSE then 'selected' else '' end %>>NO</option>
+								   	</select>	
+								   </td>
+								   <td class="action">
+								   <button class="btn btn-primary" type="submit" name="commit" value="update" data-disable-with="Save">Save</button>
+								   
+								   </td>
+								   <% end %>
+								</tr>
+								<% end %>
+								<% end %>	
+								    
+								</tbody>
+								</table>
+								</div>
+		               </div>
+				   </div>
+				</div>
+				<!---Left Side End-->
+       </div>
+</div>
+         

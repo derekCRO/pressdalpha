@@ -1,0 +1,104 @@
+<main class="main-content p-5" role="main">
+	<div class="row">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/admin">Dashboard</a>
+				</li>
+				<li class="breadcrumb-item active">Categories</li>
+			</ol>
+			<div class="row">
+				<div class="col-md-6">
+					<h1>
+						&nbsp; List of Categories</h1>
+				</div>
+        <div class="col-md-6"><%= link_to 'Add Category', new_admin_category_path, data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-success waves-effect waves-light float-right' %>
+				</div>
+			</div>
+			<br>
+		</div>
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body product-page">
+					<div class="tab-content" id="JobsTabContent">
+						<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+							<div class="table-responsive">
+              <table class="table table-striped dataTables-example">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Image</th>
+										<th>Mobile Image</th>
+										<th>Mobile Icon</th>
+                    <th>Is Active</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                  <% if @categories.empty? %>
+                  <tbody>
+                    <tr></tr>
+                  </tbody>
+                  <% else %>
+                  <tbody>
+                    <% @categories.each do |category| %>
+                      <tr>
+                        <td><%= category.id %></td>
+                        <td><%= category.name if category.name %></td>
+                        <td><%= image_tag category.image.url(:thumb), :class => 'img-responsive' %></td>
+												<td><%= image_tag category.mobile_cover_image.url(:thumb), :class => 'img-responsive' %></td>
+												<td><%= image_tag category.mobile_icon.url(:thumb), :class => 'img-responsive' %></td>
+                        <td><%= category.is_active? ? 'Yes' : 'No' %></td>
+                        <td>
+													<%= link_to 'Edit', edit_admin_category_path(category), data: {toggle: "modal", target: "#modal-window"}, remote: true, :class=>"btn btn-success waves-effect waves-light" %>
+                          <%= link_to(raw('Delete <i class="fa fa-trash"></i>'), admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' },:class=>'btn btn-danger waves-effect waves-light') %>
+                          <%= link_to(raw('Options <i class="fa fa-pencil"></i>'), admin_sub_category_path(category), { :class=>"btn btn-success waves-effect waves-light" }) %>
+                        </td>
+                      </tr>
+                    <% end %>
+                <% end %>
+                </tbody>
+              </table>
+            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+
+			$(function () {
+
+				$('.dataTables-example').DataTable({
+					pageLength: 25,
+					orderable: true,
+					rowReorder: {
+						selector: 'td:first-child'
+					},
+					responsive: true,
+					dom: '<"html5buttons"B>lTfgitp',
+					buttons: [
+						{
+							extend: 'copy'
+						}, {
+							extend: 'csv',
+							title: 'Selected Customers'
+						}, {
+							extend: 'excel',
+							title: 'Selected Customers'
+						}, {
+							extend: 'pdf',
+							title: 'Selected Customers'
+						}, {
+							extend: 'print'
+						}
+					]
+
+				});
+
+			});
+		</script>
+
+
+	</main>

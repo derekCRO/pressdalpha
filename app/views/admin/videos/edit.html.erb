@@ -1,0 +1,66 @@
+<h1> </h1>
+<div class="row wrapper border-bottom white-bg page-heading">
+      <div class="col-lg-10">
+          <h2>Edit Video</h2>
+          
+      </div>
+      <div class="col-lg-2">
+
+      </div>
+</div>
+
+<div class="wrapper wrapper-content">
+       	<div class="row">
+       	<% @video.errors.full_messages.each do |msg| %>
+			    <li class="error msg"><%= msg %></li>
+		    <% end %>
+				<!--Left Side Start-->
+            <div class="col-md-4">
+			<div class="ibox float-e-margins">
+				<div class="ibox-title">
+					<h5>Video</h5>
+				</div>
+				<div>
+					<div class="ibox-content profile-content">
+						
+					 <% if @video.video_type == true %>
+		              <iframe width="300" height="175" src="https://www.youtube.com/embed/<%= @video.url %>" frameborder="0" gesture="media" allowfullscreen></iframe>
+		             <% else %>
+		              <iframe src="https://player.vimeo.com/video/<%= @video.url %>" width="300" height="175" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		             <% end %>
+						<div class="user-button">
+							<div class="row">	
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+             
+				<div class="col-lg-8">
+		           <div class="ibox float-e-margins">
+		               <div class="ibox-title">
+		                   <h5>Edit Video </h5>
+		                   <div class="ibox-tools">
+		                       <a class="collapse-link">
+		                           <i class="fa fa-chevron-up"></i>
+		                       </a>
+		                       
+		                       
+		                   </div>
+		               </div>
+		               <div class="ibox-content">
+		                   <div class="row">
+		                       <div class="col-sm-12 b-r">
+		                       	  <%= render 'formedit', video: @video %>
+		                           
+		                       </div>
+		                   </div>
+		               </div>
+				   </div>
+				</div>
+				<!--Left Side End-->
+			
+       </div>
+</div>
+

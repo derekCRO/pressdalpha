@@ -1,0 +1,52 @@
+<%= form_for(@video, :url => admin_video_path, :id => @video.id, :html => {:class => 'form-horizontal'}) do |f|  %>
+       <div class="form-group"><label class="col-sm-2 control-label" for="video_video_type">Video Type</label>
+		 	<div class="col-sm-10">
+		 	<select name="video[video_type]" required id="type" class="form-control">
+			  <option value="1" <%= @video.video_type? ? 'selected':''%> >Youtube</option>
+			  <option value="0" <%= @video.video_type? ? '':'selected'%>>Vimeo</option>
+		    </select>
+			</div>
+		</div>
+       
+       <div class="form-group" id="youshow"><label class="col-sm-2 control-label" for="url">Url</label>
+	    <div class="col-sm-10 input-group m-b"><span class="input-group-addon" id="urlfield">
+	    	<%=  if @video.video_type==TRUE then 'https://vimeo.com/' else 'https://vimeo.com/' end %></span><%= f.text_field :url, :class => 'form-control', :required => 'required', :id => 'youtubefield' %></div>
+	    </div>	
+	    
+		<div class="form-group"><label class="col-sm-2 control-label" for="video_is_active">Status</label>
+		 	<div class="col-sm-10">
+		 	<select name="video[is_active]" required id="video_is_active" class="form-control">
+			<option value="1" <%= @video.is_active? ? 'selected':''%> >Active</option>
+			<option value="0" <%= @video.is_active? ? '':'selected'%>>Inactive</option>
+		</select>
+			</div>
+		</div>
+	
+	<div class="hr-line-dashed"></div>
+  
+	  <div class="form-group">
+		 <div class="col-sm-4 col-sm-offset-2">
+		     <button class="btn btn-primary" type="submit" name="commit" value="Update Category" data-disable-with="Update">Update</button>
+		     <%= link_to 'Back', admin_videos_path, :class=>'btn btn-white' %>
+		 </div>
+	  </div>
+	  
+	
+<% end %>
+<script>
+$(function() {
+    
+    $('#type').change(function(){
+
+        if($('#type').val() == 1) {
+        	//alert("youtube");
+            $('#urlfield').html('https://youtu.be/'); 
+            
+        } else {
+        	//alert("vimeo");
+        	$('#urlfield').html('https://vimeo.com/'); 
+            
+        } 
+    });
+});
+</script>

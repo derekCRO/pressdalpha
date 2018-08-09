@@ -1,0 +1,56 @@
+  <main class="main-content p-5" role="main">
+  	<div class="row">
+  		<div class="col-md-12">
+  			<ol class="breadcrumb">
+  				<li class="breadcrumb-item">
+  					<a href="/partner">Dashboard</a>
+  				</li>
+  				<li class="breadcrumb-item active">Partner Package</li>
+  			</ol>
+  			<div class="row">
+  				<div class="col-md-12">
+  					<h1>
+  						&nbsp; Choose a Package</h1>
+  				</div>
+  			</div>
+  			<br>
+  		</div>
+      <div class="col-md-12">
+        <div class="price-list-type-2 clearfix">
+          <% if @packagedetails.length > 0  %>
+            <% @packagedetails.each do |packagedetail| %>
+            <% if packagedetail.id == @company.selected_package %>
+            <div class="plan featured bg-primary">
+            <% else %>
+            <div class="plan">
+            <% end %>
+              <h3 class="plan-title"> <%= packagedetail.package_name %> </h3>
+              <% if packagedetail.monthly_cost == 0  %>
+              <div class="plan-cost"><span class="plan-price">Free</span></div>
+              <% else %>
+              <div class="plan-cost"><span class="plan-price">£ <%= packagedetail.monthly_cost %></span><span class="plan-type">/ Monthly</span></div>
+              <% end %>
+              <ul class="plan-features">
+                <li><i class="ion-checkmark"> </i><%= packagedetail.order_limit %> Orders p/m</li>
+                <li><i class="ion-checkmark"> </i>Use <%= packagedetail.postcode_limit %> Postcode areas</li>
+                <li><i class="ion-checkmark"> </i>Have upto <%= packagedetail.user_limit %> users</li>
+                <% if packagedetail.manual_bookings == 'true'  %> <li><i class="ion-checkmark"> </i>Make Manual Bookings using our powerful software</li> <% end %>
+                <% if packagedetail.advanced_reports == 'true'  %><li><i class="ion-checkmark"> </i>Access Advanced Reports for your sales</li> <% end %>
+                <% if packagedetail.api_access == 'true'  %><li><i class="ion-checkmark"> </i>Special API access to system features</li> <% end %>
+              </ul>
+              <div class="plan-select">
+              <% if packagedetail.id == @company.selected_package %>
+              <a href="#" class="btn btn-primary disabled" role="button" aria-disabled="true">Current Plan</a>
+              <% else %>
+              <%= link_to 'Select Plan', update_partner_package_partner_packagedetail_path(packagedetail, "selected_package" => packagedetail.id), :method => :put, class: 'btn btn-primary' %>
+              <% end %>
+              </div>
+            </div>
+            <% end %>
+            <% end %>
+              </div>
+      </div>
+
+
+
+  	</main>

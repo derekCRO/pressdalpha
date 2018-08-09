@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-sm-4">
+    <label>
+      <%= f.label field.name %>
+    </label>
+  </div>
+
+  <div class="col-sm-8">
+    <%= f.select :category_id, options_for_select(options_for_select_attribute_options(field.id)) %>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="modal-header">
+	<h5 class="modal-title" id="exampleModalLabel">Add/Select Categories</h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">×</span>
+	</button>
+</div>
+<div class="modal-body">
+  <%= form_for(@category, :url => partner_company_selected_categories_path, :html => {:class => 'form-horizontal', :method => 'post'}) do |f|  %>
+                <div class="table-responsive">
+                  <table class="table table-striped table-bordered table-hover dataTables-example2">
+               <thead>
+                 <tr>
+                   <th>#</th>
+                   <th>SL No.</th>
+                   <th>Name</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <% if @categories.empty? %>
+                   <tr><td colspan="3">No Categories yet posted</td></tr>
+                 <% else %>
+                   <% @count = 0 %>
+                   <% @categories.each do |category| %>
+                   <tr>
+                   <td class="project-title">
+                   <input type="checkbox" name="select_category[]" value="<%= category.id %>">
+                   </td>
+                   <td class="project-title"><%= @count += 1 %></td>
+                   <td class="project-title"><%= category.name %></td>
+                   </tr>
+                 <% end %>
+               <% end %>
+               <button class="btn btn-success waves-effect waves-light float-right" type="submit" name="commit" value="Save Categories" data-disable-with="Update">Save</button>
+               </tbody>
+               <tfoot></tfoot>
+             </table>
+             </div>
+  	         <% end %>
+</div>
+</div>
+<div class="modal-footer"></div>

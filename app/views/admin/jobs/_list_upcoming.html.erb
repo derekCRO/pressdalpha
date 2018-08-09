@@ -1,0 +1,74 @@
+<div class="col-md-12">
+	<div><br></div>
+	<div class="table-responsive">
+		<table class="table table-striped dataTables-example1 display nowrap" style="width:100%">
+			<thead>
+				<tr>
+					<th>Job Id</th>
+					<th>Category</th>
+					<th>Price</th>
+					<th>Date of Booking</th>
+					<th>Date/Time of Service</th>
+					<th>Service Address</th>
+					<th>Customer Name</th>
+					<th>Job Status</th>
+					<th>Assign Staff</th>
+					<th>Job Details</th>
+					<th>Reject Job</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if @taskspending.length > 0  %>
+					<% @taskspending.each do |tasks| %>
+						<tr>
+							<td><%= tasks.view_job_id %></td>
+							<td>
+								<%#= tasks.category.name %>
+								</td>
+								<td>£<%= tasks.price %></td>
+								<td><%= tasks.post_date %></td>
+								<td><%= tasks.booking_date %>
+									-
+									<%= tasks.booking_time %></td>
+								<td><%= tasks.address %>,
+									<%= tasks.zipcode %></td>
+								<td><%= tasks.user.first_name %>
+									<%= tasks.user.last_name %></td>
+								<td><%= tasks.status %></td>
+								<td>
+									<% if(tasks.status=='booking_made') %>
+										<%= link_to 'Assign Staff', admin_jobs_add_staff_path(tasks), data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-success waves-effect waves-light' %>
+										<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content"></div>
+											</div>
+										</div>
+									<% end %>
+								</td>
+								<td><%= link_to 'View Details', admin_jobs_details_path(tasks), data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-success waves-effect waves-light' %>
+									<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content"></div>
+										</div>
+									</div>
+
+								</td>
+								<td><%= link_to 'Reject Job', admin_jobs_details_path(tasks), data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-danger waves-effect waves-light' %>
+									<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+										<div class="modal-dialog" role="document">
+											<div class="modal-content"></div>
+										</div>
+									</div>
+
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				<% else %>
+					<tbody>
+						<tr></tr>
+					</tbody>
+				<% end %>
+			</table>
+		</div>
+	</div>

@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Edit Postcode</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<div class="modal-body">
+  <%= simple_form_for(@postcode, :url => admin_postcode_path, :id => @postcode.id, remote: request.xhr?, html: { class: 'form-horizontal', :multipart => true}) do |f| %>
+<%= f.input :name, label: 'Postcode (first 4 digits)', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+  <%= f.button :submit, "Update Postcode", class: "btn btn-success waves-effect waves-light float-right" %>
+<% end %>
+</div>
+<div class="modal-footer"></div>

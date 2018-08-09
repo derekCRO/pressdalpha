@@ -1,0 +1,19 @@
+<div class="row sideBar-body" data-conversation-id=<%= conversation.id %>>
+  <div class="col-sm-3 col-xs-3 sideBar-avatar">
+    <div class="avatar-icon">
+      <%= image_tag conversation.recipient.image.url(:thumb) %>
+    </div>
+  </div>
+  <div class="col-sm-9 col-xs-9 sideBar-main">
+    <div class="row">
+      <div class="col-sm-8 col-xs-8 sideBar-name">
+        <span class="name-meta"><%= conversation.recipient.fullname %>
+      </span>
+      </div>
+      <div class="col-sm-4 col-xs-4 float-right sideBar-time">
+        <span class="time-meta float-right"><%= l conversation.created_at, format: :short %>
+      </span>
+      </div>
+    </div>
+  </div>
+</div>

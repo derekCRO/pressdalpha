@@ -1,0 +1,69 @@
+<script>
+(function() {
+  $(document).on('click', '.toggle-window', function(e) {
+    e.preventDefault();
+    var panel = $(this).parent().parent();
+    var messages_list = panel.find('.messages-list');
+
+    panel.find('.panel-body').toggle();
+    panel.attr('class', 'panel panel-default');
+
+    if (panel.find('.panel-body').is(':visible')) {
+      var height = messages_list[0].scrollHeight;
+      messages_list.scrollTop(height);
+    }
+  });
+})();
+</script>
+
+<!-- Heading -->
+<div class="row heading">
+  <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
+    <div class="heading-avatar-icon">
+      <%= image_tag conversation.recipient.image.url(:thumb) %>
+    </div>
+  </div>
+  <div class="col-sm-8 col-xs-7 heading-name">
+    <a class="heading-name-meta"><%= conversation.recipient.fullname %>
+    </a>
+    <span class="heading-online">Online</span>
+  </div>
+  <div class="col-sm-1 col-xs-1 heading-dot float-right">
+    <i class="fa fa-ellipsis-v fa-2x float-right" aria-hidden="true"></i>
+  </div>
+</div>
+<!-- Heading End -->
+
+<!-- Message Box -->
+<div class="<%= "row message conversation-#{conversation.id}" %>" id="conversation">
+  <div class="row message-previous">
+    <div class="col-sm-12 previous">
+      <a onclick="previous(this)" id="ankitjain28" name="20">Show Previous Message!</a>
+    </div>
+  </div>
+
+  <% conversation.messages.each_with_index do |message, index| %>
+    <div class="row message-body">
+      <%= render "messages/message", message: message, context_user: context_user %>
+    </div>
+  <% end %>
+</div>
+<!-- Message Box End -->
+
+<!-- Reply Box -->
+<%= form_for [conversation, message], remote: true, html: {class: "reply-form", multipart: true} do |f| %>
+  <div class="row reply">
+    <%= f.hidden_field :user_id, value: context_user.id %>
+    <div class="col-sm-10 col-xs-10 reply-main">
+      <%= f.text_area :body, class: "form-control", row: 1, id: "comment", required: true %>
+    </div>
+    <div class="col-sm-1 col-xs-1 reply-image">
+      <i class="fa fa-picture-o fa-2x" aria-hidden="true"></i>
+      <%= f.file_field :image %>
+    </div>
+    <div class="col-sm-1 col-xs-1 reply-send">
+      <button type="submit" class="fa fa-send fa-2x" aria-hidden="true"></button>
+    </div>
+  </div>
+<% end %>
+<!-- Reply Box End -->

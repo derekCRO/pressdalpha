@@ -1,0 +1,17 @@
+<%= simple_form_for @partner_opening_time, :url => '/partner/partner_opening_times/', remote: true do |f| %>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input_field :start,value: Date.today, class: 'form-control input-sm start_hidden' %>
+    <%= f.input_field :end, value: Date.today, class: 'form-control input-sm end_hidden' %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+    <%= link_to 'Delete',
+                event,
+                method: :delete,
+                class: 'btn btn-danger',
+                data: { confirm: 'Are you sure?' },
+                remote: true unless @partner_opening_time.new_record? %>
+  </div>
+<% end %>

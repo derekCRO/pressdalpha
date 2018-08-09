@@ -1,0 +1,8 @@
+
+$('#eventlist').remove();
+var eventlist = '<%= content_tag "div", id: "eventlist", data: {events: @events} do %>' +
+'<% end %>'
+$('#calendar').append(eventlist);
+$('#calendar').fullCalendar('destroy');
+
+PA.Calendars.init("/partner/companies/save-hours", "/partner/companies/save-hours", $('#eventlist').data('events'),{append_close: true, is_staff: true})

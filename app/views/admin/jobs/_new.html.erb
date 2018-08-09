@@ -1,0 +1,45 @@
+  <div class="modal-header">
+  	<h5 class="modal-title" id="exampleModalLabel">New Manual Booking</h5>
+  	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  		<span aria-hidden="true">×</span>
+  	</button>
+  </div>
+  <div class="modal-body">
+    <%= simple_form_for(@job, :url => admin_jobs_new_path, remote: request.xhr?, html: { class: 'form-horizontal', :multipart => true}) do |f| %>
+    <input type="hidden" value="<%= current_partner.company.id %>" name="job[company_id]" id="job_company_id">
+    <input type="hidden" value="true" name="task[is_manual_booking]" id="task_is_manual_booking">
+    <input type="hidden" value="true" name="job[is_manual_booking]" id="job_is_manual_booking">
+    <input type="hidden" value="booking_made" name="job[status]" id="job_status">
+    <label class="control-label string optional">Choose a Customer</label>
+    <%= f.collection_select :manual_customers_id, ManualCustomer.all, :id, :formatted_name, {}, {:multiple => false, :size => 6, :style => 'width:100%', id: "simple-example"} %>
+    <%= f.input :address1, label: 'Address Line 1', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+    <%= f.input :address1, label: 'Address Line 2', error: ' is mandatory, please specify one', wrapper_html: { class: 'halflineformleft' } %>
+    <%= f.input :city, label: 'City', error: ' is mandatory, please specify one', wrapper_html: { class: 'halflineformright' } %>
+    <%= f.input :country, label: 'Country', error: ' is mandatory, please specify one', wrapper_html: { class: 'halflineformleft' } %>
+    <%= f.input :zipcode, label: 'Postcode', error: ' is mandatory, please specify one', wrapper_html: { class: 'halflineformright' } %>
+    <br>
+    <label class="control-label string optional">Choose a Category</label>
+    <%= f.collection_select :category_id, Category.all, :id, :name, {}, {:multiple => false, :size => 6, :style => 'width:100%', id: "simple-example2"} %>
+    <%= f.input :booking_date, label: 'Service Date', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+    <%= f.input :booking_time, label: 'Service Time', error: ' is mandatory, please specify one', as: :time, html5: true %>
+    <%= f.button :submit, "New Manual Booking", class: "btn btn-success waves-effect waves-light" %>
+        <% end %>
+  </div>
+  <div class="modal-footer">
+
+  </div>
+
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('select#simple-example').select2();
+    theme: "bootstrap"
+  });
+  </script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('select#simple-example2').select2();
+    theme: "bootstrap"
+  });
+  </script>

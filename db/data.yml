@@ -1,0 +1,569 @@
+
+---
+admins:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - admin@admin.com
+    - "$2a$11$SL5k227U8VBtizNV51mm/eWlslinNmuF2SmxymS49OOkHWbRSdhgu"
+    - 
+    - 
+    - 
+    - 1
+    - '2017-12-05 15:07:01.989214'
+    - '2017-12-05 15:07:01.989214'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2017-12-05 15:06:49.294319'
+    - '2017-12-05 15:07:01.990314'
+
+---
+ar_internal_metadata:
+  columns:
+  - key
+  - value
+  - created_at
+  - updated_at
+  records: 
+  - - environment
+    - development
+    - '2017-12-05 11:22:33.57888'
+    - '2017-12-05 11:22:33.57888'
+
+---
+categories:
+  columns:
+  - id
+  - category_id
+  - name
+  - is_active
+  - created_at
+  - updated_at
+  - image_file_name
+  - image_content_type
+  - image_file_size
+  - image_updated_at
+  - price_per_hour
+  records: 
+  - - 1
+    - 0
+    - domestic cleaning
+    - true
+    - '2017-12-05 15:11:57.10166'
+    - '2017-12-12 16:42:58.693622'
+    - home.jpg
+    - image/jpeg
+    - 243010
+    - '2017-12-12 16:42:21.958368'
+    - 5.5
+  - - 2
+    - 0
+    - gardening
+    - true
+    - '2017-12-12 16:42:39.23216'
+    - '2017-12-12 16:42:39.23216'
+    - gardening.jpg
+    - image/jpeg
+    - 249951
+    - '2017-12-12 16:42:38.664967'
+    - 5.5
+  - - 3
+    - 0
+    - handyman
+    - true
+    - '2017-12-12 16:43:12.924903'
+    - '2017-12-12 16:43:12.924903'
+    - handyman.jpg
+    - image/jpeg
+    - 192261
+    - '2017-12-12 16:43:12.369832'
+    - 5.5
+  - - 4
+    - 1
+    - example questions
+    - true
+    - '2017-12-12 19:14:19.698842'
+    - '2017-12-12 19:14:19.698842'
+    - 
+    - 
+    - 
+    - 
+    - 0.0
+
+---
+category_attributes:
+  columns:
+  - id
+  - name
+  - field_type
+  - hour_per_item
+  - material_cost
+  - required
+  - category_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - what kind of clean do you need?
+    - text_field
+    - 1.0
+    - 1.0
+    - true
+    - 4
+    - '2017-12-12 19:14:19.700562'
+    - '2017-12-12 19:17:09.537066'
+  - - 2
+    - how many bedrooms do you have?
+    - check_box
+    - 1.0
+    - 1.0
+    - true
+    - 4
+    - '2017-12-12 19:14:19.737497'
+    - '2017-12-12 19:14:19.737497'
+  - - 3
+    - how many bathrooms do you have?
+    - number_field
+    - 1.0
+    - 1.0
+    - true
+    - 4
+    - '2017-12-12 19:14:19.739937'
+    - '2017-12-12 19:14:19.739937'
+  - - 4
+    - ''
+    - text_field
+    - 
+    - 
+    - false
+    - 4
+    - '2017-12-12 19:17:09.538684'
+    - '2017-12-12 19:17:09.538684'
+
+---
+companies:
+  columns:
+  - id
+  - first_name
+  - last_name
+  - email
+  - is_active
+  - company_name
+  - about_company
+  - location
+  - logo
+  - service
+  - created_at
+  - updated_at
+  - image_file_name
+  - image_content_type
+  - image_file_size
+  - image_updated_at
+  - category_id
+  - user_id
+  - latitude
+  - longitude
+  - zipcode
+  - is_publish
+  - servicearea_radius
+  - servicestart_time
+  - serviceend_time
+  - service_type
+  records: 
+  - - 1
+    - 
+    - 
+    - 
+    - true
+    - Example Partner
+    - This is an example about us for an example company
+    - Cardiff
+    - 
+    - 
+    - '2017-12-12 21:28:28.380396'
+    - '2017-12-12 21:28:28.380396'
+    - logo1.png
+    - image/png
+    - 22310
+    - '2017-12-12 21:28:26.816346'
+    - 
+    - 2
+    - 51.4778263
+    - -3.1788874
+    - CF10 1EW
+    - true
+    - 
+    - 
+    - 
+    - 
+
+---
+company_selected_categories:
+  columns:
+  - id
+  - category
+  - company_id
+  - name
+  - is_active
+  - created_at
+  - updated_at
+  - parent_id
+  - category_id
+  - price_per_hour
+  - service_type
+  records: 
+  - - 1
+    - 
+    - 1
+    - domestic cleaning
+    - true
+    - '2017-12-12 21:29:26.9409'
+    - '2017-12-12 21:29:26.9409'
+    - 0
+    - 1
+    - '5.5'
+    - Direct
+  - - 2
+    - 
+    - 1
+    - example questions
+    - true
+    - '2017-12-12 21:29:26.963812'
+    - '2017-12-12 21:29:26.963812'
+    - 1
+    - 4
+    - '0.0'
+    - 
+
+---
+company_selected_category_attributes:
+  columns:
+  - id
+  - company_id
+  - name
+  - field_type
+  - hour_per_item
+  - material_cost
+  - required
+  - category_id
+  - created_at
+  - updated_at
+  - company_selected_category_id
+  - is_company_support
+  records: 
+  - - 1
+    - 1
+    - what kind of clean do you need?
+    - text_field
+    - 1.0
+    - 1.0
+    - true
+    - 4
+    - '2017-12-12 21:29:27.027481'
+    - '2017-12-12 21:29:27.027481'
+    - 2
+    - true
+  - - 2
+    - 1
+    - how many bedrooms do you have?
+    - check_box
+    - 1.0
+    - 1.0
+    - true
+    - 4
+    - '2017-12-12 21:29:27.036513'
+    - '2017-12-12 21:29:27.036513'
+    - 2
+    - true
+  - - 3
+    - 1
+    - how many bathrooms do you have?
+    - number_field
+    - 1.0
+    - 1.0
+    - true
+    - 4
+    - '2017-12-12 21:29:27.04791'
+    - '2017-12-12 21:29:27.04791'
+    - 2
+    - true
+  - - 4
+    - 1
+    - ''
+    - text_field
+    - 
+    - 
+    - false
+    - 4
+    - '2017-12-12 21:29:27.058982'
+    - '2017-12-12 21:29:27.058982'
+    - 2
+    - true
+
+---
+companylocations:
+  columns:
+  - id
+  - company_id
+  - zipcode
+  - latitude
+  - longitude
+  - user_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 1
+    - CF10 1EW
+    - 51.4778263
+    - -3.1788874
+    - 3
+    - '2017-12-12 21:30:34.055652'
+    - '2017-12-12 21:30:34.055652'
+
+---
+tasks:
+  columns:
+  - id
+  - user_id
+  - category_id
+  - zipcode
+  - is_active
+  - booking_date
+  - created_at
+  - updated_at
+  - latitude
+  - longitude
+  - address
+  - properties
+  - booking_time
+  - company_id
+  - task_type
+  records: 
+  - - 1
+    - 
+    - 
+    - cf11 6er
+    - false
+    - 
+    - '2017-12-05 11:24:12.300065'
+    - '2017-12-05 11:24:12.300065'
+    - 51.4784128
+    - -3.1911425
+    - Machen Pl, Cardiff CF11 6ER, UK
+    - 
+    - 
+    - 
+    - 
+  - - 2
+    - 
+    - 
+    - cf11 6er
+    - false
+    - 
+    - '2017-12-05 15:12:39.357957'
+    - '2017-12-05 15:12:39.357957'
+    - 51.4784128
+    - -3.1911425
+    - Machen Pl, Cardiff CF11 6ER, UK
+    - 
+    - 
+    - 
+    - 
+  - - 3
+    - 
+    - 
+    - cf11 6er
+    - false
+    - 
+    - '2017-12-12 14:33:13.203313'
+    - '2017-12-12 14:33:13.203313'
+    - 51.4784128
+    - -3.1911425
+    - Machen Pl, Cardiff CF11 6ER, UK
+    - 
+    - 
+    - 
+    - 
+  - - 4
+    - 
+    - 1
+    - cf11 6er
+    - false
+    - 
+    - '2017-12-12 14:51:09.032606'
+    - '2017-12-12 21:13:02.854936'
+    - 51.4784128
+    - -3.1911425
+    - Machen Pl, Cardiff CF11 6ER, UK
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      subcat: []
+      '4': !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        '1': ''
+        '2': '0'
+        '3': '2'
+        '4': ''
+    - 12:00PM
+    - 
+    - 
+  - - 5
+    - 
+    - 1
+    - cf10 1ew
+    - false
+    - 
+    - '2017-12-12 21:31:11.195665'
+    - '2017-12-12 21:44:52.854306'
+    - 51.4778263
+    - -3.1788874
+    - Cardiff CF10 1EW, UK
+    - |
+      --- !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+      subcat: []
+      '4': !ruby/hash:ActiveSupport::HashWithIndifferentAccess
+        '1': ''
+        '2': '0'
+        '3': '2'
+        '4': ''
+    - '08:00PM'
+    - 1
+    - Quotation
+
+---
+users:
+  columns:
+  - id
+  - first_name
+  - last_name
+  - email
+  - is_active
+  - is_admin
+  - date
+  - user_type
+  - company_id
+  - about_me
+  - created_at
+  - updated_at
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - phone
+  - address
+  - image_file_name
+  - image_content_type
+  - image_file_size
+  - image_updated_at
+  - latitude
+  - longitude
+  - companylocation_id
+  records: 
+  - - 1
+    - 
+    - 
+    - admin@admin.com
+    - false
+    - true
+    - 
+    - 
+    - 
+    - 
+    - '2017-12-05 15:01:44.506661'
+    - '2017-12-05 15:01:44.506661'
+    - "$2a$11$0ab3aiu/UWfrxMAUPRpXh.1r5r6iY8/838oGsC9YTSvY5iIdKmzz."
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 2
+    - Dave
+    - Roberts
+    - partner@partner.com
+    - false
+    - false
+    - 
+    - Partner
+    - 
+    - 
+    - '2017-12-12 21:28:28.221605'
+    - '2017-12-12 21:29:05.777252'
+    - "$2a$11$nrfwVv.ysjeDcXBRVWgLzux8n9C4vIK20tvwWSKlqgH2VKTRO5JL6"
+    - 
+    - 
+    - 
+    - 1
+    - '2017-12-12 21:29:05.776274'
+    - '2017-12-12 21:29:05.776274'
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+  - - 3
+    - Tom
+    - Jones
+    - tomjones@test.com
+    - false
+    - false
+    - 
+    - Staff
+    - 1
+    - 
+    - '2017-12-12 21:30:34.052935'
+    - '2017-12-12 21:30:34.052935'
+    - "$2a$11$GrzrcjDCp9s5caV85cEgmOcLJpgEaX5b6SJJ35uoNLdxPMPew11ai"
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - '012456'
+    - Wood Street Cardiff
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 

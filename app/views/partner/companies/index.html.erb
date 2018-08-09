@@ -1,0 +1,65 @@
+
+<% if flash[:notice] %>
+    <div class="alert alert-success alert-dismissable">
+	  <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+	  <%= flash[:notice] %>
+	</div>
+<% end %>
+<h1>Partners</h1>
+<div class="row">
+<div class="col-lg-12">
+  <div class="ibox float-e-margins">
+     <div class="ibox-title">
+      <h5>Partners Lists </h5>
+      <div class="ibox-tools">
+       <a class="collapse-link">
+        <i class="fa fa-chevron-up"></i>
+       </a>
+      </div>
+     </div>
+     <div class="ibox-content">
+      <div class="row">
+
+
+      </div>
+      <div class="table-responsive">
+       <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Sl No</th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Email </th>
+            <th>Company name</th>
+            <th>About company</th>
+             <th>Location</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @companies.each do |company| %>
+        <tr>
+            <!--<td class="client-avatar"><img alt="image" src="img/a8.jpg"> </td>!-->
+            <td><%= company.id %></td>
+            <td><%= company.partner.first_name %></td>
+            <td><%= company.partner.last_name %></td>
+            <td><%= company.partner.email %></td>
+            <td><%= company.company_name %></td>
+            <td><%= company.about_company %></td>
+             <td><%= company.location %></td>
+            <td class="action">
+
+                <%= link_to 'Edit', edit_admin_company_path(company), :class=>'btn btn-outline btn-default'%>
+                <%= link_to 'Destroy', admin_company_path(company), method: :delete, data: { confirm: 'Are you sure?' },:class=>'btn btn-outline btn-default' %>
+            </td>
+        </tr>
+        <% end %>
+        </tbody>
+       </table>
+      </div>
+
+     </div>
+  </div>
+</div>
+</div>
+
+<br>

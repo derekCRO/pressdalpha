@@ -1,0 +1,26 @@
+<div class="modal-header">
+	<h5 class="modal-title" id="exampleModalLabel">Assign Staff Member</h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<span aria-hidden="true">×</span>
+	</button>
+</div>
+<div class="modal-body">
+	<%= form_for(@job, :url => partner_jobs_update_path(@job.id), :id => @job.id, :html => {:class => 'form-horizontal', :multipart => true}) do |f| %>
+	<input type="hidden" name="status" value="booking_confirmed">
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="email">Staff Name</label>
+		<div class="col-sm-12">
+			<select name="staff_id" required="required" id="job_staff_id" class="form-control">
+				<% @users.each do |user| %>
+					<option value="<%= user.id %>">
+						<%= user.first_name %>
+						<%= user.last_name %>
+					</option>
+				<% end %>
+			</select>
+		</div>
+		<button class="btn btn-success waves-effect waves-light float-right" type="submit" name="commit" value="Add Staff" data-disable-with="Update">Assign to Staff</button>
+	<% end %>
+</div>
+</div>
+<div class="modal-footer"></div>

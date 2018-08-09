@@ -1,0 +1,98 @@
+<main class="main-content p-5" role="main">
+	<div class="row">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/admin">Dashboard</a>
+				</li>
+				<li class="breadcrumb-item active">Blogs</li>
+			</ol>
+			<div class="row">
+				<div class="col-md-6">
+					<h1>
+						&nbsp; Blog Management</h1>
+				</div>
+				<div class="col-md-6"><%= link_to 'Add New Blog', new_admin_blog_path, class: 'btn btn-success waves-effect waves-light float-right' %>
+				</div>
+			</div>
+			<br>
+		</div>
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body product-page">
+					<div class="tab-content" id="JobsTabContent">
+						<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+							<div class="table-responsive">
+								<table class="table table-striped dataTables-example display nowrap" style="width:100%">
+									<thead>
+                    <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Image</th>
+                    <th>Is Active</th>
+                    <th>Edit</th>
+                    <th>Destroy</th>
+                  </tr>
+									</thead>
+									<tbody>
+										<% if @blogs.length > 0  %>
+                    <% @blogs.each do |blog| %>
+                      <tr class="">
+                        <td><%= blog.id %></td>
+                        <td><%= link_to(blog.title, blog, target: :_blank) %></td>
+                        <td><%= image_tag blog.image.url(:thumb), :class => 'img-responsive' %></td>
+                        <td><%= blog.is_active %></td>
+                        <td class="action"><%= link_to 'Edit', edit_admin_blog_path(blog), :class=>'btn btn-secondary'%></td>
+                        <td class="action"><%= link_to 'Destroy', admin_blog_path(blog), method: :delete, data: { confirm: 'Are you sure?' },:class=>'btn btn-danger' %></td>
+                      </tr>
+                    <% end %>
+											</tbody>
+										<% else %>
+											<tbody>
+												<tr></tr>
+											</tbody>
+										<% end %>
+									</table>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+
+			$(function () {
+
+				$('.dataTables-example').DataTable({
+					pageLength: 25,
+					orderable: true,
+					rowReorder: {
+						selector: 'td:first-child'
+					},
+					responsive: true,
+					dom: '<"html5buttons"B>lTfgitp',
+					buttons: [
+						{
+							extend: 'copy'
+						}, {
+							extend: 'csv',
+							title: 'Selected Customers'
+						}, {
+							extend: 'excel',
+							title: 'Selected Customers'
+						}, {
+							extend: 'pdf',
+							title: 'Selected Customers'
+						}, {
+							extend: 'print'
+						}
+					]
+
+				});
+
+			});
+		</script>
+
+
+	</main>

@@ -1,0 +1,171 @@
+<main class="main-content p-5" role="main">
+	<div class="row">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/partner">Dashboard</a>
+				</li>
+				<li class="breadcrumb-item active">Subscriptions</li>
+			</ol>
+			<div class="row">
+				<div class="col-md-12">
+					<h1>
+						&nbsp; Subscriptions</h1>
+				</div>
+			</div>
+			<br>
+		</div>
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body product-page">
+					<div class="tab-content" id="JobsTabContent">
+						<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+							<div class="table-responsive">
+								<table class="table table-striped dataTables-example display nowrap" style="width:100%">
+									<thead>
+										<tr>
+											<th>Id</th>
+											<th>Recurring Type</th>
+											<th>Length (months)</th>
+											<th>Customer Name</th>
+											<th>First Job ID</th>
+											<th>Date Started</th>
+											<th>Recurring Price</th>
+											<th>Company Name</th>
+											<th>View Details</th>
+										</tr>
+									</thead>
+									<tbody>
+										<% if @subscriptions.length > 0  %>
+											<% @subscriptions.each do |subscription| %>
+												<tr>
+													<td><%= subscription.id %></td>
+													<td><%= subscription.recurring_type.titleize %></td>
+														<td><%= subscription.recurring_months %> Months</td>
+														<td><%= subscription.user.first_name.titleize %> <%= subscription.user.last_name.titleize %></td>
+														<td><%= subscription.first_job_id %></td>
+														<td><%= subscription.date_of_first_booking.strftime("%e %B %Y ") %></td>
+														<td>£<%= subscription.recurring_price%></td>
+														<td><%= subscription.company.company_name.titleize %></td>
+														<td><%= link_to 'View Details', partner_subscription_path(subscription), data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-success waves-effect waves-light' %>
+															</td>
+														</tr>
+													<% end %>
+												</tbody>
+											<% else %>
+												<tbody>
+													<tr></tr>
+												</tbody>
+											<% end %>
+										</table>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+
+			$(function () {
+
+				$('.dataTables-example').DataTable({
+					pageLength: 25,
+					orderable: true,
+					rowReorder: {
+						selector: 'td:first-child'
+					},
+					responsive: true,
+					dom: '<"html5buttons"B>lTfgitp',
+					buttons: [
+						{
+							extend: 'copy'
+						}, {
+							extend: 'csv',
+							title: 'Selected Customers'
+						}, {
+							extend: 'excel',
+							title: 'Selected Customers'
+						}, {
+							extend: 'pdf',
+							title: 'Selected Customers'
+						}, {
+							extend: 'print'
+						}
+					]
+
+				});
+
+			});
+		</script>
+
+		<script type="text/javascript">
+
+			$(function () {
+
+				$('.dataTables-example2').DataTable({
+					pageLength: 25,
+					orderable: true,
+					rowReorder: {
+						selector: 'td:first-child'
+					},
+					responsive: true,
+					dom: '<"html5buttons"B>lTfgitp',
+					buttons: [
+						{
+							extend: 'copy'
+						}, {
+							extend: 'csv',
+							title: 'Selected Customers'
+						}, {
+							extend: 'excel',
+							title: 'Selected Customers'
+						}, {
+							extend: 'pdf',
+							title: 'Selected Customers'
+						}, {
+							extend: 'print'
+						}
+					]
+
+				});
+
+			});
+		</script>
+
+		<script type="text/javascript">
+
+			$(function () {
+
+				$('.dataTables-example3').DataTable({
+					pageLength: 25,
+					orderable: true,
+					rowReorder: {
+						selector: 'td:first-child'
+					},
+					responsive: true,
+					dom: '<"html5buttons"B>lTfgitp',
+					buttons: [
+						{
+							extend: 'copy'
+						}, {
+							extend: 'csv',
+							title: 'Selected Customers'
+						}, {
+							extend: 'excel',
+							title: 'Selected Customers'
+						}, {
+							extend: 'pdf',
+							title: 'Selected Customers'
+						}, {
+							extend: 'print'
+						}
+					]
+
+				});
+
+			});
+		</script>
+
+	</main>

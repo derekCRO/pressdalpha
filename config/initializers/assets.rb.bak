@@ -1,0 +1,68 @@
+# Be sure to restart your server when you modify this file.
+
+# Version of your assets, change this if you want to expire all your assets.
+Rails.application.config.assets.version = '1.0'
+Rails.application.config.assets.precompile += %w( bootstrap.min.css )
+Rails.application.config.assets.precompile += %w( admin/css/bootstrap.css )
+Rails.application.config.assets.precompile += %w( admin/font-awesome/css/font-awesome.css )
+Rails.application.config.assets.precompile += %w( admin/css/plugins/iCheck/custom.css )
+Rails.application.config.assets.precompile += %w( admin/css/animate.css )
+Rails.application.config.assets.precompile += %w( admin/css/style.css )
+Rails.application.config.assets.precompile += %w( admin/css/plugins/iCheck/custom.css )
+Rails.application.config.assets.precompile += %w( admin/css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css )
+Rails.application.config.assets.precompile += %w( bootstrap/bootstrap.min.css )
+Rails.application.config.assets.precompile += %w( bundle.css )
+Rails.application.config.assets.precompile += %w( card.min.css )
+Rails.application.config.assets.precompile += %w( hody-icons.css )
+Rails.application.config.assets.precompile += %w( demo.css )
+Rails.application.config.assets.precompile += %w( tasks.css )
+Rails.application.config.assets.precompile += %w( slick.css )
+Rails.application.config.assets.precompile += %w( chat.css )
+Rails.application.config.assets.precompile += %w( select2.min.css )
+Rails.application.config.assets.precompile += %w( fullcalendar.min.css )
+Rails.application.config.assets.precompile += %w( jednotka_green.css )
+# Add additional assets to the asset load path.
+# Rails.application.config.assets.paths << Emoji.images_path
+# Add Yarn node_modules folder to the asset load path.
+Rails.application.config.assets.paths << Rails.root.join('node_modules')
+
+Rails.application.config.assets.precompile += %w( admin/js/jquery-3.1.1.min.js )
+Rails.application.config.assets.precompile += %w( admin/js/bootstrap.min.js )
+Rails.application.config.assets.precompile += %w( admin/js/plugins/metisMenu/jquery.metisMenu.js )
+Rails.application.config.assets.precompile += %w( admin/js/plugins/slimscroll/jquery.slimscroll.min.js )
+Rails.application.config.assets.precompile += %w( admin/js/inspinia.js )
+Rails.application.config.assets.precompile += %w( admin/js/plugins/pace/pace.min.js )
+Rails.application.config.assets.precompile += %w( admin/js/plugins/dataTables/datatables.min.js )
+Rails.application.config.assets.precompile += %w( admin/js/plugins/iCheck/icheck.min.js )
+Rails.application.config.assets.precompile += %w( admin/js/select-dropdowm.js )
+
+Rails.application.config.assets.precompile += %w( jquery/jquery.min.js )
+Rails.application.config.assets.precompile += %w( jquery/jquery.mobile.custom.min.js )
+Rails.application.config.assets.precompile += %w( bootstrap/bootstrap.min.js )
+Rails.application.config.assets.precompile += %w( plugins/modernizr/modernizr.custom.min.js )
+Rails.application.config.assets.precompile += %w( plugins/hover_dropdown/twitter-bootstrap-hover-dropdown.min.js )
+Rails.application.config.assets.precompile += %w( plugins/retina/retina.min.js )
+Rails.application.config.assets.precompile += %w( plugins/knob/jquery.knob.js )
+Rails.application.config.assets.precompile += %w( plugins/isotope/jquery.isotope.min.js )
+
+Rails.application.config.assets.precompile += %w( plugins/isotope/jquery.isotope.sloppy-masonry.min.js )
+Rails.application.config.assets.precompile += %w( plugins/validate/jquery.validate.min.js )
+Rails.application.config.assets.precompile += %w( plugins/flexslider/jquery.flexslider.min.js )
+Rails.application.config.assets.precompile += %w( plugins/countdown/countdown.js )
+Rails.application.config.assets.precompile += %w( plugins/lightbox/lightbox.min.js )
+Rails.application.config.assets.precompile += %w( plugins/cycle/jquery.cycle.all.min.js )
+Rails.application.config.assets.precompile += %w( jednotka.js )
+Rails.application.config.assets.precompile += %w( SmoothScroll.js )
+Rails.application.config.assets.precompile += %w( bundle.js )
+Rails.application.config.assets.precompile += %w( main.js )
+Rails.application.config.assets.precompile += %w( demo.js )
+Rails.application.config.assets.precompile += %w( numberform.js )
+Rails.application.config.assets.precompile += %w( jquery/custom.js )
+Rails.application.config.assets.precompile += %w( slick.js )
+Rails.application.config.assets.precompile += %w( select2.min.js )
+
+
+# Precompile additional assets.
+# application.js, application.css, and all non-JS/CSS in the app/assets
+# folder are already added.
+# Rails.application.config.assets.precompile += %w( admin.js admin.css )

@@ -1,0 +1,29 @@
+  <div class="modal-header">
+  	<h5 class="modal-title" id="exampleModalLabel">Edit <%= @category.name %> Price</h5>
+  	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+  		<span aria-hidden="true">×</span>
+  	</button>
+  </div>
+  <div class="modal-body">
+    <%= simple_form_for(@category, :url => partner_company_selected_category_path, :id => @category.id, remote: request.xhr?, html: { class: 'form-horizontal', :multipart => true}) do |f| %>
+    <input type="hidden"  name="company_selected_category[category_id]" value="<%= @category.category_id %>">
+    <input type="hidden"  name="company_selected_category[company_id]" value="<%= @category.company_id %>">
+    <%= f.input :price_per_hour, label: 'Price per Hour (£)', :class => 'form-control', :required => 'required' %>
+    <label>Monthly Price per Hour</label>
+    <%= f.input :monthly_price_per_hour_3_months, label: '3 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+    <%= f.input :monthly_price_per_hour_6_months, label: '6 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+    <%= f.input :monthly_price_per_hour_12_months, label: '12 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+    <label>Fortnightly Price per Hour</label>
+    <%= f.input :fortnightly_price_per_hour_3_months, label: '3 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+    <%= f.input :fortnightly_price_per_hour_6_months, label: '6 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+    <%= f.input :fortnightly_price_per_hour_12_months, label: '12 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+    <label>Weekly Price per Hour</label>
+    <%= f.input :weekly_price_per_hour_3_months, label: '3 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+    <%= f.input :weekly_price_per_hour_6_months, label: '6 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+    <%= f.input :weekly_price_per_hour_12_months, label: '12 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+    <br>
+  	<%= f.button :submit, "Update Category", class: "btn btn-success waves-effect waves-light float-right" %>
+    <% end %>
+   </div>
+   </div>
+   <div class="modal-footer"></div>

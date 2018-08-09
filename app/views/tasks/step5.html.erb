@@ -1,0 +1,218 @@
+<script type='text/javascript'>
+  $(document).ready(function(){
+    var todayDate = new Date();
+    var NextNinetyDay=todayDate.setDate(todayDate.getDate() + 90);
+    $('#fullcalendar').datepicker({
+      dateFormat: 'yy-mm-dd',
+      firstDay: 1, // Monday
+      minDate: 0,
+      defaultDate: Date(todayDate),
+      maxDate: new Date(NextNinetyDay),
+    });
+  })
+
+  function setCompany(cid,ttype){
+    $('#company_id').val(cid);
+    $('#task_type').val(ttype);
+    $('#set_company').submit();
+  }
+</script>
+<section class="trackerstyle">
+  <div class="container">
+    <div class="col-md-12">
+
+      <!-- Page Title-->
+      <div class="page-title">
+        <div class="container">
+          <div class="column">
+            <h1>booking process</h1>
+          </div>
+          <div class="column">
+            <ul class="breadcrumbs hideonmobile">
+              <li><a href="index.html">home</a>
+              </li>
+              <li class="separator">&nbsp;</li>
+              <li>booking process</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Progress Tracker v2 -->
+      <div class="checkout-steps">
+        <a href="7confirm.html">7. booking complete</a>
+        <a href="6details.html"><span class="angle"></span>6. confirm and pay</a>
+        <a href="5personal.html"><span class="angle"></span>5. confirm details</a>
+        <a class="active" href="4partners.html"><span class="angle"></span>4. choose a partner</a>
+        <a class="active" href="3appointment.html"><span class="angle"></span>3. choose date</a>
+        <a class="active" href="2questions.html"><span class="angle"></span>2. quick questions</a>
+        <a class="active" href="1services.html"><span class="angle"></span>1. choose a service</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="split-section servicesstyle">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 col-lg-8 col-sm-8 colcheckout">
+        <!-- Services-->
+        <div class="row"><br></div>
+        <div class="span5 col-md-12">
+          <%= form_for(@task, :url => tasks_step5update_path(@task.id, @category.id), :id => @task.id, :html => {:class => '', :id => 'set_company'}) do |f| %>
+            <input type="hidden" name="task[id]" id="task_id" value="<%= @task.id %>">
+            <input type="hidden" name="task[company_id]" id="company_id" value="">
+            <input type="hidden" name="task[task_type]" id="task_type" value="">
+          <% end %>
+
+          <div class="span5 col-md-12">
+            <% if @compQuotations.length > 0  %>
+              <% @compQuotations.each do |com| %>
+                <div class="card text-center cardgreen">
+                  <div class="card-header card-header-green"><span class="text-lg">preferred partner</span></div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-4"><%#= image_tag comD.company.image.url(:detail), :class => 'img-responsive' %></div>
+                      <div class="col-sm-4">
+                        <br>
+                        <h3 class="card-title"><%= comD.company.company_name %></h3>
+                        <p class="card-text"><%= comD.company.about_company %></p>
+                        <p class="card-text"><i class="hc-star"></i><i class="hc-star"></i><i class="hc-star"></i><i class="hc-star"></i><i class="hc-star"></i></p>
+                      </div>
+                      <div class="col-sm-4"><br><h3 class="card-title">$<%= comD.price_per_hour%>/hour</h3><a onclick="setCompany('<%= comD.company.id%>','Quotation')"  class="btn btn-color">choose partner</a></div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+
+
+            <% if @compDirect.length > 0  %>
+              <% @compDirect.each do |comD| %>
+                <div class="card text-center cardgreen">
+                  <div class="card-header card-header-green"><span class="text-lg">preferred partner</span></div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-4">
+                        <%#= image_tag comD.company.image.url(:detail), :class => 'img-responsive' %>
+                      </div>
+                      <div class="col-sm-4">
+                        <br>
+                        <h3 class="card-title"><%= comD.company.company_name %></h3>
+                        <p class="card-text"><%= comD.company.about_company %></p>
+                        <p class="card-text">
+                          <i class="hc-star"></i>
+                          <i class="hc-star"></i>
+                          <i class="hc-star"></i>
+                          <i class="hc-star"></i>
+                          <i class="hc-star"></i>
+                        </p>
+                      </div>
+                      <div class="col-sm-4">
+                        <br>
+                        <h3 class="card-title">$<%= comD.price_per_hour %>/hour</h3>
+                        <a onclick="setCompany('<%= comD.company.id%>','Direct')"  class="btn btn-color">choose partner</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+            <div class="checkout-footer">
+              <div class="column"><a class="btn btn-gray" href="3appointment.html"><i class="icon-arrow-left"></i><span class="hidden-xs-down">&nbsp;change appointment</span></a></div>
+              <div class="column"><a class="btn btn-color" href="5personal.html"><span class="hidden-xs-down">continue&nbsp;</span><i class="icon-arrow-right"></i></a></div>
+            </div>
+          </div></div></div>
+          <!-- Sidebar          -->
+          <div class="col-xl-3 col-lg-4 col-sm-4">
+            <aside class="sidebar">
+              <div class="padding-top-2x hidden-lg-up"></div>
+              <!-- Order Summary Widget-->
+              <section class="widget widget-order-summary">
+                <div class="card text-center cardside">
+                  <div class="card-header card-header-green"><span class="text-lg">your booking</span></div>
+                  <div class="card-body">
+                    <table class="table">
+                      <tr>
+                        <td><i class="fa-icon-map-marker"></i> <%= @task.booking_date %></td>
+                      </tr>
+                      <tr>
+                        <td><i class="fa-icon-map-marker"></i> <%= @task.booking_time %></td>
+                      </tr>
+                      <tr>
+                        <td><i class="fa-icon-map-marker"></i> <%= @task.address %></td>
+                      </tr>
+                      <tr>
+                        <td><i class="fa-icon-map-marker"></i> <%= @category.name %></td>
+                      </tr>
+                      <tr>
+                        <% @text.to_a
+                          @text.each do |k,v| %>
+                          <td><i class="fa-icon-ok text-contrast"></i> <span><%= k %></span></td>
+                          <% v.to_a
+                          v.each do |smk,smv| %>
+                            <li><b><%= smk %></b>: <%= smv %></li>
+                          <% end%>
+                            <p></p>
+                        <% end %>
+                      </tr>
+                      <%# end %>
+                    </table>
+                  </div>
+                </div>
+              </section>
+              <section class="widget widget-order-summary">
+                <div class="card text-center cardside">
+                  <div class="card-header card-header-green"><span class="text-lg">search a different area</span></div>
+                  <div class="card-body">
+                    <div class="container-fluid">
+                      <form id="contact-form" action="" method="">
+                        <div class="form-group animated fadeInRight" data-animation="fadeInRight">
+                          <input class="form-control" type="text" name="name" data-required="" placeholder="location or postcode">
+                        </div>
+                        <div class="form-group mt-25 animated fadeInRight" data-animation="fadeInRight">
+                          <a class="btn btn-color margin-bottom-none" href="1services.html">find services</a>
+                          <p>&nbsp;</p>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </section>
+              <!-- Featured Products Widget-->
+              <section class="widget widget-featured-products">
+                <div class="card text-center cardside">
+                  <div class="card-header card-header-green"><span class="text-lg">how pressd works</span></div>
+                  <div class="card-body">
+                    <div class="accordion" id="accordion2" role="tablist">
+                      <div class="card">
+                        <div class="card-header" role="tab">
+                          <h5><a href="#collapseOne" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>who are pressd</a></h5>
+                        </div>
+                        <div class="collapse" id="collapseOne" role="tabpanel">
+                          <div class="card-body">Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</div>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-header" role="tab">
+                          <h5><a class="collapsed" href="#collapseTwo" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>how do i book a service</a></h5>
+                        </div>
+                        <div class="collapse" id="collapseTwo" role="tabpanel">
+                          <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-header" role="tab">
+                          <h5><a class="collapsed" href="#collapseThree" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>what is the pressd promise</a></h5>
+                        </div>
+                        <div class="collapse" id="collapseThree" role="tabpanel">
+                          <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </section>

@@ -1,0 +1,124 @@
+<div id='main' role='main'>
+      	<div id='main-content-header'>
+          <div class='container'>
+            <div class='row'>
+              <div class='col-sm-12'>
+                <h1 class='title'>
+                  Dashboard
+                  <small>Nam porta lectus a sodales pulvinar. Morbi sed auctor magna.</small>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id='main-content'>
+          <div class='container'>
+            <div class="row">
+	                  <div class='col-xs-12  border-bottom-line'>
+	                    <ul class='circle-stats'>
+	                      <li class='circle-stat-small'>
+	                        <div class='circle-stat-wrapper'>
+	                          <input class='hidden' data-fgColor='#8dc153' data-readOnly='true' data-stat='circle' data-thickness='0.1' type='text' value='25'>
+	                          <p class='percent'>1</p>
+	                        </div>
+	                        <h3 class='title'>Fill Out Task Details</h3>
+	                      </li>
+	                      <li class='circle-stat-small'>
+	                        <div class='circle-stat-wrapper'>
+	                          <input class='hidden' data-fgColor='#8dc153' data-readOnly='true' data-stat='circle' data-thickness='0.1' type='text' value='50'>
+	                          <p class='percent'>2</p>
+	                        </div>
+	                        <h3 class='title'>View Taskers & Prices</h3>
+	                      </li>
+	                      <li class='circle-stat-small active'>
+	                        <div class='circle-stat-wrapper'>
+	                          <input class='hidden' data-fgColor='#8dc153' data-readOnly='true' data-stat='circle' data-thickness='0.1' type='text' value='75'>
+	                          <p class='percent'>3</p>
+	                        </div>
+	                        <h3 class='title'>Confirm & Book</h3>
+	                      </li>
+	                    </ul>
+	                  </div>
+            	<div class="col-xs-12 text-center">
+            		<h2 class="font-weight-light"><i class="fa-icon-lock text-contrast"></i> Trust & Safety Guarantee: $1MM insurance guarantee on every task.</h2>
+            		<h3>Describe Your Task</h3>
+            		<p>We need these inputs to show only qualified and available Taskers for the job.</p>
+            		
+            		<div class="row text-left mt-50">
+            			
+						<div class="col-md-9 col-xs-12">
+							<% @subcategories.each do |subcat| %>
+							<div class="mb-40">
+								<h4><%= subcat.name %></h4>
+								<% @subcatquestions.each do |subcatquestion| %>
+									<div class="checkbox">
+				                          <label>
+				                            <input type="checkbox" value="">
+				                            <%= subcatquestion.name %>
+				                          </label>
+			                        </div>
+		                        <% end %>
+		                        
+							</div>
+							<% end %>
+							<!--<div class="mb-40">
+								<h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged ?</h4>
+		                        <div class="radio">
+		                          <label>
+		                            <input name="radio" type="radio" value="">
+		                            cumque aliquam voluptas consequatur assumenda
+		                          </label>
+		                        </div>
+		                        <div class="radio">
+		                          <label>
+		                            <input name="radio" type="radio" value="">
+		                            consectetur repellat consectetur minima assumenda modi omnis sequi
+		                          </label>
+		                        </div>
+		                        <div class="radio">
+		                          <label>
+		                            <input name="radio" type="radio" value="">
+		                            aut quos modi est odit nisi quis
+		                          </label>
+		                        </div>
+		                      </div>!-->
+		                      <!--<div class="mb-40">
+								<h4>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged ?</h4>
+		                        <div class="checkbox mb-20">
+		                          <label>
+		                            <input type="checkbox" value="">
+		                            <span><span class="ques-img"><img src="assets/images/demo/common/devices.jpg"></span></span>
+		                          </label>
+		                          <p class="mt-10"> Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old</p>
+		                        </div>
+		                        <div class="checkbox mb-20">
+		                          <label>
+		                            <input type="checkbox" value="">
+		                            <span><span class="ques-img"><img src="assets/images/demo/last_projects/cyclist.jpg"></span></span>
+		                          </label>
+		                          <p class="mt-10">Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words</p>
+		                        </div>
+		                      </div>!-->
+		                      <div class="mt-40 text-right">
+		                      	<button class="btn btn-contrast btn-lg btn-squared">Next Step</button>
+		                      </div>
+						</div>
+						<div class="col-md-3 col-xs-12">
+            				<div class="border-full p-20">
+            					<div class="form-group">
+            						<h4>Location</h4>
+            						<p><i class="fa-icon-map-marker"></i> 1234 Amsterdam Ave, New York, NY 10027, USA</p>
+            						<h4>Service</h4>
+            						<p>Home Cleaning</p>
+            					</div>
+            			</div>
+            		</div>
+            	</div>
+            	</div>
+            </div>
+          </div>
+        </div>
+        <div class='fade' id='scroll-to-top'>
+          <i class='fa-icon-chevron-up'></i>
+        </div>
+      </div>

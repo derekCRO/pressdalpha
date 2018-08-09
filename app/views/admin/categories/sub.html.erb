@@ -1,0 +1,96 @@
+<main class="main-content p-5" role="main">
+	<div class="row">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/admin">Dashboard</a>
+				</li>
+				<li class="breadcrumb-item"><a href="/admin/categories/">Categories</a></li>
+				<li class="breadcrumb-item active">Category Options</li>
+			</ol>
+			<div class="row">
+				<div class="col-md-6">
+					<h1>
+						&nbsp; Categories Options for <%= @category.name %></h1>
+				</div>
+				<div class="col-md-6"><%= link_to 'Add New Option', admin_newsub_category_path(@category), class: 'btn btn-success waves-effect waves-light float-right' %>
+				</div>
+			</div>
+			<br>
+		</div>
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body product-page">
+					<div class="tab-content" id="JobsTabContent">
+						<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+							<div class="table-responsive">
+              <table class="table table-striped dataTables-example">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <% if @categories.empty? %>
+                  <tbody>
+                    <tr></tr>
+                  </tbody>
+                <% else %>
+                  <tbody>
+                    <% @categories.each do |category| %>
+                      <tr>
+                        <td class=""><%= category.id %></td>
+                        <td class=""><%= category.name %></td>
+                        <td class="">
+                          <%= link_to(raw('Edit <i class="fa fa-pencil"></i>'), admin_subedit_category_path(category.id,@category), { :class=>"btn btn-success waves-effect waves-light", "data-turbolinks"=>"false" }) %>
+                          <%= link_to(raw('Delete <i class="fa fa-trash"></i>'), admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' },:class=>'btn btn-danger waves-effect waves-light') %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+
+			$(function () {
+
+				$('.dataTables-example').DataTable({
+					pageLength: 25,
+					orderable: true,
+					rowReorder: {
+						selector: 'td:first-child'
+					},
+					responsive: true,
+					dom: '<"html5buttons"B>lTfgitp',
+					buttons: [
+						{
+							extend: 'copy'
+						}, {
+							extend: 'csv',
+							title: 'Selected Customers'
+						}, {
+							extend: 'excel',
+							title: 'Selected Customers'
+						}, {
+							extend: 'pdf',
+							title: 'Selected Customers'
+						}, {
+							extend: 'print'
+						}
+					]
+
+				});
+
+			});
+		</script>
+
+
+	</main>

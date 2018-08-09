@@ -1,0 +1,62 @@
+<main class="main-content p-5" role="main">
+  <div class="row">
+    <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/admin">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item"><a href="/admin/blogs">Blogs</a></li>
+        <li class="breadcrumb-item active">Edit Blog</li>
+      </ol>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>
+            &nbsp; Edit Blog</h1>
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <div class="col-md-12">
+
+    <div class="row">
+
+      <div class="col-md-3 col-lg-3 col-xl-3 mb-5">
+        <div class="card">
+          <div class="card-header">
+            Blog Image
+          </div>
+          <div class="card-body product-page">
+            <div class="tab-content" id="JobsTabContent">
+              <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+            <div style="max-width:100%;">  <%= image_tag @blog.image.url(:detail), :class => 'img-responsive' %> </div>
+            <br>
+            <div id="picturetarget" class="img-responsive" style="max-width:100%;"></div>
+            </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-md-9 col-lg-9 col-xl-9 mb-5">
+        <div class="card">
+          <div class="card-header">
+            Blog Content
+          </div>
+          <div class="card-body product-page">
+            <div class="tab-content" id="JobsTabContent">
+              <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+              <div> <%= render 'formedit', content: @blog %> </div> </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+
+    </div>
+  </main>

@@ -1,0 +1,106 @@
+<li>
+  <div class="panel panel-default" data-conversation-id="<%= conversation.id %>">
+    <div class="panel-heading">
+    </div>
+
+    <div class="row sideBar">
+  <div class="row sideBar-body">
+    <div class="col-sm-3 col-xs-3 sideBar-avatar">
+      <div class="avatar-icon">
+        <img src="http://shurl.esy.es/y">
+      </div>
+    </div>
+    <div class="col-sm-9 col-xs-9 sideBar-main">
+      <div class="row">
+        <div class="col-sm-8 col-xs-8 sideBar-name">
+          <span class="name-meta"><%= link_to conversation.opposed_user(user).first_name%></span>
+        </div>
+        <div class="col-sm-4 col-xs-4 float-right sideBar-time">
+          <span class="time-meta float-right">18:18
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="col-sm-6 conversation">
+        <!-- Heading -->
+        <div class="row heading">
+          <div class="col-sm-2 col-md-1 col-xs-3 heading-avatar">
+            <div class="heading-avatar-icon">
+              <img src="http://shurl.esy.es/y">
+            </div>
+          </div>
+          <div class="col-sm-8 col-xs-7 heading-name">
+            <a class="heading-name-meta">Ankit Jain
+            </a>
+            <span class="heading-online">Online</span>
+          </div>
+          <div class="col-sm-1 col-xs-1  heading-dot float-right">
+            <i class="fa fa-ellipsis-v fa-2x  float-right" aria-hidden="true"></i>
+          </div>
+        </div>
+        <!-- Heading End -->
+        <div class="panel-body" style="">
+          <div class="messages-list">
+            <ul>
+
+            </ul>
+          </div>
+          <%= form_for [conversation, conversation.messages.new], remote: true do |f| %>
+            <%= f.hidden_field :user_id, value: current_customer.id %>
+            <%= f.text_area :body, class: "form-control" %>
+            <%= f.submit "Send", class: "btn btn-success" %>
+          <% end %>
+        </div>
+        <!-- Message Box -->
+        <div class="row message" id="conversation">
+
+          <div class="row message-previous">
+            <div class="col-sm-12 previous">
+              <a onclick="previous(this)" id="ankitjain28" name="20">
+              Show Previous Message!
+              </a>
+            </div>
+          </div>
+
+          <div class="row message-body">
+            <%= render 'conversations/conversation_content', messages: conversation.messages, user: user %>
+
+          </div>
+
+          <div class="row message-body">
+            <div class="col-sm-12 message-main-sender">
+              <div class="sender">
+                <div class="message-text">
+                  Thanks n I know its awesome...!
+                </div>
+                <span class="message-time float-right">
+                  Sun
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Message Box End -->
+
+        <!-- Reply Box -->
+        <div class="row reply">
+          <div class="col-sm-1 col-xs-1 reply-emojis">
+            <i class="fa fa-smile-o fa-2x"></i>
+          </div>
+          <div class="col-sm-9 col-xs-9 reply-main">
+            <textarea class="form-control" rows="1" id="comment"></textarea>
+          </div>
+          <div class="col-sm-1 col-xs-1 reply-recording">
+            <i class="fa fa-microphone fa-2x" aria-hidden="true"></i>
+          </div>
+          <div class="col-sm-1 col-xs-1 reply-send">
+            <i class="fa fa-send fa-2x" aria-hidden="true"></i>
+          </div>
+        </div>
+        <!-- Reply Box End -->
+      </div>
+
+</li>

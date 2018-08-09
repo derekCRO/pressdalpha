@@ -1,0 +1,38 @@
+<%= form_for(@site_setting, :url => '/admin/site_settings/') do |f| %>
+  <% if site_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(site_setting.errors.count, "error") %> prohibited this site_setting from being saved:</h2>
+
+      <ul>
+      <% site_setting.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <div class="field">
+      <%= f.label :facebook_link %><br />
+      <%= f.text_field :facebook_link %>
+    </div>
+
+    <div class="field">
+      <%= f.label :site_email %><br />
+      <%= f.text_field :site_email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :phone_no %><br />
+      <%= f.text_field :phone_no %>
+    </div>
+
+    <div class="field">
+      <%= f.label :google_plus_link %><br />
+      <%= f.text_field :google_plus_link %>
+    </div>
+
+      <%= f.submit "Add" %>  <%= link_to 'Back', admin_site_settings_path, :class=>'btn btn-primary' %>
+
+  </div>
+<% end %>

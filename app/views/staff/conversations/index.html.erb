@@ -1,0 +1,52 @@
+<h1>All Conversations</h1>
+
+<div class="wrapper wrapper-content">
+        <div class="row">
+
+            <div class="col-lg-12 animated fadeInRight">
+            <div class="mail-box-header">
+
+                <form method="get" action="index.html" class="float-right mail-search">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <a class="btn btn-block btn-primary compose-mail" href="<%= new_conversation_path %>">Compose Mail</a>
+                        </div>
+                    </div>
+                </form>
+                <h2>
+                  <%= current_customer.mailbox.inbox(:unread => true).count %> new messages
+                </h2>
+                <div class="mail-tools tooltip-demo m-t-md">
+                    <div class="btn-group float-right">
+                        <button class="btn btn-white btn-sm"><i class="fafa-arrow-left"></i></button>
+                        <button class="btn btn-white btn-sm"><i class="fafa-arrow-right"></i></button>
+
+                    </div>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="left" title="Refresh inbox"><i class="fa fa-refresh"></i> Refresh</button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as read"><i class="fa fa-eye"></i> </button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Mark as important"><i class="fa fa-exclamation"></i> </button>
+                    <button class="btn btn-white btn-sm" data-toggle="tooltip" data-placement="top" title="Move to trash"><i class="fa fa-trash-o"></i> </button>
+
+                </div>
+            </div>
+                <div class="mail-box">
+
+                <table class="table table-hover table-mail">
+                <tbody>
+                  <% @conversations.each do |conversation| %>
+                <tr class="unread">
+                    <td class="check-mail">
+                        <div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" class="i-checks" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255); border: 0px; opacity: 0;"></ins></div>
+                    </td>
+                    <td class="mail-ontact"><a href="mail_detail.html"><%= link_to conversation.subject, conversation_path(conversation) %></a></td>
+                    <td class="mail-subject"><a href="mail_detail.html"><%= link_to conversation.subject, conversation_path(conversation) %></a></td>
+                    <td class=""><i class="fa fa-paperclip"></i></td>
+                    <td class="text-right mail-date">6.10 AM</td>
+                </tr>
+                <% end %>
+                </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        </div>

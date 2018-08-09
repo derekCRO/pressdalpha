@@ -1,0 +1,79 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Customer Details for <%= @manual_customer.first_name %> <%= @manual_customer.last_name %></h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal" action="">
+    <div class="form-group">
+      <label class="control-label col-sm-6" for="">
+        <strong>Customer ID</strong>
+      </label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @manual_customer.id %></p>
+      </div>
+      <label class="control-label col-sm-6" for="">
+        <strong>Customer Name</strong>
+      </label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @manual_customer.first_name %>
+          <%= @manual_customer.last_name %></p>
+      </div>
+      <label class="control-label col-sm-6" for="">
+        <strong>Email</strong>
+      </label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @manual_customer.email %></p>
+      </div>
+      <label class="control-label col-sm-6" for="">
+        <strong>Phone Number</strong>
+      </label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @manual_customer.phone %></p>
+      </div>
+      <label class="control-label col-sm-6" for="">
+        <strong>Address Line 1</strong>
+      </label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @manual_customer.address1 %></p>
+      </div>
+      <label class="control-label col-sm-6" for="">
+        <strong>Address Line 2</strong>
+      </label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @manual_customer.address2 %></p>
+      </div>
+      <label class="control-label col-sm-6" for="">
+        <strong>City</strong>
+      </label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @manual_customer.city %></p>
+      </div>
+      <label class="control-label col-sm-6" for="">
+        <strong>Postcode</strong>
+      </label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @manual_customer.zipcode %></p>
+      </div>
+      <label class="control-label col-sm-6" for="">
+        <strong>Country</strong>
+      </label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @manual_customer.country %></p>
+      </div>
+      <label class="control-label col-sm-6" for="">
+        <strong>Booking History</strong>
+      </label>
+      <div class="col-sm-12">
+            <% if @jobs.length > 0  %>
+              <% @jobs.each do |jobs| %>
+                <p class="form-control-static"><td><%= jobs.id %> | <%= jobs.booking_date %> | <%= jobs.booking_time %></td> | <%= jobs.zipcode %> | <%= jobs.status %></p>
+              <% end %>
+                <% else %>
+              	<p class="form-control-static"></p>
+                <% end %>
+      </div>
+  </form>
+</div>
+<div class="modal-footer"></div>

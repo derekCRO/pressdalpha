@@ -1,0 +1,64 @@
+<section class="trackerstyle">
+        <div class="container">
+          <div class="col-md-12">
+
+            <!-- Page Title-->
+            <div class="page-title">
+              <div class="container">
+                <div class="column">
+                  <h1>log in</h1>
+                </div>
+                 <div class="column">
+                  <ul class="breadcrumbs hideonmobile">
+                    <li><a href="index.html">home</a>
+                    </li>
+                    <li class="separator">&nbsp;</li>
+                    <li>log in</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+     <div id='main-content'>
+     <div class='container'>
+       <div class="row">
+       	<div class="col-md-5 col-sm-8 center-div">
+       		<div class="log-in-area  p-20">
+       			<div class="form-group text-center">
+       				<div class=>
+            				<img src="/assets/logo-light.png"/>
+            			</div>
+       			</div>
+
+       			<%= form_for(resource, as: resource_name, url: session_path(resource_name), :html => {:class => 'log-in-form', :multipart => true}) do |f| %>
+       				<div class="form-group">
+       					<label>email</label>
+       					<input type="email" name="customer[email]" required="required" class="form-control"/>
+       				</div>
+       				<div class="form-group">
+       					<label>password</label>
+       					<input type="password" name="customer[password]" required="required" class="form-control"/>
+       				</div>
+       				<div class="form-group">
+       					<button class="btn btn-color upper findservicesbtn no-radius" type="submit">login</button>
+       				</div>
+       				<div class="form-group overflow-hidden">
+       					<a href="#" class="">forgot password ?</a>
+       				</div>
+              <div class="row"><br></div>
+       				<div class="form-group text-center">
+       					<h4>not registered? <a class="back-sign-in" href="/customers/sign_up">sign up</a></h4>
+       				</div>
+       			<% end %>
+
+       		</div>
+       	</div>
+       </div>
+     </div>
+   </div>
+</section>

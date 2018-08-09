@@ -1,0 +1,6 @@
+var business_hours = '<%= content_tag "div", id: "business_hours", data: {hours: @business_hours[0]} do %>' +
+'<% end %>'
+$('#calendar1').append(business_hours);
+$('#calendar1').fullCalendar('option', {'businessHours': $('#business_hours').data('hours')});
+$('#calendar1').fullCalendar('option', {'selectConstraint': 'businessHours'});
+$('#calendar1').fullCalendar('changeView','agendaDay');

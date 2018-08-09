@@ -1,0 +1,50 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Info for Subscription ID <%= @subscription.id %></h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+
+<div class="modal-body">
+  <form class="form-horizontal" action="">
+    <div class="form-group">
+      <label class="control-label col-sm-8" for=""><strong>Subscription Id:</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @subscription.id %></p>
+      </div>
+      <label class="control-label col-sm-8" for=""><strong>Recurring Type</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @subscription.recurring_type %></p>
+      </div>
+      <label class="control-label col-sm-8" for=""><strong>Length of Contract (months)</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @subscription.recurring_months %></p>
+      </div>
+      <label class="control-label col-sm-8" for=""><strong>Customer Name</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @subscription.user.first_name %> <%= @subscription.user.last_name %></p>
+      </div>
+      <label class="control-label col-sm-8" for=""><strong>Job Address</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%#= @subscription.job.address1 %> <%#= @subscription.job.address2 %></p>
+      </div>
+      <label class="control-label col-sm-8" for=""><strong>Job City</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%#= @subscription.job.city %></p>
+      </div>
+      <label class="control-label col-sm-8" for=""><strong>Date of First Booking</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @subscription.date_of_first_booking %></p>
+      </div>
+      <label class="control-label col-sm-8" for=""><strong>Recurring Price</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static">£<%= @subscription.recurring_price%></p>
+      </div>
+      <label class="control-label col-sm-8" for=""><strong>Company</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @subscription.company.company_name %></p>
+      </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer"></div>

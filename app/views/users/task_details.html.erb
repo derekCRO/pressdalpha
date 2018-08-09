@@ -1,0 +1,140 @@
+<?php ?>
+<div id='main' role='main'>
+ 	<div id='main-content-header'>
+     <div class='container'>
+       <div class='row'>
+         <div class='col-sm-12'>
+           <h1 class='title'>
+             My Bookings
+             <small>Nam porta lectus a sodales pulvinar. Morbi sed auctor magna.</small>
+           </h1>
+         </div>
+       </div>
+     </div>
+   </div>
+   <div id='main-content'>
+     <div class='container'>
+       <div class="row dashboard-row">
+       	<%= render :partial => 'layouts/accountsidepannel' %>
+
+       	<div class="col-sm-9 col-xs-12 col-dash-right">
+       		<p id="notice"><%= notice %></p>
+       		<div class="">
+       			<h2>Booking Details</h2>
+       			<div class="row ">
+
+       				<div class="user-info">
+            				<div class="col-sm-12 col-xs-12 col-user-info">
+                               	<div class="border-full text-left col-md-offset-1">
+
+                               	<h3>Booking Id: <a href="#"><%= @task.view_job_id %></a> </h3>
+                               	<h3> <span class="text-contrast font-weight-bold">$<%= @task.price %>/hour</span></h3>
+                               	<div class="form-group col-sm-6">
+            						<div class="col-xs-3">
+            							<%= image_tag @task.company.image.url(:thumb), :class => 'img-circle' %>
+            						</div>
+            						<div class="col-xs-9">
+            							<p>Company Name</p>
+            							<h5><%= @task.company.company_name %></h5>
+            						</div>
+            					</div>
+
+            					<div class="form-group col-sm-6">
+            						<div class="col-xs-3">
+            							<%= image_tag @task.user.image.url(:thumb), :class => 'img-circle' %>
+            						</div>
+            						<div class="col-xs-9">
+            							<p>Customer Name</p>
+            							<h5><%= @task.user.first_name %> <%= @task.user.last_name %></h5>
+            						</div>
+            					</div>
+
+
+
+            					<div class="form-group col-sm-6">
+            						<h4>Date &amp; Time</h4>
+            						<p><%= @task.booking_date %> (<%= @task.booking_time %>)</p>
+            					</div>
+
+	            				<div class="form-group col-sm-6">
+            						<h4>Location</h4>
+            						<p><i class="fa-icon-map-marker"></i> <%= @task.address %></p>
+            					</div>
+
+            					<div class="form-group col-sm-6">
+            						<h4>Category</h4>
+            						<p><%= @category.name %></p>
+            					</div>
+
+            					<div class="form-group col-sm-6">
+            						<h4>Service</h4>
+            						<% @text.to_a
+            						   @text.each do |k,v| %>
+		       						<p><i class="fa-icon-ok text-contrast"></i> <span><%= k %></span></p>
+		       							<% v.to_a
+		       							   v.each do |smk,smv| %>
+		       							   	<li><b><%= smk %></b>: <%= smv %></li>
+		       							   <% end%>
+		       						<p></p>
+            						   <% end %>
+            					</div>
+
+
+
+
+
+
+	            				<!-- Address of Customer -->
+	            				<h3>Task LocationAddress</h3>
+	            				<div class="form-group col-sm-6">
+	            					<h4>Zipcode</h4>
+	            					<p> <%= @task.zipcode %></p>
+	            				</div>
+
+	            				<div class="form-group col-sm-6">
+	            					<h4>Address 1</h4>
+	            					<p> <%= @task.address1 %></p>
+	            				</div>
+
+	            				<div class="form-group col-sm-6">
+	            					<h4>Address 2</h4>
+	            					<p> <%= @task.address2 %></p>
+	            				</div>
+
+	            				<div class="form-group col-sm-6">
+	            					<h4>City</h4>
+	            					<p> <%= @task.city %></p>
+	            				</div>
+
+	            				<div class="form-group col-sm-6">
+	            					<h4>Country</h4>
+	            					<p> <%= @task.country %></p>
+	            				</div>
+
+
+	            				<!-- Address of Customer -->
+
+
+
+
+            					<!--<div class="form-group col-sm-12 overflow-hidden">
+            						<label>Task Description</label>
+            						<textarea class="form-control" rows="5"></textarea>
+            					</div>-->
+            					<div class="form-group col-sm-12 overflow-hidden text-center">
+            						<a class="btn btn-success btn-xs start-conversation-customer" data-sid="20" data-rip="22" href="/customer/list">Back</a>
+            					</div>
+                    			</div>
+            				</div>
+       				</div>
+
+       			</div>
+       		</div>
+       	</div>
+       </div>
+     </div>
+   </div>
+   <div class='fade' id='scroll-to-top'>
+     <i class='fa-icon-chevron-up'></i>
+   </div>
+</div>

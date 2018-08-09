@@ -1,0 +1,8 @@
+<% messages.each do |message| %>
+  <div class="message-text">
+    <%= render message, user: user %>
+    <span class="message-time float-right">
+      Sun
+    </span>
+  </div>
+<% end %>

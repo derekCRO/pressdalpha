@@ -1,0 +1,63 @@
+<script>
+(function() {
+  $(document).on('click', '.toggle-window', function(e) {
+    e.preventDefault();
+    var panel = $(this).parent().parent();
+    var messages_list = panel.find('.messages-list');
+
+    panel.find('.panel-body').toggle();
+    panel.attr('class', 'panel panel-default');
+
+    if (panel.find('.panel-body').is(':visible')) {
+      var height = messages_list[0].scrollHeight;
+      messages_list.scrollTop(height);
+    }
+  });
+})();
+</script>
+
+<!-- Heading -->
+<div class="mailbox-container mailbox-message-view">
+<div class="message-general-info-container">
+<div class="message-general-info">
+<div class="message-sender-image">
+<div class="profile-picture bg-gradient bg-primary float-right d-flex mr-3">
+<%= image_tag conversation.recipient.image.url(:thumb) %>
+</div>
+</a>
+</div>
+<div class="message-sender">
+Chatting to: <span class="sender-name"><%= conversation.recipient.company_name %></span></div>
+</div>
+</div>
+<!-- Heading End -->
+
+<!-- Message Box -->
+<div class="<%= "message conversation-#{conversation.id}" %>" id="conversation">
+
+  <% conversation.messages.each_with_index do |message, index| %>
+    <div class="message-body">
+      <%= render "partner/messages/message", message: message, context_user: context_user %>
+    </div>
+  <% end %>
+</div>
+<!-- Message Box End -->
+
+<!-- Reply Box -->
+<%= form_for [conversation, message], remote: true, html: {class: "reply-form", multipart: true} do |f| %>
+  <div class="reply">
+    <%= f.hidden_field :user_id, value: conversation.recipient_id %>
+    <div class="col-sm-10 col-xs-10 reply-main">
+      <%= f.text_area :body, class: "form-control", row: 1, id: "comment", required: true %>
+    </div>
+    <div class="col-sm-1 col-xs-1 reply-image">
+      <i class="fa fa-picture-o fa-2x" aria-hidden="true"></i>
+      <%= f.file_field :image %>
+    </div>
+    <div class="col-sm-1 col-xs-1 reply-send">
+      <button type="submit" class="fa fa-send fa-2x" aria-hidden="true"></button>
+    </div>
+  </div>
+<% end %>
+</div>
+<!-- Reply Box End -->

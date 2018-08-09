@@ -1,0 +1,42 @@
+<div class="page-heading">
+            <h3>
+               New Role
+            </h3>
+			<% @role.errors.full_messages.each do |msg| %>
+			    <li class="error msg"><%= msg %></li>
+		    <% end %>
+</div>
+
+<div class="wrapper">
+        <div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading">
+						New Role
+					</header>
+					<div class="panel-body">
+
+<%= form_for(@role, :url => '/admin/roles/',:html => { :multipart => true }) do |f| %>
+
+    <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+    </div>
+	
+	
+	<div class="field">
+    <%= f.label :is_active %><br />
+    <%= f.check_box :is_active %>
+    </div>
+	
+    <%= f.submit %>
+	<%= link_to 'Back', admin_roles_path, :class=>'btn btn-primary' %>
+<% end %>
+
+
+					</div>
+				</section>
+			</div>
+		</div>
+</div>
+

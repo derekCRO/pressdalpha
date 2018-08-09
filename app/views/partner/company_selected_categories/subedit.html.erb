@@ -1,0 +1,112 @@
+<main class="main-content p-5" role="main">
+  <div class="row">
+    <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/partner">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="/partner/company_selected_categories/selected_category">Selected Categories</a></li>
+        <li class="breadcrumb-item active">Categories Options for <%= @category.name %></li>
+      </ol>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>&nbsp; Edit Category Options for <%= @category.name %></h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body product-page">
+          <div class="tab-content" id="JobsTabContent">
+						<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+              <div class="table-responsive">
+         <table class="table table-striped dataTables-example">
+           <thead>
+                   <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Hour Per Item</th>
+                      <th>Material Cost</th>
+                      <th>Do You Provide Service</th>
+                      <th>Action</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <tbody>
+                 <% if @catattributes.length > 0  %>
+                      <% @catattributes.each do |catattribute| %>
+                       <tr>
+                         <%= form_for(catattribute, :url => partner_update_category_attribute_path(@categorycomp.id), :id =>@categorycomp.id, :html => {:class => 'form-horizontal'}) do |f|  %>
+                  <input type="hidden" name="company_selected_category[companycatatt_attributes][id]" value="<%= catattribute.id %>">
+                    <input type="hidden" name="company_id" value="<%= params[:company_id] %>">
+                    <input type="hidden" name="company_selected_category[id]" value="<%= @categorycomp.id %>">
+                    <td><%= catattribute.id %></td>
+                    <td><%= catattribute.name %></td>
+                    <td>
+                      <input type="text" name="company_selected_category[companycatatt_attributes][hour_per_item]" class="form-control" value="<%= catattribute.hour_per_item %>" required="required">
+                    </td>
+                    <td>
+                      <input type="text" name="company_selected_category[companycatatt_attributes][material_cost]" class="form-control" value="<%= catattribute.material_cost %>" required="required">
+                    </td>
+                    <td>
+                      <select name="company_selected_category[companycatatt_attributes][is_company_support]" class="form-control">
+                        <option value="TRUE" <%= if catattribute.is_company_support==TRUE then 'selected' else '' end %>>Yes</option>
+                        <option value="FALSE" <%= if catattribute.is_company_support==FALSE then 'selected' else '' end %>>No</option>
+                      </select>
+                    </td>
+                    <td class="action">
+                      <button class="btn btn-success waves-effect waves-light" type="submit" name="commit" value="update" data-disable-with="Save">Save</button>
+                    </td>
+                  <% end %>
+                </tr>
+              <% end %>
+
+                </tbody>
+             <% else %>
+             	<tbody>
+                <tr>
+             		<td></td>
+             	</tr>
+              </tbody>
+             <% end %>
+       </table>
+      </div>
+            </div>
+						</div>
+          </div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+
+              $(function () {
+
+                $('.dataTables-example').DataTable({
+                  pageLength: 25,
+                  orderable: true,
+                  rowReorder: {
+                    selector: 'td:first-child'
+                  },
+                  responsive: true,
+                  dom: '<"html5buttons"B>lTfgitp',
+                  buttons: [
+                    {
+                      extend: 'copy'
+                    }, {
+                      extend: 'csv',
+                      title: 'Selected Customers'
+                    }, {
+                      extend: 'excel',
+                      title: 'Selected Customers'
+                    }, {
+                      extend: 'pdf',
+                      title: 'Selected Customers'
+                    }, {
+                      extend: 'print'
+                    }
+                  ]
+
+                });
+
+              });
+            </script>
+
+    </main>

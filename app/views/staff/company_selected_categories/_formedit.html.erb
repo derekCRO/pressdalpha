@@ -1,0 +1,29 @@
+<%= form_for(@category, :url => partner_company_selected_category_path, :id => @category.id, :html => {:class => 'form-horizontal'}) do |f|  %>
+
+<input type="hidden"  name="company_selected_category[category_id]" value="<%= @category.category_id %>">
+<input type="hidden"  name="company_selected_category[company_id]" value="<%= @category.company_id %>">
+
+	<div class="form-group"><label class="col-sm-2 control-label" for="price_per_hour">Price Per Hour</label>
+	 	<div class="col-sm-10 input-group m-b"><span class="input-group-addon">&euro;</span><%= f.text_field :price_per_hour, :class => 'form-control', :required => 'required' %></div>
+	</div>
+
+	<div class="form-group"><label class="col-sm-2 control-label" for="email">Service Type</label>
+		<div class="col-sm-10">
+		 <select name="company_selected_category[service_type]" required id="company_selected_category_service_type" class="form-control">
+		   <option value="Direct" <%= if @category.service_type=="Direct" then 'selected' else '' end %>>Direct</option>
+		   <option value="Quotation" <%= if @category.service_type=="Quotation" then 'selected' else '' end %>>Quotation</option>
+		 </select>
+		</div>
+	</div>
+
+	<div class="hr-line-dashed"></div>
+
+	  <div class="form-group">
+		 <div class="col-sm-4 col-sm-offset-2">
+		     <button class="btn btn-primary" type="submit" name="commit" value="Update Category" data-disable-with="Update">Update</button>
+		     <%= link_to 'Back', partner_company_selected_categories_selected_category_path, :class=>'btn btn-white' %>
+		 </div>
+	  </div>
+
+
+<% end %>

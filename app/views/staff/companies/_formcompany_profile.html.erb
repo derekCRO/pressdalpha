@@ -1,0 +1,18 @@
+	<%= simple_form_for(@company, :url => partner_companies_companyprofileupdate_path(@company.id), :id => @company.id, html: { :style => 'display: inline', class: 'form-horizontal', :multipart => true}) do |f| %>
+	  <%= f.input :company_name, label: 'Company Name'%>
+		<%= f.input :about_company, label: 'About Company'%>
+		<%= f.input :location, label: 'Company Location'%>
+		<%= f.input :servicearea_radius, label: 'Company Location'%>
+		<%= f.collection_select :postcode_ids, Postcode.all, :id, :name, {}, {:multiple => true, :size => 6, :style => 'width:100%', id: "simple-example"} %>
+  	<%= f.input :service_type, as: :radio_buttons, collection: [['Direct', 'Direct'], ['Quotation', 'Quotation']], label_method: :second, value_method: :first %>
+		<%= f.input_field :image, as: :file, label: 'Company Location'%>
+		<%= f.button :submit %>
+		<% end %>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  $('select#simple-example').select2();
+	theme: "bootstrap"
+});
+
+</script>

@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Update <%= @user.first_name %> <%= @user.last_name %></h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<div class="modal-body">
+  <%= simple_form_for(@user, :id => @user.id, :url => partner_user_path, remote: request.xhr?, html: { class: 'form-horizontal', :multipart => true}) do |f| %>
+  <input type="hidden" value="Staff" name="user[user_type]" id="user_user_type">
+  <input type="hidden" value="<%= current_partner.company.id %>" name="user[company_id]" id="user_company_id">
+  <%= f.input :first_name, class: 'span1', label: 'First Name', error: ' is mandatory, please specify one', wrapper_html: { class: 'halflineformleft' } %>
+  <%= f.input :last_name, class: 'span1', label: 'Last Name', error: ' is mandatory, please specify one', wrapper_html: { class: 'halflineformright' } %>
+  <%= f.input :email, label: 'Email', error: ' is mandatory, please specify one' %>
+  <%= f.input :phone, label: 'Phone', error: ' is mandatory, please specify one' %>
+  <%= f.input :address, label: 'Address', error: ' is mandatory, please specify one' %>
+  <%= f.input :city, label: 'City', error: ' is mandatory, please specify one', wrapper_html: { class: 'halflineformleft' } %>
+  <%= f.input :country, label: 'Country', error: ' is mandatory, please specify one', wrapper_html: { class: 'halflineformright' } %>
+  <%= f.input :zipcode, label: 'Postcode', error: ' is mandatory, please specify one' %>
+  <%= f.input :image, label: 'Image' , input_html: {accept: ('image/jpeg') } %>
+  <button class="btn btn-success waves-effect waves-light float-right" type="submit" name="commit" value="Update User" data-disable-with="Update">Update Staff Member</button>
+  <% end %>
+</div>
+<div class="modal-footer">
+</div>

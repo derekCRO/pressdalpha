@@ -1,0 +1,61 @@
+<div class="page-heading">
+            <h3>
+                Products
+            </h3>
+            <ul class="breadcrumb">
+                
+            </ul>
+			<p id="notice"><%= notice %></p>
+</div>
+<div class="wrapper">
+        <div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading">
+						<%= 'Products' %>
+					</header>
+					<div class="panel-body">
+						<table class="table table-bordered table-striped table-condensed">
+						  <thead>
+						  <tr>
+								<th>Title</th>
+								<th>Serial</th>
+								<th>Weight</th>
+								<th>Pt weight</th>
+								<th>Pd weight</th>
+								<th>Rh weight</th>
+								<th>Make</th>
+								<th>Model</th>
+								<th>Action</th>
+						  </tr>
+						  </thead>
+						  
+						<tbody>	
+						<% @products.each do |product| %>
+						<tr>
+						    <td><%= product.title %></td>
+							<td><%= product.serial %></td>
+							<td><%= product.weight %></td>
+							<td><%= product.pt_weight %></td>
+							<td><%= product.pd_weight %></td>
+							<td><%= product.rh_weight %></td>
+							<td><%= product.make %></td>
+							<td><%= product.model %></td>
+							
+							
+						  <td><%= link_to 'Show', admin_product_path(product) %> |<%= link_to 'Edit', edit_admin_product_path(product) %> | <%= link_to 'Destroy', admin_product_path(product), data: { confirm: 'Are you sure?' }, :method => :delete %></td>
+						</tr>
+						<% end %>
+						<tbody>
+						</table>
+
+						<br />
+
+						
+					</div>
+				</section>
+			</div>
+		</div>
+</div>	
+
+

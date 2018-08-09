@@ -1,0 +1,104 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="checkout-steps">
+      <a href="#"><span class="angle"></span>service complete</a>
+      <a href="#"><span class="angle"></span>service started</a>
+      <a href="#"><span class="angle"></span>staff en-route</a>
+      <a href="#"><span class="angle"></span>order confirmed</a>
+      <a class="active" href="#"><span class="angle"></span>order placed</a>
+    </div>
+  </div>
+  <div class="row"><br></div>
+  <div class="row">
+    <div class="span5 col-md-3">
+      <div class="card text-center cardend">
+        <div class="card-header card-header-green">
+          <span class="text-lg">service details</span>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <br>
+            <h3 class="card-title"> <%= task.category.name %> </h3>
+            <p class="card-text">1 bedroom, 2 bathrooms, inside cupboards</p>
+          </div>
+          <div><br>
+            <h3 class="card-title">
+              <%= task.id %>
+              <% if !task.booking_time.blank? %>
+                <% time_arr = task.task.booking_time.split(" ")%>
+                <% hrs = (Time.parse(time_arr[1]) - Time.parse(time_arr[0]))/3600 %>
+                <%= pluralize(hrs, "hour") %>
+              <% end %>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span5 col-md-3">
+      <div class="card text-center cardend">
+        <div class="card-header card-header-green">
+          <span class="text-lg">selected time</span>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <br>
+            <h3 class="card-title"><%= task.booking_date %></h3>
+          </div>
+          <div><br>
+            <h3 class="card-title"><%= task.booking_time %></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span5 col-md-3">
+      <div class="card text-center cardend">
+        <div class="card-header card-header-green">
+          <span class="text-lg">selected partner</span>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <%= image_tag task.company.image.url(:thumb), :class => 'img-circle' %>
+            <br>
+            <h3 class="card-title"><%= task.company.company_name %></h3>
+            <p class="card-text">merthyr</p>
+            <p class="card-text"><i class="hc-star"></i><i class="hc-star"></i><i class="hc-star"></i></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span5 col-md-3">
+      <div class="card text-center cardend">
+        <div class="card-header card-header-green">
+          <span class="text-lg">selected location</span>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <br>
+            <h3 class="card-title"><%= task.zipcode %></h3>
+            <br>
+            <p class="card-text"><%= task.address %>, <%= task.zipcode %> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="span5 col-md-12">
+      <div class="row"><br></div>
+      <div class="card text-center cardend2">
+        <div class="card-header card-header-green">
+          <span class="text-lg">total price</span>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <br>
+            <p class="card-text">service total: £45.99</p>
+            <p class="card-text">pressd promise charge: £5.00</p>
+            <h3 class="card-title">total price: £<%= task.price %></h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="table-responsive shopping-cart">
+</div>
+<hr class="mb-3">

@@ -1,0 +1,104 @@
+
+<div class="side-one">
+  <!-- Heading -->
+  <div class="row heading">
+    <div class="col-sm-3 col-xs-3 heading-avatar">
+      <div class="heading-avatar-icon">
+        <%= image_tag current_customer.image.url(:thumb) %>
+      </div>
+    </div>
+    <div class="col-sm-1 col-xs-1 heading-dot float-right">
+      <i class="fa fa-ellipsis-v fa-2x  float-right" aria-hidden="true"></i>
+    </div>
+    <div class="col-sm-2 col-xs-2 heading-compose float-right">
+      <i class="fa fa-comments fa-2x float-right" aria-hidden="true"></i>
+    </div>
+  </div>
+  <!-- Heading End -->
+
+  <!-- SearchBox -->
+  <div class="row searchBox">
+    <div class="col-sm-12 searchBox-inner">
+      <div class="form-group has-feedback">
+        <input id="searchText" type="text" class="form-control" name="searchText" placeholder="Search">
+        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Box End -->
+  <!-- sideBar -->
+  <div class="row sideBar" id="conversations-list">
+    <% @conversations.each do |conversation| %>
+      <%= link_to conversations_path(user_id: conversation.recipient_id), method: :post, remote: true, class: "user-item" do %>
+        <div class="row sideBar-body" data-conversation-id=<%= conversation.id %>>
+          <div class="col-sm-3 col-xs-3 sideBar-avatar">
+            <div class="avatar-icon">
+              <%= image_tag conversation.recipient.image.url(:thumb) %>
+            </div>
+          </div>
+          <div class="col-sm-9 col-xs-9 sideBar-main">
+            <div class="row">
+              <div class="col-sm-8 col-xs-8 sideBar-name">
+                <span class="name-meta"><%= conversation.recipient.fullname %>
+              </span>
+              </div>
+              <div class="col-sm-4 col-xs-4 float-right sideBar-time">
+                <span class="time-meta float-right"><%= l conversation.created_at, format: :short %>
+              </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Sidebar End -->
+</div>
+<div class="side-two">
+  <!-- Heading -->
+  <div class="row newMessage-heading">
+    <div class="row newMessage-main">
+      <div class="col-sm-2 col-xs-2 newMessage-back">
+        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+      </div>
+      <div class="col-sm-10 col-xs-10 newMessage-title">
+        New Chat
+      </div>
+    </div>
+  </div>
+  <!-- Heading End -->
+
+  <!-- ComposeBox -->
+  <div class="row composeBox">
+    <div class="col-sm-12 composeBox-inner">
+      <div class="form-group has-feedback">
+        <input id="composeText" type="text" class="form-control" name="searchText" placeholder="Search People">
+        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+      </div>
+    </div>
+  </div>
+  <!-- ComposeBox End -->
+
+  <!-- sideBar -->
+  <div class="row compose-sideBar">
+    <% @users.each do |user| %>
+      <%= link_to conversations_path(user_id: user.id), method: :post, remote: true, class: "user-item" do %>
+        <div class="row sideBar-body make-conversation">
+          <div class="col-sm-3 col-xs-3 sideBar-avatar">
+            <div class="avatar-icon">
+              <%= image_tag user.image.url(:thumb) %>
+            </div>
+          </div>
+          <div class="col-sm-9 col-xs-9 sideBar-main">
+            <div class="row">
+              <div class="col-sm-8 col-xs-8 sideBar-name">
+                <span class="name-meta"><%= user.fullname %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

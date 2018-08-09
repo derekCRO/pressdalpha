@@ -1,0 +1,83 @@
+<section class="page-title parallax-section" style="margin-bottom: -8%;">
+  <div class="row-parallax-bg">
+    <div class="parallax-wrapper">
+      <div class="parallax-bg">
+        <%= image_tag @blogs.image(:detail) %>
+      </div>
+    </div>
+    <div class="parallax-overlay"></div>
+  </div>
+  <div class="centrize">
+    <div class="v-center">
+      <div class="container" style="padding-left: 0px;margin-left: 0px;padding-right: 0px;margin-right: 0px;">
+        <div class="single-post-info whitecolor">
+          <h6><span><i class="hc-clock"></i>posted on</span><span class="post-time"><%= @blogs.created_at.strftime( "%d-%B, %Y" ) %></span><span>in <a href="#"><%= @blogs.blog_category.name %></a></span></h6>
+          <div class="title text-center">
+            <h1><%= @blogs.title %></h1>
+          </div>
+          <div class="post-author">
+            <%= image_tag("testimonial-2.jpg", class: "phoneimage") %><a href="#"><%= @blogs.author %></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <article class="post-single">
+          <div class="post-body">
+            <p><%= raw @blogs.description %></p>
+          </div>
+        </article>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+      <div class="post-tags"><%= @blogs.tags %></a>
+    </div>
+    </div>
+    </div>
+  </div>
+</section>
+<section class="grey-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div id="comments">
+
+        <div class="comment-respond">
+          <h5 class="upper">leave a comment</h5>
+          <div id="disqus_thread"></div>
+          <script>
+
+          /**
+          *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+          *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+          /*
+          var disqus_config = function () {
+          this.page.url = <%= @fullUrl %>;  // Replace PAGE_URL with your page's canonical URL variable
+          this.page.identifier = ; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+          };
+          */
+          (function() { // DON'T EDIT BELOW THIS LINE
+          var d = document, s = d.createElement('script');
+          s.src = 'https://pressd-1.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+          })();
+          </script>
+          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+
+        <div class='fade' id='scroll-to-top'>
+          <i class='fa-icon-chevron-up'></i>
+        </div>

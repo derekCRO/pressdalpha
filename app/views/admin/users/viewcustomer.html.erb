@@ -1,0 +1,409 @@
+
+
+<main class="main-content p-5" role="main">
+	<div class="row">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/admin">Dashboard</a>
+				</li>
+        <li class="breadcrumb-item"><a href="/admin/users/customer">Customers</a></li>
+				<li class="breadcrumb-item active">Customer Profile for <%= @user.first_name %> <%= @user.last_name %></li>
+			</ol>
+			<div class="row">
+				<div class="col-md-12">
+					<h1>
+						&nbsp; Customer Profile for <%= @user.first_name %> <%= @user.last_name %></h1>
+				</div>
+			</div>
+			<br>
+		</div>
+		<div class="col-md-6 col-lg-6 col-xl-4 mb-5">
+
+      <div class="row">
+
+        <div class="col-md-12 col-lg-12 col-xl-12 mb-5">
+          <div class="card">
+            <div class="card-header">
+             Customer Profile
+            </div>
+            <div class="card-body product-page">
+              <div class="tab-content" id="JobsTabContent">
+                <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+                  <form class="form-horizontal" action="">
+                    <div class="profile-picture profile-picture-lg">
+                      <%= image_tag @user.image.url(:small), :class => 'img-responsive' %>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                      <label class="control-label col-sm-5" for=""><strong>User Type</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.user_type %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>First Name</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.first_name %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Last Name</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.last_name %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Email Address</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.email %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Phone Number</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.phone %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Address Line 1</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.address1 %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Address Line 2</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.address2 %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>City</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.city %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Country</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.country %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Postcode</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.zipcode %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Company Services</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.zipcode %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Created at</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.created_at %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Profile last updated</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.updated_at %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Sign in Count</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.sign_in_count %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Last Sign In</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.last_sign_in_at %></p>
+                      </div>
+                      <label class="control-label col-sm-5" for=""><strong>Last Sign in IP</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.last_sign_in_ip %></p>
+                      </div>
+                      </div>
+                    </form>
+
+
+
+
+
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-12 col-xl-12 mb-5">
+          <div class="card">
+            <div class="card-header">
+             Customer Notification Preferences
+            </div>
+            <div class="card-body product-page">
+              <div class="tab-content" id="JobsTabContent">
+                <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+                  <form class="form-horizontal" action="">
+                    <div class="form-group">
+                      <label class="control-label col-sm-5" for=""><strong>E-mail Notifications</strong></label>
+                      <div class="col-sm-12">
+                        <p class="form-control-static"><%= @user.notifications_email %></p>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-sm-5" for=""><strong>Push Notifications</strong></label>
+                        <div class="col-sm-12">
+                          <p class="form-control-static"><%= @user.notifications_push %></p>
+                        </div>
+                        <div class="form-group">
+                          <label class="control-label col-sm-5" for=""><strong>Marketing Communication</strong></label>
+                          <div class="col-sm-12">
+                            <p class="form-control-static"><%= @user.notifications_marketing %></p>
+                          </div>
+
+                      </div>
+                    </form>
+
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+        <div class="col-md-6 col-lg-6 col-xl-8 mb-5">
+
+          <div class="row">
+
+            <div class="col-md-12 col-lg-4 col-xl-4 mb-5">
+            <div class="card card-tile card-xs bg-primary bg-gradient text-center">
+              <div class="card-body p-4">
+                <!-- Accepts .invisible: Makes the items. Use this only when you want to have an animation called on it later -->
+                <div class="tile-left">
+                  <i class="batch-icon batch-icon-user-alt batch-icon-xxl"></i>
+                </div>
+                <div class="tile-right">
+                  <div class="tile-number"><%= @totaljobs %></div>
+                  <div class="tile-description">Total Customer Bookings</div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class="col-md-12 col-lg-4 col-xl-4 mb-5">
+            <div class="card card-tile card-xs bg-primary bg-gradient text-center">
+              <div class="card-body p-4">
+                <!-- Accepts .invisible: Makes the items. Use this only when you want to have an animation called on it later -->
+                <div class="tile-left">
+                  <i class="batch-icon batch-icon-user-alt batch-icon-xxl"></i>
+                </div>
+                <div class="tile-right">
+                  <div class="tile-number">£ <%= @totaljobsrevenue %></div>
+                  <div class="tile-description">Total Customer Spend</div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+            <div class="col-md-12 col-lg-4 col-xl-4 mb-5">
+            <div class="card card-tile card-xs bg-primary bg-gradient text-center">
+              <div class="card-body p-4">
+                <!-- Accepts .invisible: Makes the items. Use this only when you want to have an animation called on it later -->
+                <div class="tile-left">
+                  <i class="batch-icon batch-icon-user-alt batch-icon-xxl"></i>
+                </div>
+                <div class="tile-right">
+                  <div class="tile-number"><%= @totalsubscriptions %></div>
+                  <div class="tile-description">Total Subscriptions</div>
+                </div>
+              </div>
+            </div>
+            </div>
+
+
+        <div class="col-md-12 col-lg-12 col-xl-12 mb-5">
+          <div class="card">
+            <div class="card-header">
+              Customer Bookings
+            </div>
+            <div class="card-body product-page">
+              <div class="tab-content" id="JobsTabContent">
+                <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+                  <div class="table-responsive">
+                		<table class="table table-striped dataTables-example display nowrap" style="width:100%">
+                			<thead>
+                				<tr>
+                					<th>Job Id</th>
+                					<th>Category</th>
+                					<th>Price</th>
+                					<th>Date of Booking</th>
+                					<th>Date/Time of Service</th>
+                					<th>Service Address</th>
+                					<th>Job Status</th>
+                					<th>Job Details</th>
+                				</tr>
+                			</thead>
+                			<tbody>
+                				<% if @jobs.length > 0  %>
+                					<% @jobs.each do |jobs| %>
+                						<tr>
+                							<td>
+                								<%= jobs.id %>
+                							</td>
+                							<td>
+                								<%#= tasks.category.name %>
+                							</td>
+                							<td>£<%= jobs.price %></td>
+                							<td><%= jobs.post_date %></td>
+                							<td>
+                								<%= "#{jobs.booking_date} - #{jobs.booking_time}" %>
+                							</td>
+                							<td>
+                								<%= jobs.address %>,
+                								<%= jobs.zipcode %>
+                							</td>
+                							<td>
+                								<%= jobs.status %>
+                							</td>
+                							<td>
+                								<%= link_to 'View Details', admin_jobs_details_path(jobs), data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-success waves-effect waves-light' %>
+                								<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                									<div class="modal-dialog" role="document">
+                										<div class="modal-content"></div>
+                									</div>
+                								</div>
+                							</td>
+                						</tr>
+                					<% end %>
+                				<% else %>
+                					<tr>
+                						<td></td>
+                					</tr>
+                				<% end %>
+                			</tbody>
+                		</table>
+                	</div>
+              </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-md-12 col-lg-12 col-xl-12 mb-5">
+          <div class="card">
+            <div class="card-header">
+              Customer Subscriptions
+            </div>
+            <div class="card-body product-page">
+              <div class="tab-content" id="JobsTabContent">
+                <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+                  <div class="table-responsive">
+                		<table class="table table-striped dataTables-example2 display nowrap" style="width:100%">
+                			<thead>
+                				<tr>
+                					<th>ID</th>
+                					<th>Category</th>
+                					<th>Recurring Price</th>
+                					<th>Recurring Type</th>
+                					<th>Contract Length</th>
+                					<th>Company Name</th>
+                					<th>First Booking</th>
+                					<th>Contract Details</th>
+                				</tr>
+                			</thead>
+                			<tbody>
+                				<% if @subscriptions.length > 0  %>
+                					<% @subscriptions.each do |subscriptions| %>
+                						<tr>
+                							<td>
+                								<%= subscriptions.id %>
+                							</td>
+                							<td>
+                								<%#= subscriptions.category.name %>
+                							</td>
+                							<td>£<%= subscriptions.recurring_price %></td>
+                							<td><%= subscriptions.recurring_type %></td>
+                							<td>
+                								<%= subscriptions.recurring_months %> months
+                							</td>
+                							<td>
+                								<%= subscriptions.company.company_name %>,
+                							</td>
+                              <td>
+                                <%= subscriptions.date_of_first_booking %>
+                              </td>
+                							<td>
+                                button here
+                								<%#= link_to 'View Details', admin_jobs_details_path(jobs), data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-success waves-effect waves-light' %>
+                							</td>
+                						</tr>
+                					<% end %>
+                				<% else %>
+                					<tr>
+                						<td>blank</td>
+                					</tr>
+                				<% end %>
+                			</tbody>
+                		</table>
+                	</div>
+              </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+		</div>
+
+		<script type="text/javascript">
+
+			$(function () {
+
+				$('.dataTables-example').DataTable({
+					pageLength: 25,
+					orderable: true,
+					rowReorder: {
+						selector: 'td:first-child'
+					},
+					responsive: true,
+					dom: '<"html5buttons"B>lTfgitp',
+					buttons: [
+						{
+							extend: 'copy'
+						}, {
+							extend: 'csv',
+							title: 'Selected Customers'
+						}, {
+							extend: 'excel',
+							title: 'Selected Customers'
+						}, {
+							extend: 'pdf',
+							title: 'Selected Customers'
+						}, {
+							extend: 'print'
+						}
+					]
+
+				});
+
+			});
+		</script>
+
+    <script type="text/javascript">
+
+			$(function () {
+
+				$('.dataTables-example2').DataTable({
+					pageLength: 25,
+					orderable: true,
+					rowReorder: {
+						selector: 'td:first-child'
+					},
+					responsive: true,
+					dom: '<"html5buttons"B>lTfgitp',
+					buttons: [
+						{
+							extend: 'copy'
+						}, {
+							extend: 'csv',
+							title: 'Selected Customers'
+						}, {
+							extend: 'excel',
+							title: 'Selected Customers'
+						}, {
+							extend: 'pdf',
+							title: 'Selected Customers'
+						}, {
+							extend: 'print'
+						}
+					]
+
+				});
+
+			});
+		</script>
+
+
+	</main>

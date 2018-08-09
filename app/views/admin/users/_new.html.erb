@@ -1,0 +1,21 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">New Partner</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<div class="modal-body">
+<%=simple_form_for(@user, :url => admin_users_path, :html => {:class => 'form-horizontal', :method => 'post', :multipart => true}) do |f|  %>
+  <%= f.input :first_name, label: 'First Name', error: ' is mandatory, please specify one' %>
+  <%= f.input :last_name, label: 'Last Name', error: ' is mandatory, please specify one' %>
+  <%= f.input :email, label: 'E-mail Address', error: ' is mandatory, please specify one' %>
+  <%= f.input :password, label: 'Password', :class => 'form-control', autocomplete: "off", :required => 'required' %>
+  <%= f.input :password_confirmation, label: 'Password Confirmation', :class => 'form-control', autocomplete: "off", :required => 'required' %>
+  <%= f.input :phone, label: 'Phone Number', error: ' is mandatory, please specify one' %>
+  <%= f.input :address, label: 'Address', error: ' is mandatory, please specify one' %>
+  <%= f.input :image, label: 'Image' , input_html: {accept: ('image/jpeg') } %>
+<button class="btn btn-success waves-effect waves-light float-right" type="submit" name="commit" value="Create Partner" data-disable-with="New">Create Partner</button>
+<% end %>
+</div>
+</div>
+<div class="modal-footer"></div>

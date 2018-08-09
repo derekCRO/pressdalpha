@@ -1,0 +1,39 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Blog Management</h2>
+  </div>
+  <div class="wrapper wrapper-content">
+    <div class="row">
+
+      <!--Left Side Start-->
+      <div class="col-md-12">
+        <div class="ibox float-e-margins">
+          <div class="ibox-title">
+            <h5><%= @blog_category.name %>
+            </h5>
+          </div>
+          <div class="ibox-content">
+            <div class="row">
+              <div class="col-sm-12 b-r">
+                <p>
+                  <strong>Name:</strong>
+                  <%= @blog_category.name %>
+                </p>
+
+                <p>
+                  <strong>Is active:</strong>
+                  <%= @blog_category.is_active %>
+                </p>
+                <%= link_to 'Back', admin_blog_categories_path, :class=>'btn btn-secondary' %>
+                <%= link_to 'Edit', edit_admin_blog_category_path(@blog_category), :class=>'btn btn-primary' %>
+                <%= link_to 'Destroy', admin_blog_category_path(@blog_category), method: :delete, data: { confirm: 'Are you sure?' },:class=>'btn btn-danger' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Left Side End-->
+
+    </div>
+  </div>
+</div>

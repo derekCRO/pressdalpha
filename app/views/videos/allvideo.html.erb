@@ -1,0 +1,53 @@
+
+<script type='text/javascript'>
+$(document).ready(function(){
+     $(".center").slick({
+		infinite: true,
+		centerMode: true,
+		variableWidth: true,
+		slidesToScroll: 1
+      });
+})    
+</script>  
+
+<div id='main' role='main'>
+	<div id='main-content-header'>
+		<div class='container'>
+			<div class='row'>
+				<div class='col-sm-12'>
+					<h1 class='title'>Video	<small>Nam porta lectus a sodales pulvinar. Morbi sed auctor magna.</small></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id='main-content'>
+		<div class='container'>
+			<div class="row">
+				<div class="col-md-12">
+					<section class="center slider" id="myTest">
+					<% @videos.each do |video| %>
+						<% if video.video_type == true %>
+							<div>
+								<iframe width="850" height="450" src="https://www.youtube.com/embed/<%= video.url %>" frameborder="0" gesture="media" allowfullscreen></iframe>
+							</div>
+						<% else %>
+							<div>
+								<iframe src="https://player.vimeo.com/video/<%= video.url %>" width="850" height="450" frameborder="0" ></iframe>
+							</div> 
+						<% end %>  
+					<% end %>  
+					</section>
+				</div>
+				<div class='fade' id='scroll-to-top'>
+					<i class='fa-icon-chevron-up'></i>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+
+         <!--Video Js-->
+
+
+
+

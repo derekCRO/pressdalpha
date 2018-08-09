@@ -1,0 +1,36 @@
+<%= simple_form_for(@blog, :url => admin_blog_path, :id => @blog.id, :html => {:class => 'form-horizontal'}) do |f|  %>
+<label class="control-label input optional" for="blog_category">Select Category</label>
+<br>
+<%= f.select :blog_category_id, options_from_collection_for_select(BlogCategory.where(is_active: true), "id", "name"), {},:multiple=> false,:validate=> true,:class=> 'form-control', label: 'Category' %>
+<br>
+<%= f.input :title, label: 'Title'%>
+<%= f.input :description, label: 'Description', :as => :ckeditor, input_html: {:ckeditor => {:toolbar => 'FULL'}}, class: "form-control" %>
+<label class="control-label input optional" for="blog_image">Select image</label>
+<br>
+<%= f.input_field :image, as: :file, label: 'Image', id: "pictureInput"%>
+
+<%= f.input :is_active, as: :select, label: ' Is this blog active?' %>
+
+<%= button_tag "Update", :type => 'submit', :class => "btn btn-primary" %>
+<%= button_tag "Back", :type => 'button', :class => "btn btn-danger", :onclick => "location.href = '#{admin_blogs_path()}'" %>
+<% end %>
+
+
+
+<script>
+$(function() {
+$('#pictureInput').on('change', function(event) {
+  var files = event.target.files;
+  var image = files[0]
+  var reader = new FileReader();
+  reader.onload = function(file) {
+    var img = new Image();
+    console.log(file);
+    img.src = file.target.result;
+    $('#picturetarget').html(img);
+  }
+  reader.readAsDataURL(image);
+  console.log(files);
+});
+});
+</script>

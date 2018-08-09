@@ -1,0 +1,142 @@
+<main class="main-content p-5" role="main">
+					<div class="row">
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-primary bg-gradient text-center">
+								<div class="card-body p-4">
+									<!-- Accepts .invisible: Makes the items. Use this only when you want to have an animation called on it later -->
+									<div class="tile-left">
+										<i class="batch-icon batch-icon-user-alt batch-icon-xxl"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number">£<%= Transaction.transaction_revenue_admin_last_week %></div>
+										<div class="tile-description">Income (last 7 days)</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-secondary bg-gradient text-center">
+								<div class="card-body p-4">
+									<div class="tile-left">
+										<i class="batch-icon batch-icon-tag-alt-2 batch-icon-xxl"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number"><%= Company.count %></div>
+										<div class="tile-description">Active Companies</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-primary bg-gradient text-center">
+								<div class="card-body p-4">
+									<div class="tile-left">
+										<i class="batch-icon batch-icon-list batch-icon-xxl"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number"><%= Job.jobs_created_last_week %></div>
+										<div class="tile-description">Bookings (last 7 days)</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-secondary bg-gradient text-center">
+								<div class="card-body p-4">
+									<div class="tile-left">
+										<i class="batch-icon batch-icon-star batch-icon-xxl"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number"><%= Job.count %></div>
+										<div class="tile-description">Bookings Completed (all time)</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+            <div class="col-md-6 col-lg-6 col-xl-8 mb-5">
+							<div class="card">
+								<div class="card-header">
+									Bookings (last 7 days)
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+										<%= line_chart "/admin/reports/overall_bookings_last_week_json", xtitle: "Date by Day", ytitle: "Total Revenue (£)", label: "Revenue this day (£)" %>
+									</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-4 mb-5">
+							<div class="card">
+								<div class="card-header">
+									New vs Returning Customer (last 7 days)
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+										<%= pie_chart "/admin/reports/recurring_vs_new_customers_bookings_last_week_json", donut: true, xtitle: "Date by Day", ytitle: "Total Bookings (Count)", label: "Bookings this day" %>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-lg-4 mb-5">
+							<div class="card card-sm bg-primary bg-gradient">
+								<div class="card-header">
+									Customer Satisfaction Rate (Overall)
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+										<div id="rateYo"></div>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-4 mb-5">
+							<div class="card card-sm bg-primary bg-gradient">
+								<div class="card-header">
+									An empty box for something
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-4 mb-5">
+							<div class="card card-sm bg-primary bg-gradient">
+								<div class="card-header">
+									An empty box for something
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<script>
+					//Star Rating script
+					$(function () {
+
+					$("#rateYo").rateYo({
+					  rating: <%= @overallratings %>,
+						readOnly: true
+					});
+
+					});
+					</script>
+				</main>

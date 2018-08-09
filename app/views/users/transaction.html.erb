@@ -1,0 +1,74 @@
+<section class="trackerstyle">
+  <div class="container">
+    <div class="col-md-12">
+
+      <!-- Page Title-->
+      <div class="page-title">
+        <div class="container">
+          <div class="column">
+            <h1>my account</h1>
+          </div>
+           <div class="column">
+            <ul class="breadcrumbs hideonmobile">
+              <li><a href="index.html">home</a>
+              </li>
+              <li class="separator">&nbsp;</li>
+              <li>my account</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+</div>
+</div>
+</div>
+</section>
+<section class="split-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-sm-12">
+      <!-- Services-->
+      <div class="container padding-bottom-3x mb-2">
+       <div class="row">
+       	<%= render :partial => 'layouts/accountsidepannel' %>
+
+        <div class="col-lg-8">
+          <p id="notice"><%= notice %></p>
+          <div class="padding-top-2x mt-2 hidden-lg-up"></div>
+          <div class="table-responsive">
+            <table class="table table-hover margin-bottom-none">
+              <thead>
+                <tr>
+                  <th>Transaction ID #</th>
+                  <th>Type of Service</th>
+                  <th>Date of Service</th>
+                  <th>Date Paid</th>
+                  <th>Status</th>
+                  <th>Paid Amount</th>
+                  <th>Partner</th>
+                </tr>
+              </thead>
+              <% if @task.length > 0  %>
+             <% @task.each do |tasks| %>
+              <tbody>
+                <tr>
+                  <td><a class="text-medium navi-link" href="#" data-toggle="modal" type="button" data-target="#orderDetails"><%= tasks.transaction_id %></a></td>
+                  <td><%= tasks.job.category.name %></td>
+                  <td><%= tasks.job.booking_date %> - <%= tasks.job.booking_time %></td>
+                  <td><%= tasks.date.strftime('%d %b,%Y') %></td>
+                  <td><span class="text-danger">Cancelled</span></td>
+                  <td><span class="text-medium">£<%= tasks.total_amount %></span></td>
+                  <td><%= tasks.company.company_name %></td>
+                </tr>
+                <tr>
+                   <% end %>
+                    <% else %>
+                      <tr>
+                        <td colspan="5"> No Bookings Found. </td>
+                      </tr>
+                    <% end %>
+                  </table>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                </section>

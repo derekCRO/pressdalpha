@@ -1,0 +1,102 @@
+<div class="col-md-12">
+	<div><br></div>
+	<div class="table-responsive">
+		<table class="table table-striped dataTables-example2 display nowrap" style="width:100%">
+			<thead>
+				<tr>
+					<th>Job Id</th>
+					<th>Category</th>
+					<th>Price</th>
+					<th>Date/Time of Service</th>
+					<th>Service Address</th>
+					<th>Customer Name</th>
+					<th>Assigned Staff Name</th>
+					<th>Job Status</th>
+					<th>Update Progress</th>
+					<th>Change Staff</th>
+					<th>Job Details</th>
+					<th>Cancel Job</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if @tasksassigned.length > 0  %>
+					<% @tasksassigned.each do |tasks| %>
+						<tr>
+							<td>
+								<%= tasks.id %>
+							</td>
+							<td>
+								<%= tasks.category.name %>
+							</td>
+							<td>£<%= tasks.price.to_f %></td>
+							<td>
+								<%= "#{tasks.booking_date.strftime("%e %B %Y ")} - #{tasks.booking_time}" %>
+							</td>
+							<td>
+								<%= tasks.address1.titleize %>,
+								<%= tasks.zipcode %>
+							</td>
+							<td>
+								<%= tasks.user.first_name.titleize %>
+								<%= tasks.user.last_name.titleize %>
+							</td>
+							<td>
+								<%= image_tag tasks.staff.image.url(:thumb), :class => 'img-circle' %>
+								<%= tasks.staff.first_name.titleize %>
+								<%= tasks.staff.last_name.titleize %>
+							</td>
+							<td>
+								<%= tasks.status.titleize %>
+							</td>
+							<td>
+							<% if tasks.status == 'booking_confirmed'  %>
+							<%= link_to 'En Route', staff_enroute_partner_job_path(tasks), :method => :put, class: 'btn btn-success waves-effect waves-light' %>
+							<% end %>
+							<% if tasks.status == 'staff_enroute'  %>
+							<%= link_to 'Start Job', booking_inprogress_partner_job_path(tasks), :method => :put, class: 'btn btn-success waves-effect waves-light' %>
+							<% end %>
+							<% if tasks.status == 'booking_inprogress'  %>
+							<%= link_to 'End Job', booking_complete_partner_job_path(tasks), :method => :put, class: 'btn btn-success waves-effect waves-light' %>
+							<% end %>
+							</td>
+							<td>
+								<%= link_to 'Staff', partner_jobs_add_staff_path(tasks), data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-success waves-effect waves-light' %>
+								<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content"></div>
+									</div>
+								</div>
+							</td>
+							<td>
+								<%= link_to 'Details', partner_jobs_details_path(tasks), data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-success waves-effect waves-light' %>
+								<div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+									<div class="modal-dialog" role="document">
+										<div class="modal-content"></div>
+									</div>
+								</div>
+							</td>
+							<td>
+								<%= link_to 'Reject', booking_rejected_partner_job_path(tasks), :method => :put, class: 'btn btn-danger waves-effect waves-light', data: {toggle: "confirmation"} %>
+							</td>
+						</tr>
+					<% end %>
+				<% else %>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

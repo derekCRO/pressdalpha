@@ -1,0 +1,38 @@
+<main class="main-content p-5" role="main">
+  <div class="row">
+    <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/partner">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Opening Times</li>
+      </ol>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>&nbsp; Opening Times</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body product-page">
+          <div class="tab-content" id="JobsTabContent">
+						<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+            <div id='calendar' class='openingcalendar' style='width"80%"'></div>
+            </div>
+						</div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        $(document).ready(function(){
+          $('#eventlist').remove();
+          var eventlist = '<%= content_tag "div", id: "eventlist", data: {events: @events} do %>' +
+          '<% end %>'
+          $('#calendar').append(eventlist);
+          PA.Calendars.init("/partner/companies/save-hours", "/partner/companies/save-hours", $('#eventlist').data('events'),{append_close: true, is_staff: false});
+        });
+      </script>
+
+    </main>

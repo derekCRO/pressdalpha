@@ -1,0 +1,27 @@
+<h1>New Site Setting</h1>
+
+<%= form_for(@site_setting, :url => '/admin/site_settings/') do |f| %>
+
+    <div class="field">
+      <%= f.label :facebook_link %><br />
+      <%= f.text_field :facebook_link %>
+    </div>
+
+    <div class="field">
+      <%= f.label :site_email %><br />
+      <%= f.text_field :site_email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :phone_no %><br />
+      <%= f.text_field :phone_no %>
+    </div>
+
+    <div class="field">
+      <%= f.label :google_plus_link %><br />
+      <%= f.text_field :google_plus_link %>
+    </div>
+
+    <%= f.submit "Add" %>  <%= link_to 'Back', admin_site_settings_path, :class=>'btn btn-primary' %>
+
+ <% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Page heading:</strong>
+  <%= @content.page_heading %>
+</p>
+
+<p>
+  <strong>Page description:</strong>
+  <%= @content.page_description %>
+</p>
+
+<p>
+  <strong>Slug:</strong>
+  <%= @content.slug %>
+</p>
+
+<p>
+  <strong>Is active:</strong>
+  <%= @content.is_active %>
+</p>
+
+<%= link_to 'Edit', edit_content_path(@content) %> |
+<%= link_to 'Back', contents_path %>

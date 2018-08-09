@@ -1,0 +1,20 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<div class="modal-body">
+  <%= simple_form_for(@user, :url => partner_users_profileupdate_path(@user.id), :id => @user.id, html: { class: 'form-horizontal', :multipart => true}) do |f| %>
+    <%= f.input :first_name, class: 'span1', label: 'First Name', error: ' is mandatory, please specify one', wrapper_html: { class: 'halflineformleft' } %>
+    <%= f.input :last_name, class: 'span1', label: 'Last Name', error: ' is mandatory, please specify one', wrapper_html: { class: 'halflineformright' } %>
+    <%= f.input :email, label: 'Email', error: ' is mandatory, please specify one' %>
+    <%= f.input :phone, label: 'Phone', error: ' is mandatory, please specify one' %>
+    <%= f.input :address, label: 'Address', error: ' is mandatory, please specify one' %>
+    <%= f.input :image, label: 'Image' , input_html: {accept: ('image/jpeg') } %>
+    <%= f.check_box :auto_assign_staff %> Auto Assign Staff
+    <%= f.submit "Update Profile", class: "btn btn-success waves-effect waves-light float-right" %>
+  <% end %>
+</div>
+<div class="modal-footer">
+</div>

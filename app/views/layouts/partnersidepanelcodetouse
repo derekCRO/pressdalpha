@@ -1,0 +1,5 @@
+<%# if  @company.image %>
+<%=# image_tag @company.image.url %>
+<%# else %>
+<% image_tag "blank.jpg"%>
+<%# end %>

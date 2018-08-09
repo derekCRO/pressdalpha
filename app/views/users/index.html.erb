@@ -1,0 +1,280 @@
+<% content_for :head do %>
+  <meta name="turbolinks-cache-control" content="no-cache">
+<% end %>
+<p id="notice"><%= notice %></p>
+<section class="se-container">
+  <div class="se-slope">
+    <article class="se-content">
+      <div class="container">
+        <div class="center-block mt20percent mbtwentypercent">
+        <div class="col-md-8 col-sm-12 mt-10 center-block">
+          <div class="colorwhite">
+            <h2 class="fw-300 colorwhite"><span class="typerstyle">
+              let us help you with your <span class="typed-words fw-400" data-strings="[&quot;cleaning&quot;, &quot;gardening&quot;, &quot;handywork&quot;]" data-custom-color="#ffffff"></span>
+            </span></h2>
+          </div>
+              <br>
+              <form id="contact-form" action="" method="">
+                <%= render :partial => 'tasks/searchpartial', :locals => {:task => Task.new}%>
+              </form>
+        </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div class="se-slope2">
+    <article class="se-content">
+      <div class="container mtminusthree">
+        <div class="row slope2modifier ">
+          <div class="col-md-4 col-sm-4 col-xs-4 mtminustwopercent">
+            <div class="icon-box align-center icon--big animated zoomIn whitecolor" data-animation="zoomIn">
+              <div class="animated-icon" data-icon="<%= image_path ("coloricons/calendar.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+              <div class="ib-content whitecolor">
+                <h3 class="white-text">convenience</h3>
+                <h4 class="white-text">book a service that suits your schedule</h4>
+                <a href="/task/step1"><h4 class="darkgreycolor">book a service</h4></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-4  mtminustwopercent">
+            <div class="icon-box align-center icon--big animated zoomIn whitecolor" data-animation="zoomIn" data-delay="300">
+              <div class="animated-icon" data-icon="<%= image_path ("coloricons/users.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+              <div class="ib-content whitecolor">
+                <h3 class="white-text">local experts</h3>
+                <h4 class="white-text">we only work with carefully selected local pros</h4>
+                <a href="/task/step1"><h4 class="darkgreycolor">book a service</h4></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-4  mtminustwopercent">
+            <div class="icon-box align-center icon--big animated zoomIn whitecolor" data-animation="zoomIn" data-delay="600">
+              <div class="animated-icon" data-icon="<%= image_path ("iconswhite/pressdicon.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+              <div class="ib-content whitecolor">
+                <h3 class="white-text">press promise</h3>
+                <h4 class="white-text">if you’re not happy, we’ll make it right</h4>
+                <a href="/task/step1"><h4 class="darkgreycolor">learn more</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+          </article>
+  </div>
+  <div class="se-slope3">
+    <article class="se-content">
+      <div class="container">
+      <div class="row slope3modifier">
+              <div class="col-md-6">
+                <div class="title m-0 txt-sm-center">
+                  <h1 class="font-big fw-400">manage your services on the move</h1>
+                  <h4>with our new mobile app you can book and manage all your jobs on the move as well as message, track and check pro ratings</h4>
+                  <br>
+          <a class="box-no-padding appstore-badge" href="#" target="_blank">
+          <%= image_tag("zapplestorebtn.png", height: "60", alt: "Download on the App Store") %>
+          </a>
+          <a class="box-no-padding mobile-upsell__appstore-badge" href="#" target="_blank">
+          <%= image_tag("zgoogleplaybtn.png", height: "60", alt: "Get it on Google Play") %>
+          </a>
+                </div>
+              </div>
+              <div class="col-md-4 col-md-offset-2 col-sm-6 col-sm-offset-3 hidden-xs phoneimagecolumn">
+                <%= image_tag("iphones.png", class: "phoneimage") %>
+              </div>
+            </div>
+      </div>
+    </article>
+  </div>
+  <div class="se-slope4">
+    <article class="se-content">
+      <div class="container">
+
+            <div class="row">
+              <div class="col-md-12 textcenter center-block fivemarginmobile">
+              <h3 class="white-text">we offer a range of services</h3>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="icon-box iconminustop align-center icon--big animated zoomIn marginmodifierone" data-animation="zoomIn">
+                  <div class="animated-icon" data-icon="<%= image_path ("coloricons/vacuumcleaner.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                  <div class="ib-content">
+                    <h3 class="white-text">domestic cleaning</h3>
+                    <a href="/cleaning"><h4 class="darkgreycolor">learn more</h4></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="icon-box iconminustop align-center icon--big animated zoomIn marginmodifierone" data-animation="zoomIn" data-delay="300">
+                  <div class="animated-icon" data-icon="<%= image_path ("coloricons/lawnmower.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                  <div class="ib-content">
+                    <h3 class="white-text">gardening services</h3>
+                    <a href="/gardening"><h4 class="darkgreycolor">learn more</h4></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4">
+                <div class="icon-box iconminustop align-center icon--big animated zoomIn marginmodifierone" data-animation="zoomIn" data-delay="600">
+                  <div class="animated-icon" data-icon="<%= image_path ("coloricons/tools.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                  <div class="ib-content">
+                    <h3 class="white-text">handyman services</h3>
+                    <a href="/handyman"><h4 class="darkgreycolor">learn more</h4></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      </article>
+  </div>
+  <div class="se-slope5">
+    <article class="se-content">
+      <div class="container">
+        <div class="image-row" style="background-image: url("/assets/bg-image-1.jpg");"></div>
+        <div class="testimonials-slider">
+                        <div class="testimonial">
+                          <div class="testimonial-content">
+                            <%= image_tag("testimonial-1.jpg", alt: "") %>
+                            <div class="testimonial-comment">
+                              <h4>marys cleaning</h4><span class="testimonial-info">pro</span>
+                              <p>what a fantastic platform. i am able to manage my work and staff much more effectively and serve my fantastic customers better than ever</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="testimonial">
+                          <div class="testimonial-content">
+                            <%= image_tag("testimonial-2.jpg", alt: "") %>
+                            <div class="testimonial-comment">
+                              <h4>don hujik</h4><span class="testimonial-info">customer</span>
+                              <p>so easy to use. i was able to get my living room cleaned and my garden on the same day</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+      </div>
+    </article>
+  </div>
+  <div class="se-slope6">
+    <article class="se-content">
+      <div class="container">
+            <div class="row mtminussevenpercent">
+              <div class="col-md-12 textcenter center-block">
+              <h3 class="white-text">how it works</h3>
+              </div>
+              <div class="col-md-4 col-sm-4 ">
+                <div class="icon-box iconminustop align-center icon--big animated zoomIn marginmodifierone" data-animation="zoomIn">
+                  <div class="animated-icon" data-icon="<%= image_path ("coloricons/clock1.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                  <div class="ib-content">
+                    <h3 class="white-text">pick a time</h3>
+                    <h4 class="white-text">book a service at a time that's convenient for you and easily reschedule online</h4>
+                    <a href="/task/step1"><h4 class="darkgreycolor">book a service</h4></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 ">
+                <div class="icon-box iconminustop align-center icon--big animated zoomIn marginmodifierone" data-animation="zoomIn" data-delay="300">
+                  <div class="animated-icon" data-icon="<%= image_path ("coloricons/laptop1.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                  <div class="ib-content">
+                    <h3 class="white-text">book instantly</h3>
+                    <h4 class="white-text">we'll confirm your appointment and take care of payment electronically and securely</h4>
+                    <a href="/task/step1"><h4 class="darkgreycolor">book a service</h4></a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-4 ">
+                <div class="icon-box iconminustop align-center icon--big animated zoomIn marginmodifierone" data-animation="zoomIn" data-delay="600">
+                  <div class="animated-icon" data-icon="<%= image_path ("coloricons/user1.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                  <div class="ib-content">
+                    <h3 class="white-text">your pro arrives</h3>
+                    <h4 class="white-text">an experienced, fully-equipped pro will show up on time at your doorstep!</h4>
+                    <a href="/task/step1"><h4 class="darkgreycolor">book a service</h4></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+      </article>
+  </div>
+  <div class="container-fluid slopesevenbackground">
+        <div class="row flex-center padding-row" style="background-image: url("/assets/background.jpg"); margin-top: 10%;">
+          <div class="row"><br></div>
+          <div class="row"><br></div>
+          <div class="row"><br></div>
+          <div class="col-md-6 col-sm-12 threepercentpaddingtop boxeshomepage" style="margin-top: 1%;margin-left: auto;">
+            <div class="column-inner">
+              <div class="pricing-table" style="">
+                <div class="pricing-head">
+                  <h3>interested in becoming a pro?</h3>
+                </div>
+                <ul class="features nav">
+                  <li><span>- maximise efficiency and profitability</span>
+                  </li>
+                  <li><span>- manage your jobs effectively</span>
+                  </li>
+                  <li><span>- improve staff performance</span>
+                  </li>
+                  <li><span>- reach new customers</span>
+                  </li>
+                </ul>
+                <div class="pricing-footer"><a class="btn btn-color upper no-radius" data-custom-bg="#70706f" href="/becomeapartner">find out more</a>
+                </div>
+                <div class="row"><br><br></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12 threepercentpaddingtop boxeshomepage" style="margin-top: 1%;">
+            <div class="column-inner">
+              <div class="pricing-table" style="">
+                <div class="pricing-head">
+                  <h3>what we stand for?</h3>
+                </div>
+                <ul class="features nav">
+                  <li><span>- high-quality domestic services</span>
+                  </li>
+                  <li><span>- incredible value for money</span>
+                  </li>
+                  <li><span>- excellent customer service</span>
+                  </li>
+                  <li><span>- local experts for local people</span>
+                  </li>
+                </ul>
+                <div class="pricing-footer"><a class="btn btn-color upper no-radius" data-custom-bg="#70706f" href="/about">find out more</a>
+                </div>
+                <div class="row"><br><br></div>
+              </div>
+            </div>
+          </div>
+  </div>
+  </div>
+  <div class="se-slope8">
+    <article class="se-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <div class="title text-center mt10percent colorwhite">
+              <h3 class="white-text">ready to book a service? </h3>
+              <form id="contact-form" action="" method="">
+              <div class="form-group animated fadeInRight" data-animation="fadeInRight">
+                <input class="form-control" type="text" name="name" data-required="" placeholder="enter your address/postcode to find services in your area">
+              </div>
+              <div class="form-group mt-25 animated fadeInRight" data-animation="fadeInRight">
+                <button class="btn btn-color upper findservicesbtn no-radius" data-custom-bg="#70706f" type="submit" style="background-color: rgb(0, 165, 78);">find services</button>
+              </div>
+            </form>
+            </div>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+        <div class="row"><br></div>
+      </div>
+      </article>
+  </div>
+</section>
+  </div>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('.testimonials-slider').slick({
+      dots: true,
+      prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-arrow-left"></i></button>',
+      nextArrow: '<button type="button" class="slick-next"><i class="fa fa-arrow-right"></i></button>',
+    });
+  });
+</script>

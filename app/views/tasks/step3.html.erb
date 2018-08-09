@@ -1,0 +1,160 @@
+<section class="trackerstyle">
+    <div class="container">
+      <div class="col-md-12">
+
+          <!-- Page Title-->
+          <div class="page-title">
+            <div class="container">
+              <div class="column">
+                <h1>booking process</h1>
+              </div>
+               <div class="column">
+                <ul class="breadcrumbs hideonmobile">
+                  <li><a href="index.html">home</a>
+                  </li>
+                  <li class="separator">&nbsp;</li>
+                  <li>booking process</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        <!-- Progress Tracker v2 -->
+        <div class="checkout-steps">
+          <a class="checkouthide" href="7confirm.html">7. booking complete</a>
+          <a class="checkouthide" href="6details.html"><span class="angle"></span>6. confirm and pay</a>
+          <a class="checkouthide" href="5personal.html"><span class="angle"></span>5. confirm details</a>
+          <a class="checkouthide" href="4partners.html"><span class="angle"></span>4. choose a partner</a>
+          <a class="checkouthide" href="3appointment.html"><span class="angle"></span>3. choose date</a>
+          <a class="active" href="2questions.html"><span class="angle"></span>2. quick questions</a>
+          <a class="active checkouthide" href="1services.html"><span class="angle"></span>1. choose a service</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="split-section servicesstyle">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 col-lg-8 col-sm-8 colcheckout">
+    <!-- Services-->
+      <%= form_for(@task, :url => tasks_step3update_path(@task.id,@category.id), :id => @task.id, :html => {:class => ''}) do |f|  %>
+          <%= f.hidden_field :category_id, :value => @category.id %>
+          <input type="hidden" name="task[id]" id="task_id" value="<%= @task.id%>">
+          <div class="col-md-9 col-xs-12">
+            <% @subcategories.each do |subcat| %>
+              <div class="mb-40">
+                <h4><%= subcat.name %></h4>
+                <%= f.fields_for :properties do |builder|%>
+                  <% subcat.questions.each do |field| %>
+                    <%= render "tasks/fields/#{field.field_type}", field: field, f: builder %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
+
+
+          <div class="row"><br></div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group" style="margin-left: 2.5%;">
+                <label for="comment" style="padding-top: 0%;">any notes you want to leave the partner?</label>
+              <textarea class="form-control" rows="5" id="comment"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-footer">
+            <div class="column">
+              <a class="btn btn-gray" href="2questions.html">
+                <i class="icon-arrow-left"></i>
+                <span class="hidden-xs-down">&nbsp;choose another service</span>
+              </a>
+            </div>
+            <div class="column">
+              <button class="btn btn-color">
+                <span class="hidden-xs-down">continue&nbsp;</span>
+                <i class="icon-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <!-- Sidebar          -->
+    <div class="col-xl-3 col-lg-4 col-sm-4">
+      <aside class="sidebar">
+        <div class="padding-top-2x hidden-lg-up"></div>
+        <!-- Order Summary Widget-->
+        <section class="widget widget-order-summary">
+          <div class="card text-center cardside">
+        <div class="card-header card-header-green"><span class="text-lg">your booking</span></div>
+        <div class="card-body">
+          <table class="table">
+            <tr>
+              <td><i class="fa-icon-map-marker"></i> <%= @task.address %></td>
+            </tr>
+            <tr>
+              <td><i class="fa-icon-map-marker"></i> <%= @category.name %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+        </section>
+        <section class="widget widget-order-summary">
+          <div class="card text-center cardside">
+        <div class="card-header card-header-green"><span class="text-lg">search a different area</span></div>
+        <div class="card-body">
+          <div class="container-fluid">
+          <form id="contact-form" action="" method="">
+            <div class="form-group animated fadeInRight" data-animation="fadeInRight">
+              <input class="form-control" type="text" name="name" data-required="" placeholder="location or postcode">
+            </div>
+            <div class="form-group mt-25 animated fadeInRight" data-animation="fadeInRight">
+              <a class="btn btn-color margin-bottom-none" href="1services.html">find services</a>
+              <p>&nbsp;</p>
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+      </section>
+        <!-- Featured Products Widget-->
+        <section class="widget widget-featured-products">
+          <div class="card text-center cardside">
+            <div class="card-header card-header-green"><span class="text-lg">how pressd works</span></div>
+            <div class="card-body">
+              <div class="accordion" id="accordion2" role="tablist">
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <h5><a href="#collapseOne" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>who are pressd</a></h5>
+                  </div>
+                  <div class="collapse" id="collapseOne" role="tabpanel">
+                    <div class="card-body">Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <h5><a class="collapsed" href="#collapseTwo" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>how do i book a service</a></h5>
+                  </div>
+                  <div class="collapse" id="collapseTwo" role="tabpanel">
+                    <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <h5><a class="collapsed" href="#collapseThree" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>what is the pressd promise</a></h5>
+                  </div>
+                  <div class="collapse" id="collapseThree" role="tabpanel">
+                    <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

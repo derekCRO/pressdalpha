@@ -1,0 +1,66 @@
+<%= form_for(@category, :url => admin_subupdate_category_path(@category.id,@parent.id), :id => @category.id, :html => {:class => 'form-horizontal'}) do |f|  %>
+	<% if flash[:error].present? %>
+		<% flash[:error].each do |msg| %>
+			<ul>
+				<li class="error msg"><%= msg %></li>
+			</ul>
+		<% end %>
+	<% end%>
+	<input type="hidden" name="category[category_id]" id="category_category_id" value="<%= @parent.id%>">
+	<div class="form-group"><label class="col-sm-2 control-label" for="category_name">Name</label>
+	 	<div class="col-sm-10"><%= f.text_field :name, :class => 'form-control', :required => 'required' %></div>
+	</div>
+
+	<div class="form-group"><label class="col-sm-2 control-label" for="category_is_active">Status</label>
+	 	<div class="col-sm-10">
+	 	<select name="category[is_active]" required id="category_is_active" class="form-control">
+			<option value="1">Active</option>
+			<option value="0">Inactive</option>
+		</select>
+		</div>
+	</div>
+
+	<div id="question_id">
+		<%= f.fields_for :questions do |q| %>
+			<%= render 'question_fields', f: q %>
+		<% end %>
+		<div class="links">
+	    <%= link_to_add_association "Add Questions", f, :questions %>
+	  </div>
+	</div>
+
+	<div class="hr-line-dashed"></div>
+
+  <div class="form-group">
+	  <div class="col-sm-4 col-sm-offset-2">
+	    <button class="btn btn-primary" type="submit" name="commit" value="update" data-disable-with="Save">Save</button>
+	    <%= link_to 'Back', admin_sub_category_path(@parent), :class=>'btn btn-white' %>
+	  </div>
+  </div>
+<% end %>
+<script>
+  $(document).ready(function(){
+    // Enable answer image conditionally
+    $('.nested-fields').each(function(i, obj){
+			console.log("i",i);
+      field_type = "#category_questions_attributes_"+i+"_field_type"
+			console.log("field_type = ",field_type);
+			console.log("value = ",$(field_type).val())
+			if ($(field_type).val() != "dropdown"){
+				$('#options_'+i).hide();
+			}
+			else{
+				$('#options_'+i).show();
+			}
+      $(field_type).change(function () {
+				console.log("on change");
+        if ($(this).val() != "dropdown"){
+					$('#options_'+i).hide();
+				}
+				else{
+					$('#options_'+i).show();
+				}
+      });
+    });
+	})
+</script>

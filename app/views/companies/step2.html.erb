@@ -1,0 +1,138 @@
+<div id='main' role='main'>
+        <div id='main-content-header'>
+          <div class='container'>
+            <div class='row'>
+              <div class='col-sm-12'>
+                <h1 class='title'>
+                  Dashboard
+                  <small>Nam porta lectus a sodales pulvinar. Morbi sed auctor magna.</small>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id='main-content'>
+          <div class='container'>
+            <div class="row">
+                    <div class='col-xs-12  border-bottom-line'>
+                      <ul class='circle-stats'>
+                        <li class='circle-stat-small'>
+                          <div class='circle-stat-wrapper'>
+                            <input class='hidden' data-fgColor='#8dc153' data-readOnly='true' data-stat='circle' data-thickness='0.1' type='text' value='25'>
+                            <p class='percent'>1</p>
+                          </div>
+                          <h3 class='title'>Fill Out Task Details</h3>
+                        </li>
+                        <li class='circle-stat-small active'>
+                          <div class='circle-stat-wrapper'>
+                            <input class='hidden' data-fgColor='#8dc153' data-readOnly='true' data-stat='circle' data-thickness='0.1' type='text' value='50'>
+                            <p class='percent'>2</p>
+                          </div>
+                          <h3 class='title'>View Taskers & Prices</h3>
+                        </li>
+                        <li class='circle-stat-small'>
+                          <div class='circle-stat-wrapper'>
+                            <input class='hidden' data-fgColor='#8dc153' data-readOnly='true' data-stat='circle' data-thickness='0.1' type='text' value='75'>
+                            <p class='percent'>3</p>
+                          </div>
+                          <h3 class='title'>Confirm & Book</h3>
+                        </li>
+                      </ul>
+                    </div>
+              <div class="col-xs-12 text-center">
+                <h2 class="font-weight-light"><i class="fa-icon-lock text-contrast"></i> Trust & Safety Guarantee: $1MM insurance guarantee on every task.</h2>
+                <h3>Describe Your Task</h3>
+                <p>We need these inputs to show only qualified and available Taskers for the job.</p>
+                
+          <div class="row text-left mt-50">
+                  
+            <div class="col-md-9 col-xs-12">
+
+              <% @categories.each do |category| %>
+              <div class="row border-full mb-20 service-list-row">
+                <div class="col-sm-3 pl-0">
+                  <div>
+                   <%= image_tag category.image.url(:detail), :class => 'img-responsive' %>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <h3><%= category.name %></h3>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                  
+                </div>
+                <div class="col-sm-3">
+                  <div>
+                    <a href=" /company/step3/<%= category.id %>" class="btn btn-contrast btn-squared btn-block mt-20">Select & Continue</a>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+              <!--<div class="row border-full mb-20 service-list-row">
+                <div class="col-sm-3 pl-0">
+                  <div>
+                    <img src="assets/images/demo/last_projects/cyclist.jpg" class="img-responsive">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <h3>Home Cleaning</h3>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                  
+                </div>
+                <div class="col-sm-3">
+                  <div>
+                    <a href="#" class="btn btn-contrast btn-squared btn-block mt-20">Select & Continue</a>
+                  </div>
+                </div>
+              </div>!-->
+              <!--<div class="row border-full mb-20 service-list-row">
+                <div class="col-sm-3 pl-0">
+                  <div>
+                    <img src="assets/images/demo/last_projects/photographer.jpg" class="img-responsive">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <h3>Garden Cleaning</h3>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                  
+                </div>
+                <div class="col-sm-3">
+                  <div>
+                    <a href="#" class="btn btn-contrast btn-squared btn-block mt-20">Select & Continue</a>
+                  </div>
+                </div>
+              </div>!-->
+              <!--<div class="row border-full mb-20 service-list-row">
+                <div class="col-sm-3 pl-0">
+                  <div>
+                    <img src="assets/images/demo/last_projects/wipe_ears.jpg" class="img-responsive">
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <h3>Handyman</h3>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                  
+                </div>
+                <div class="col-sm-3">
+                  <div>
+                    <a href="#" class="btn btn-contrast btn-squared btn-block mt-20">Select & Continue</a>
+                  </div>
+                </div>
+              </div>!-->
+            </div>
+            <div class="col-md-3 col-xs-12">
+                    <div class="border-full p-20">
+                      <div class="form-group">
+                        <h4>Location</h4>
+                        <p><i class="fa-icon-map-marker"></i> 1234 Amsterdam Ave, New York, NY 10027, USA</p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class='fade' id='scroll-to-top'>
+          <i class='fa-icon-chevron-up'></i>
+        </div>
+      </div>

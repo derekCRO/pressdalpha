@@ -1,0 +1,349 @@
+<!-- <script src='https://fullcalendar.io/js/fullcalendar-2.2.0/lib/moment.min.js'></script>
+<script src='https://fullcalendar.io/js/fullcalendar-2.2.0/lib/jquery.min.js'></script>
+<script src="https://fullcalendar.io/js/fullcalendar-2.2.0/lib/jquery-ui.custom.min.js"></script>
+<script src='https://fullcalendar.io/js/fullcalendar-2.2.0/fullcalendar.min.js'></script> -->
+
+
+<section class="trackerstyle">
+  <div class="container">
+    <div class="col-md-12">
+
+      <!-- Page Title-->
+      <div class="page-title">
+        <div class="container">
+          <div class="column">
+            <h1>booking process</h1>
+          </div>
+          <div class="column">
+            <ul class="breadcrumbs hideonmobile">
+              <li><a href="index.html">home</a>
+              </li>
+              <li class="separator">&nbsp;</li>
+              <li>booking process</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress Tracker v2 -->
+      <div class="checkout-steps">
+        <a href="7confirm.html">7. booking complete</a>
+        <a href="6details.html"><span class="angle"></span>6. confirm and pay</a>
+        <a href="5personal.html"><span class="angle"></span>5. confirm details</a>
+        <a href="4partners.html"><span class="angle"></span>4. choose a partner</a>
+        <a class="active" href="3appointment.html"><span class="angle"></span>3. choose date</a>
+        <a class="active" href="2questions.html"><span class="angle"></span>2. quick questions</a>
+        <a class="active" href="1services.html"><span class="angle"></span>1. choose a service</a>
+      </div>
+      <div class="mobile-checkout-steps">
+        <a class="active" href="1services.html"><span class="angle"></span>1. </a>
+        <a class="active" href="2questions.html"><span class="angle"></span>2.</a>
+        <p class="active" href="3appointment.html"><span class="angle"></span>3. choose date</p>
+        <a href="4partners.html"><span class="angle"></span>4. </a>
+        <a href="5personal.html"><span class="angle"></span>5. </a>
+        <a href="6details.html"><span class="angle"></span>6. </a>
+        <a href="7confirm.html">7. </a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="split-section servicesstyle">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-9 col-lg-8 col-sm-8 colcheckout">
+      <%= form_for(@task, :url => tasks_step4update_path(@task.id,@category.id), :id => @task.id, :html => {:class => ''}) do |f| %>
+          <!-- Services-->
+          <div class="column">
+            <a class="btn btn-color ml-3p" href="#" id="tomorrow-date">
+              <span>tomorrow</span>
+            </a>
+            <a class="btn btn-color" href="#" id="in-two-days">
+              <span>in 2 days</span>
+            </a>
+          </div>
+          <div class="row"><br></div>
+          <div class="col-md-12">
+            <div id="sandbox-container">
+              <div id="calendar" class="hide"></div>
+              <div id="calendar1"></div>
+              <div class="row"><br></div>
+              <div id="time_slots"></div>
+            </div>
+            <input type="hidden" name="task[id]" id="task_id" value="<%= @task.id%>">
+            <input type="hidden" name="task[booking_date]" id="task_book_date" value="">
+            <input type="hidden" name="task[booking_time]" id="task_book_time" value="">
+            <input type="hidden" name="company_id" id="task_book_company_id" value="">
+            <input type="hidden" name="starting_time" id="task_book_starting_time" value="">
+            <input type="hidden" name="ending_time" id="task_book_ending_time" value="">
+            <input type="hidden" name="total_hours" id="task_book_total_hours" value="<%= @total_hours %>">
+            <div class="row"><br></div>
+            <div class="row"><br></div>
+            <ul class="legend">
+              <li><span class="today"></span>Timeslot currently selected</li>
+              <li><span class="green"></span> Timeslot available with partner who can fulfill full order</li>
+              <li><span class="orange"></span> Timeslot available with partner who can fulfill part of the order</li>
+            </ul>
+            </div>
+            <div class="col-md-12 col-sm-8">
+              <div class="row"><br></div>
+              <div class="row"><br></div>
+              <div class="row"><br></div>
+              <h4>how frequently would you like this service?</h4>
+              <div class="row"><br></div>
+              <div class="select select2">
+                <%#= f.select :freq, options_for_select(Task.repentances.map { |key, value| [key.humanize, key] }) %>
+
+                <div class="select__arrow"></div>
+              </div><button type="button" class="ibuttons" data-container="body" data-toggle="popover" data-placement="top" data-content="you are not contractually bound by this decision and can cancel in line with the cancellation policy at any time.">
+                <i class="hc-informatcircle"></i>
+              </button>
+            </div>
+
+          <div class="checkout-footer">
+            <div class="column"><a class="btn btn-gray" href="2questions.html"><i class="icon-arrow-left"></i><span class="hidden-xs-down">&nbsp;go back</span></a></div>
+            <div class="column"><button type="submit" class="btn btn-color"><span class="hidden-xs-down">choose a partner&nbsp;</span><i class="icon-arrow-right"></i></button></div>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Sidebar          -->
+      <div class="col-xl-3 col-lg-4 col-sm-4">
+        <aside class="sidebar">
+          <div class="padding-top-2x hidden-lg-up"></div>
+          <!-- Order Summary Widget-->
+          <section class="widget widget-order-summary">
+            <div class="card text-center cardside">
+              <div class="card-header card-header-green"><span class="text-lg">your booking</span></div>
+              <div class="card-body">
+                <table class="table">
+                  <tr>
+                    <td><i class="fa-icon-map-marker"></i> <%= @task.address %></td>
+                  </tr>
+                  <tr>
+                    <td><i class="fa-icon-map-marker"></i> <%= @category.name %></td>
+                  </tr>
+                  <tr>
+
+                  </tr>
+                  <%# end %>
+                </table>
+              </div>
+            </div>
+          </section>
+          <section class="widget widget-order-summary">
+            <div class="card text-center cardside">
+              <div class="card-header card-header-green"><span class="text-lg">search a different area</span></div>
+              <div class="card-body">
+                <div class="container-fluid">
+                  <form id="contact-form" action="" method="">
+                    <div class="form-group animated fadeInRight" data-animation="fadeInRight">
+                      <input class="form-control" type="text" name="name" data-required="" placeholder="location or postcode">
+                    </div>
+                    <div class="form-group mt-25 animated fadeInRight" data-animation="fadeInRight">
+                      <a class="btn btn-color margin-bottom-none" href="1services.html">find services</a>
+                      <p>&nbsp;</p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- Featured Products Widget-->
+          <section class="widget widget-featured-products">
+            <div class="card text-center cardside">
+              <div class="card-header card-header-green"><span class="text-lg">how pressd works</span></div>
+              <div class="card-body">
+                <div class="accordion" id="accordion2" role="tablist">
+                  <div class="card">
+                    <div class="card-header" role="tab">
+                      <h5><a href="#collapseOne" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>who are pressd</a></h5>
+                    </div>
+                    <div class="collapse" id="collapseOne" role="tabpanel">
+                      <div class="card-body">Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" role="tab">
+                      <h5><a class="collapsed" href="#collapseTwo" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>how do i book a service</a></h5>
+                    </div>
+                    <div class="collapse" id="collapseTwo" role="tabpanel">
+                      <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-header" role="tab">
+                      <h5><a class="collapsed" href="#collapseThree" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>what is the pressd promise</a></h5>
+                    </div>
+                    <div class="collapse" id="collapseThree" role="tabpanel">
+                      <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+<script>
+$(document).ready(function () {
+
+
+  var todayDate = new Date();
+  var futureDate = new Date();
+  var NextNinetyDay = futureDate.setDate(todayDate.getDate() + 180);
+  var hash_test = {};
+  var eventDates = {};
+  var arr;
+
+  $.each(<%= @company_ids %>, function(i, v){
+    eventDates[v.toString()] = {};
+  });
+
+  <% @days.each do |day| %>
+    var days = [];
+    <% day.values[0].pluck(:week_day_id).map{|d| d = d -1}.each do |d| %>
+      days.push("<%= Date::ABBR_DAYNAMES[d] %>");
+    <% end %>
+    hash_test["<%= day.keys[0] %>"] = days;
+  <% end %>
+
+
+
+  $("#task_book_date").change(function(){
+    $('#calendar').removeClass('hide');
+    $('#fullcalendar').addClass('hide');
+    $('#calendar').fullCalendar('changeView', 'agendaDay', $(this).val());
+  });
+
+
+  $('#calendar1').fullCalendar({
+    header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month'
+    },
+    allDaySlot: false,
+    contentHeight: 'auto',
+    selectable: true,
+    events: [],
+    firstDay: 1,
+    select:function (start, end, allDay) {
+      var view_type = $('#calendar1').fullCalendar('getView');
+      if (view_type["currentRangeUnit"] == "day" && allDay['target']['className'] == "fc-highlight"){
+        var bh = $('#calendar1').fullCalendar('option', 'businessHours');
+        $('#calendar1').fullCalendar( 'removeEvents', function(event) {
+          if(event.start.format('DD/MM/YYYY') === start.format("DD/MM/YYYY"))
+            return true;
+        });
+        var newEvent = new Object();
+        newEvent.start = moment(start);
+        newEvent.end = moment(start).add("<%= @total_hours %>",'hours');
+        newEvent.allDay = false;
+        if (start.format("DD/MM/YYYY") != newEvent.end.format("DD/MM/YYYY") || newEvent.end.format("HH:mm") > bh.end){
+          alert("You wont be able to book service for this time slot");
+        }else{
+          $('#calendar1').fullCalendar('renderEvent', newEvent);
+        }
+        $("#task_book_starting_time").val(newEvent.start.format("HH:mm"))
+        $("#task_book_ending_time").val(newEvent.end.format("HH:mm"));
+        $('#task_book_time').val($("#task_book_starting_time").val()+" "+$("#task_book_ending_time").val());
+      }
+    },
+    dayRender: function (date, cell){
+      $.each(hash_test, function(key, days){
+        $.each(days, function(i, v){
+          if (date.toString().indexOf(v+' ')!=-1){
+            eventDates[key][ new Date( date.toString() )] = new Date( date.toString() ).toString();
+            var myEvent = {
+              company_id: key,
+              start: new Date(date.toString()),
+              className: 'hide'
+            };
+            $("#calendar1").fullCalendar( 'renderEvent', myEvent );
+            cell.find('span.selector').remove()
+            cell.prepend('<span class="selector hide">' + key + '</span>');
+          }
+        });
+      });
+      var currentClass = '';
+      $.each(eventDates, function(i,v){
+        if (cell.data('date') >= moment().format('YYYY-MM-DD') && cell.data('date') <= moment().add(180,'days').format('YYYY-MM-DD')){
+          var highlight = eventDates[i.toString()][date._d.toString()];
+          if (highlight){
+            var green_comp = <%= @green_companies %>;
+            var orange_comp = <%= @orange_companies %>;
+            if(date.day() == new Date(highlight).getUTCDay() && green_comp.indexOf(parseInt(i))!==-1){
+              currentClass = "#70b859";
+            }else if(date.day() == new Date(highlight).getUTCDay() && orange_comp.indexOf(parseInt(i))!==-1){
+              currentClass = "#e29d00";
+            }
+            else{
+              currentClass = "";
+            }
+          }
+          cell.css("background-color", currentClass);
+        }
+      });
+    },
+    dayClick: function(date, allDay, jsEvent, view) {
+      $('#calendar1').fullCalendar('gotoDate',date);
+      if (date.format('YYYY-MM-DD') >= moment().format('YYYY-MM-DD') && date.format('YYYY-MM-DD') <= moment().add(180,'days').format('YYYY-MM-DD')){
+        $('#task_book_date').val(date.format("YYYY-MM-DD")).change();
+        var c_id = $(this).find('span').text();
+        if (c_id != ""){
+          $.ajax({
+            type: "Get",
+            url: "<%= get_time_slots_path %>",
+            data:{day: date.day(), c_id: c_id, total_hours: "<%= @total_hours %>"}
+          })
+        }else{
+          $("#time_slots").html('');
+        }
+      }else{
+        $("#time_slots").html('');
+      }
+    }
+  });
+
+  $("#tomorrow-date").click(function(e){
+    e.preventDefault();
+    var date = moment();
+    var nextdate = date.add(1, 'day');
+    var span = $("#calendar1 .fc-day.fc-widget-content[data-date='" + nextdate.format("YYYY-MM-DD") + "']").find('span.selector');
+    $('#calendar1').fullCalendar('gotoDate',nextdate);
+    if (span.length > 0){
+      var c_id = span.text();
+      $.ajax({
+        type: "Get",
+        url: "<%= get_time_slots_path %>",
+        data:{day: nextdate.day(), c_id: c_id, total_hours: "<%= @total_hours %>"}
+      });
+    }else{
+      $("#time_slots").html('');
+    }
+  });
+
+  $("#in-two-days").click(function(e){
+    e.preventDefault();
+    var date = moment();
+    var nextdate = date.add(2, 'days');
+    var span = $("#calendar1 .fc-day.fc-widget-content[data-date='" + nextdate.format("YYYY-MM-DD") + "']").find('span.selector');
+    $('#calendar1').fullCalendar('gotoDate',nextdate);
+    if (span.length > 0){
+      var c_id = span.text();
+      $.ajax({
+        type: "Get",
+        url: "<%= get_time_slots_path %>",
+        data:{day: nextdate.day(), c_id: c_id, total_hours: "<%= @total_hours %>"}
+      });
+    }else{
+      $("#time_slots").html('');
+    }
+  });
+});
+</script>

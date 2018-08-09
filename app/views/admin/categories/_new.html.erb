@@ -1,0 +1,35 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">New Category</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<div class="modal-body">
+  <%= simple_form_for(@category, :url => admin_categories_path, remote: request.xhr?, html: { class: 'form-horizontal', :multipart => true}) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name, label: 'Category Name', :class => 'form-control', :required => 'required' %>
+  <%= f.input :price_per_hour, label: 'Price per Hour (£)', :class => 'form-control', :required => 'required' %>
+  <label>Monthly Price per Hour</label>
+  <%= f.input :monthly_price_per_hour_3_months, label: '3 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+  <%= f.input :monthly_price_per_hour_6_months, label: '6 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+  <%= f.input :monthly_price_per_hour_12_months, label: '12 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+  <label>Fortnightly Price per Hour</label>
+  <%= f.input :fortnightly_price_per_hour_3_months, label: '3 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+  <%= f.input :fortnightly_price_per_hour_6_months, label: '6 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+  <%= f.input :fortnightly_price_per_hour_12_months, label: '12 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+  <label>Weekly Price per Hour</label>
+  <%= f.input :weekly_price_per_hour_3_months, label: '3 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+  <%= f.input :weekly_price_per_hour_6_months, label: '6 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+  <%= f.input :weekly_price_per_hour_12_months, label: '12 months', :class => 'form-control', :required => 'required', wrapper_html: { class: 'pricebox' } %>
+  <br>
+  <label>Online Image</label>
+  <%= f.input :image, as: :file, label: 'Image', :class => 'form-control', :required => 'required' %>
+  <label>Mobile Image</label>
+  <%= f.input :mobile_cover_image, as: :file, label: 'Image', :class => 'form-control', :required => 'required' %>
+  <label>Mobile Icon</label>
+  <%= f.input :mobile_icon, as: :file, label: 'Image', :class => 'form-control', :required => 'required' %>
+  <br>
+  <%= f.input :is_active, label: 'Is Active?', as: :select, error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+	<%= f.button :submit, "Create Category", class: "btn btn-success waves-effect waves-light float-right" %>
+<% end %>
+</div>

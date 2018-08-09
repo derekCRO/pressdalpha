@@ -1,0 +1,109 @@
+<div class="page-heading">
+            <h3>
+               New Product
+            </h3>
+			<% @product.errors.full_messages.each do |msg| %>
+			    <li class="error msg"><%= msg %></li>
+		    <% end %>
+</div>
+
+<div class="wrapper">
+        <div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading">
+						New Product
+					</header>
+					<div class="panel-body">
+
+<%= form_for(@product, :url => '/admin/products/',:html => { :multipart => true }) do |f| %>
+
+    <div class="field">
+	<label for="product_is_active"></label><br>
+	<select name="product[is_active]" required id="product_is_active" >
+		<option value="1">Active</option>
+		<option value="0">Inactive</option>
+	</select>
+	</div>
+	
+	<div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+    </div>
+	
+	<div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+    </div>
+	
+	<div class="field">
+    <%= f.label :Category %><br />
+	<%= f.select :category_id, options_from_collection_for_select(@categories, :id, :name, ) %>
+	</div>
+	
+	<div class="field">
+    <%= f.label :serial %><br />
+    <%= f.text_field :serial %>
+    </div>
+	
+	<div class="field">
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight %>
+    </div>
+	
+	<div class="field">
+    <%= f.label :pt_weight %><br />
+    <%= f.text_field :pt_weight %>
+    </div>
+		
+	<div class="field">
+    <%= f.label :pd_weight %><br />
+    <%= f.text_field :pd_weight %>
+    </div>
+		
+	<div class="field">
+    <%= f.label :rh_weight %><br />
+    <%= f.text_field :rh_weight %>
+    </div>
+		
+	<div class="field">
+    <%= f.label :moisture %><br />
+    <%= f.text_field :moisture %>
+    </div>
+	
+	<div class="field">
+    <%= f.label :make %><br />
+    <%= f.text_field :make %>
+    </div>
+	
+	<div class="field">
+    <%= f.label :model %><br />
+    <%= f.text_field :model %>
+    </div>
+	
+	<div class="field">
+    <%= f.label :stainless_steel %><br />
+    <%= f.text_field :stainless_steel %>
+    </div>
+	
+	<div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+    </div>
+	
+	<!--<div class="field">
+    <%= f.label :is_active %><br />
+    <%= f.check_box :is_active %>
+    </div>-->
+	
+    <%= f.submit %>
+	<%= link_to 'Back', admin_products_path, :class=>'btn btn-primary' %>
+<% end %>
+
+
+					</div>
+				</section>
+			</div>
+		</div>
+</div>
+

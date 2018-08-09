@@ -1,0 +1,49 @@
+<nav id="sidebar" class="px-0 bg-dark bg-gradient sidebar mCustomScrollbar _mCS_5 mCS-autoHide" style="height: 592px;"><button class="hamburger hamburger--slider" type="button" data-target=".sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle Sidebar"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button><div id="mCSB_5" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0" style="max-height: none;"><div id="mCSB_5_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+				<ul class="nav nav-pills flex-column">
+					<li class="logo-nav-item">
+						<%= active_link_to partner_partner_dashboard_path, class: "navbar-brand" do %>
+							<div class="profile-picture profile-picture-lg">
+								<%= image_tag current_partner.company.image.url(:small), :class => 'img-responsive' %>
+							</div>
+              <h3 class="nav-header"><%= current_partner.company.company_name%></h3>
+						<% end %>
+					</li>
+<li class="nav-item"><%= active_link_to partner_partner_dashboard_path, class: "nav-link" do %><i class="fas fa-tachometer-alt fapadding"></i>Dashboard<% end %></li>
+<li class="nav-item"><%= active_link_to partner_jobs_list_path, class: "nav-link" do %><i class="fas fa-shopping-cart fapadding"></i>App Bookings<% end %></li>
+<li class="nav-item"><%= active_link_to partner_jobs_list_manual_path, class: "nav-link" do %><i class="fas fa-people-carry fapadding"></i>Manual Bookings<% end %></li>
+<li class="nav-item"><%= active_link_to partner_subscriptions_path, class: "nav-link" do %><i class="fas fa-subscript fapadding"></i>Subscriptions<% end %></li>
+<li class="nav-item"><%= active_link_to partner_conversations_messagespage_path, class: "nav-link" do %><i class="fas fa-comments fapadding"></i>Messages<% end %></li>
+<li class="nav-item"><%= active_link_to partner_transactions_list_path, class: "nav-link" do %><i class="far fa-credit-card fapadding"></i>Transaction History<% end %></li>
+<li class="nav-item"><%= active_link_to partner_manual_customers_path, class: "nav-link" do %><i class="fas fa-street-view fapadding"></i>Manual Customers<% end %></li>
+<li class="nav-item"><%= active_link_to partner_users_path, class: "nav-link" do %><i class="fas fa-user-tie fapadding"></i>Staff Management<% end %></li>
+<li class="nav-item"><%= active_link_to partner_rota_list_path, class: "nav-link" do %><i class="far fa-calendar-check fapadding"></i>Schedule<% end %></li>
+<li class="nav-item"><%= active_link_to partner_rota_list_path, class: "nav-link" do %><i class="far fa-clock fapadding"></i>Rota<% end %></li>
+<li class="nav-item">
+<a class="nav-link nav-parent">
+<i class="fas fa-chart-line fapadding"></i>Reports</a>
+	<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><%= active_link_to partner_reports_overall_bookings_path, class: "nav-link" do %>Overall Bookings<% end %></li>
+    <li class="nav-item"><%= active_link_to partner_reports_overall_revenue_path, class: "nav-link" do %>Overall Revenue<% end %></li>
+		<li class="nav-item"><%= active_link_to partner_reports_capacity_usage_path, class: "nav-link" do %>Capacity Usage<% end %></li>
+    <li class="nav-item"><%= active_link_to partner_reports_customer_retention_path, class: "nav-link" do %>Customer Retention<% end %></li>
+    <li class="nav-item"><%= active_link_to partner_reports_recurring_vs_new_customers_path, class: "nav-link" do %>Recurring vs New Customers<% end %></li>
+    <li class="nav-item"><%= active_link_to partner_reports_money_due_payrun_path, class: "nav-link" do %>Money Due on Next Payrun<% end %></li>
+	</ul>
+</li>
+  <li class="nav-item">
+		<a class="nav-link nav-parent">
+			<i class="fas fa-cogs fapadding"></i>Settings</a>
+		<ul class="nav nav-pills flex-column">
+      <li class="nav-item"><%= active_link_to partner_companies_company_profile_path, class: "nav-link" do %>Company Profile<% end %></li>
+      <li class="nav-item"><%= active_link_to partner_company_selected_categories_selected_category_path	, class: "nav-link" do %>Category Management<% end %></li>
+      <li class="nav-item"><%= active_link_to partner_add_company_hours_path, class: "nav-link" do %>Opening Hours<% end %></li>
+			<li class="nav-item"><%= active_link_to partner_packagedetails_path, class: "nav-link" do %>Company Package<% end %></li>
+		</ul>
+	</li>
+					</li>
+					<br>
+					<br>
+					<br>
+				</ul>
+				<div class="versioninfo"><p>pressdPro v0.1 alpha 2018</p></div>
+			</div></div></nav>

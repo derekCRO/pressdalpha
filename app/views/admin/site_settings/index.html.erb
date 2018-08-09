@@ -1,0 +1,56 @@
+<main class="main-content p-5" role="main">
+	<div class="row">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/admin">Dashboard</a>
+				</li>
+				<li class="breadcrumb-item active">Site Settings</li>
+			</ol>
+			<div class="row">
+				<div class="col-md-12">
+					<h1>
+						&nbsp; Site Settings</h1>
+				</div>
+			</div>
+			<br>
+		</div>
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body product-page">
+					<div class="tab-content" id="JobsTabContent">
+						<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+							<%= simple_form_for(@site_setting, :url => admin_site_setting_path, :id => @site_setting.id, html: { class: 'form-horizontal', :multipart => true}) do |f| %>
+							<label>Website Details</label>
+							<%= f.input :website_name, label: 'Website Name', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :company_name, label: 'Company Name', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :site_email, label: 'Website Email', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :phone_no, label: 'Phone Number', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :company_name, label: 'Company Name', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<label>Social Media Links</label>
+							<%= f.input :facebook_link, label: 'Facebook Link', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :google_plus_link, label: 'Google+ Link', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :twitter_link, label: 'Twitter Link', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :instagram_link, label: 'Instagram Link', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :linkedin_link, label: 'Linkedin Link', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :angellist_link, label: 'AngelList Link', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<label>Meta Settings</label>
+							<%= f.input :meta_description, label: 'Meta Description', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :favicon, label: 'FavIcon', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :site_language, label: 'Site Language', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :time_zone, label: 'TimeZone', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<label>Maintenance</label>
+							<%= f.input :maintenance_mode, label: 'Maintenance Mode', as: :select, :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :registrations_available, label: 'Registrations Available', as: :select, :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<%= f.input :bookings_available, label: 'Bookings Available', as: :select, :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<label>Booking Variables</label>
+							<%= f.input :pressd_promise_fee, label: 'Pressd Promise Fee', :required => 'required', error: ' is mandatory, please specify one', wrapper_html: { class: '' } %>
+							<label></label>
+						  <%= f.button :submit, "Update Settings", class: "btn btn-success waves-effect waves-light float-right" %>
+						<% end %>
+						</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>

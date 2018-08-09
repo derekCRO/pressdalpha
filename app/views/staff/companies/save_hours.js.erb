@@ -1,0 +1,7 @@
+$('#eventlist').remove();
+var eventlist = '<%= content_tag "div", id: "eventlist", data: { events: @events, business_hours: current_staff.available_slots[0], restricted_hours: current_staff.available_slots[1] } do %>' +
+'<% end %>'
+$('#calendar').append(eventlist);
+$('#calendar').fullCalendar('destroy');
+PA.Calendars.init("/staff/companies/save-hours", "/staff/companies/save-hours", $('#eventlist').data('events'), {business_hours: $('#eventlist').data('business-hours'), restricted_hours: $('#eventlist').data('restricted-hours'), is_staff: true});
+$('#calendar').fullCalendar('gotoDate', '<%= @new_time_slot.working_date.strftime("%m/%d/%Y") %>');

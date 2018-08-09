@@ -1,0 +1,33 @@
+
+
+
+$('#eventlist').remove();
+var eventlist = '<%= content_tag "div", id: "eventlist", data: { events: @events, business_hours: current_staff.available_slots[0], restricted_hours: current_staff.available_slots[1] } do %>' +
+'<% end %>'
+$('#calendar').append(eventlist);
+$('#calendar').fullCalendar('destroy');
+PA.Calendars.init("/staff/companies/save-hours", "/staff/companies/save-hours", $('#eventlist').data('events'), {business_hours: $('#eventlist').data('business-hours'), restricted_hours: $('#eventlist').data('restricted-hours'), is_staff: true});
+
+$("#dup-week-schedule").click(function(){
+  disp_dates($("#calendar").fullCalendar('getDate').week());
+})
+
+if (<%= @ids.length %>){
+  console.log("in condtion", "<%= @ids %>");
+  var answer = confirm ("There is conflict with existing time slots Are you sure you want to reassing the slots?")
+  if (answer){
+    $.ajax({
+      type: "POST",
+      url: "<%= staff_re_assign_slot_path %>",
+      data: {existing_slot: <%= @ids %>, new_slot: <%= @conflicting_hours %>}
+      // success: $('#calendar').fullCalendar('gotoDate', '<%= @new_week_date.strftime("%m/%d/%Y") %>');
+    })
+    $('#calendar').fullCalendar('gotoDate', '<%= @new_week_date.strftime("%m/%d/%Y") %>');
+  }
+  else{
+    $('#calendar').fullCalendar('gotoDate', '<%= @current_week_date.strftime("%m/%d/%Y") %>');
+  }
+  // $('#calendar').fullCalendar('gotoDate', '<%= @current_week_date.strftime("%m/%d/%Y") %>');
+}else {
+  $('#calendar').fullCalendar('gotoDate', '<%= @new_week_date.strftime("%m/%d/%Y") %>');
+}

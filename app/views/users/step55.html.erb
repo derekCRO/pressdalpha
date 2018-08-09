@@ -1,0 +1,139 @@
+<script type='text/javascript'>
+$(document).ready(function(){
+    var todayDate = new Date();
+    var NextNinetyDay=todayDate.setDate(todayDate.getDate() + 90);
+	$('#fullcalendar').datepicker({
+		   dateFormat: 'yy-mm-dd',
+		   firstDay: 1, // Monday
+		   minDate: 0,
+		   defaultDate: Date(todayDate),
+		   maxDate: new Date(NextNinetyDay),
+		});
+}) 
+
+function setCompany(cid,ttype){
+	$('#company_id').val(cid);
+	$('#task_type').val(ttype);
+	$('#set_company').submit();
+}   
+    </script>  
+<div id='main' role='main'>
+      	<div id='main-content-header'>
+          <div class='container'>
+            <div class='row'>
+              <div class='col-sm-12'>
+                <h1 class='title'>
+                  Dashboard
+                  <small>Nam porta lectus a sodales pulvinar. Morbi sed auctor magna.</small>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id='main-content'>
+          <div class='container'>
+            <div class="row">
+	                  <div class='col-xs-12  border-bottom-line'>
+	                    <ul class='circle-stats'>
+	                      <li class='circle-stat-small active'>
+	                        <div class='circle-stat-wrapper'>
+	                          <input class='hidden' data-fgColor='#8dc153' data-readOnly='true' data-stat='circle' data-thickness='0.1' type='text' value='100'>
+	                          <p class='percent'>1</p>
+	                        </div>
+	                        <h3 class='title'>Fill Out Task Details</h3>
+	                      </li>
+	                      <li class='circle-stat-small active'>
+	                        <div class='circle-stat-wrapper'>
+	                          <input class='hidden' data-fgColor='#8dc153' data-readOnly='true' data-stat='circle' data-thickness='0.1' type='text' value='50'>
+	                          <p class='percent'>2</p>
+	                        </div>
+	                        <h3 class='title'>View Taskers & Prices</h3>
+	                      </li>
+	                      <li class='circle-stat-small'>
+	                        <div class='circle-stat-wrapper'>
+	                          <input class='hidden' data-fgColor='#8dc153' data-readOnly='true' data-stat='circle' data-thickness='0.1' type='text' value='0'>
+	                          <p class='percent'>3</p>
+	                        </div>
+	                        <h3 class='title'>Confirm & Book</h3>
+	                      </li>
+	                    </ul>
+	                  </div>
+            	<div class="col-xs-12 text-center">
+            		<h2 class="font-weight-light"><i class="fa-icon-lock text-contrast"></i> Trust & Safety Guarantee: $1MM insurance guarantee on every task.</h2>
+            		<h3>Pick a Tasker</h3>
+            		<p>After booking, you can chat with your Tasker, agree on an exact time, or go over any requirements or questions, if necessary.</p>
+            		<div class="row text-left mt-50">
+						
+						<%= form_for(@task, :url => tasks_step5update_path(@task.id,@category.id), :id => @task.id, :html => {:class => '', :id => 'set_company'}) do |f| %>
+						<input type="hidden" name="task[id]" id="task_id" value="<%= @task.id %>">
+						<input type="hidden" name="task[company_id]" id="company_id" value="">
+						<input type="hidden" name="task[task_type]" id="task_type" value="">
+						<% end %>
+						
+						<div class="col-md-9 col-xs-12">
+							<% if @compQuotations.length > 0  %>
+							<h3>Company for Quotation</h3>
+							<% @compQuotations.each do |com| %>
+							<div class="row border-full mb-20">
+								<div class="col-sm-3 pl-0">
+									<div>
+										<%= image_tag com.company.image.url(:detail), :class => 'img-responsive' %>
+									</div>
+								</div>
+								<div class="col-sm-9">
+									<h3><%= com.company.company_name %></h3>
+									<h3 class="text-contrast font-weight-bold mt-10">$<%= com.price_per_hour%>/hour</h3>
+									<p><%= com.company.about_company %> </p>
+									<div class="mb-20">
+										<a onclick="setCompany('<%= com.company.id%>','Quotation')" class="btn btn-contrast btn-squared">Select & Continue</a>
+									</div>
+								</div>
+							</div>
+							<% end %>
+							<% end %>
+							
+							
+							<% if @compDirect.length > 0  %>
+							<h3>Direct Book Company</h3>
+							<% @compDirect.each do |comD| %>
+							<div class="row border-full mb-20">
+								<div class="col-sm-3 pl-0">
+									<div>
+										<%= image_tag comD.company.image.url(:detail), :class => 'img-responsive' %>
+									</div>
+								</div>
+								<div class="col-sm-9">
+									<h3><%= comD.company.company_name %></h3>
+									<h3 class="text-contrast font-weight-bold mt-10">$<%= comD.price_per_hour%>/hour</h3>
+									<p><%= comD.company.about_company %> </p>
+									<div class="mb-20">
+										<a onclick="setCompany('<%= comD.company.id%>','Direct')" class="btn btn-contrast btn-squared">Select & Continue</a>
+									</div>
+								</div>
+							</div>
+							<% end %>
+							<% end %>
+							
+						</div>
+						<div class="col-md-3 col-xs-12">
+            				<div class="border-full p-20">
+            					<div class="form-group">
+            						<h4>Location</h4>
+            						<p><i class="fa-icon-map-marker"></i> <%= @task.address %></p>
+            						<h4>Service</h4>
+            						<p><%= @category.name %></p>
+            						<% @subcategories.each do |subcat| %>
+            							<p><i class="fa-icon-ok text-contrast"></i> <span><%= subcat.name %></span></p>
+            						<% end %>
+            					</div>
+            				</div>
+            			</div>
+            	</div>
+            </div>
+          </div>
+        </div>
+        <div class='fade' id='scroll-to-top'>
+          <i class='fa-icon-chevron-up'></i>
+        </div>
+      </div>
+      

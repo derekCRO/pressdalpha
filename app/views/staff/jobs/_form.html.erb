@@ -1,0 +1,34 @@
+<%= simple_form_for(@task, :url => '/partner/jobs/', html: { class: 'form-horizontal', :multipart => true}) do |f| %>
+<input type="hidden" value="<%= current_partner.company.id %>" name="task[company_id]" id="task_company_id">
+<input type="hidden" value="true" name="task[is_manual_booking]" id="task_is_manual_booking">
+<label class="control-label string optional">Choose a Customer</label>
+<%= f.collection_select :manual_customers_id, ManualCustomer.all, :id, :formatted_name, {}, {:multiple => false, :size => 6, :style => 'width:100%', id: "simple-example"} %>
+<%= f.input :address1, label: 'Address Line 1', error: ' is mandatory, please specify one' %>
+<%= f.input :address1, label: 'Address Line 2', error: ' is mandatory, please specify one' %>
+<%= f.input :city, label: 'City', error: ' is mandatory, please specify one' %>
+<%= f.input :country, label: 'Country', error: ' is mandatory, please specify one' %>
+<%= f.input :zipcode, label: 'Postcode', error: ' is mandatory, please specify one' %>
+
+<br>
+<label class="control-label string optional">Choose a Category</label>
+<%= f.collection_select :category_id, Category.all, :id, :name, {}, {:multiple => false, :size => 6, :style => 'width:100%', id: "simple-example2"} %>
+<%= f.input :booking_date, label: 'Service Date', error: ' is mandatory, please specify one' %>
+<%= f.input :booking_time, label: 'Service Time', error: ' is mandatory, please specify one', as: :time, html5: true %>
+
+
+  <%= f.button :submit %>
+  <% end %>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('select#simple-example').select2();
+  	theme: "bootstrap"
+  });
+  </script>
+
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('select#simple-example2').select2();
+    theme: "bootstrap"
+  });
+  </script>

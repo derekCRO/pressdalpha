@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+					<a class="navbar-brand d-block d-sm-block d-md-block d-lg-none" href="#">
+						<div class="profile-picture bg-gradient bg-primary">
+						<%= image_tag current_partner.company.image.url(:small), :class => 'rounded-image' %>
+						</div>
+					</a>
+					<button class="hamburger hamburger--slider" type="button" data-target=".sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle Sidebar">
+						<span class="hamburger-box">
+							<span class="hamburger-inner"></span>
+						</span>
+					</button>
+					<!-- Added Mobile-Only Menu -->
+
+
+					<!--  DEPRECATED CODE:
+						<div class="navbar-collapse" id="navbarSupportedContent">
+					-->
+					<!-- USE THIS CODE Instead of the Commented Code Above -->
+					<!-- .collapse added to the element -->
+					<div class="collapse navbar-collapse">
+						<ul class="navbar-nav navbar-language-translation mr-auto">
+							<li class="nav-item dropdown">
+								<a class="nav-link waves-effect waves-light" id="navbar-dropdown-menu-link" data-toggle="dropdown" data-flip="false" aria-haspopup="true" aria-expanded="false">
+									Welcome to the Pressd Pro Dashboard
+								</a>
+							</li>
+						</ul>
+						<ul class="navbar-nav navbar-notifications float-right">
+							<li class="nav-item dropdown" data-behavior="notifications" data-notifications='<%= render template: "notifications/index", formats: [:json] %>'>
+								<a class="nav-link dropdown-toggle no-waves-effect"  data-behavior="notifications-link" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<i class="fa fa-bell"></i>
+									<span class="notification-number"><span data-behavior="unread-count"></span></span>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-right dropdown-menu-md" aria-labelledby="dropdownMenu1" data-behavior="notification-items" aria-labelledby="navbar-notification-misc">
+								</ul>
+							</li>
+						</ul>
+						<ul class="navbar-nav ml-5 navbar-profile">
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle waves-effect waves-light" id="navbar-dropdown-navbar-profile" data-toggle="dropdown" data-flip="false" aria-haspopup="true" aria-expanded="false">
+									<div class="profile-name">
+										<%= current_partner.first_name %> <%= current_partner.last_name %>
+									</div>
+									<div class="profile-picture bg-gradient bg-primary float-right">
+                    <%= image_tag current_partner.image.url(:small), :class => 'rounded-image' %>
+									</div>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="navbar-dropdown-navbar-profile">
+									<li class="dropdown-item waves-effect waves-light"><%= link_to "Edit User Profile", partner_users_profile_path, data: {toggle: "modal", target: "#modal-window"}, remote: true %></li>
+									<li class="dropdown-item waves-effect waves-light"><%= link_to "Log out", destroy_partner_session_path, :method => :delete %></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</nav>

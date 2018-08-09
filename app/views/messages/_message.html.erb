@@ -1,0 +1,11 @@
+<div class="<%= "col-sm-12 message-main-" + message_class(message, context_user) %>">
+  <div class=<%= message_class message, context_user %>>
+    <div class="message-text">
+      <p><%= message.body %></p>
+      <%= image_tag message.image.url if message.image.present? %>
+    </div>
+    <span class="message-time float-right">
+      <%= l message.created_at, format: :short %>
+    </span>
+  </div>
+</div>

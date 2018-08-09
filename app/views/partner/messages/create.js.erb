@@ -1,0 +1,4 @@
+var messageBody = $('.conversation-<%= @conversation.id %>.message');
+messageBody.append("<%= j(render 'partner/messages/message', message: @message, context_user: current_customer) %>");
+$('.reply-form')[0].reset();
+$('.app-one .message').animate({ scrollTop: $('.app-one .message').height() + 60 }, 500);

@@ -1,0 +1,76 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success alert-dismissable">
+	  <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+	  <%= flash[:notice] %>
+	</div>
+<% end %>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+      <div class="col-lg-10">
+          <h2>Categories</h2>
+          
+      </div>
+      <div class="col-lg-2">
+
+      </div>
+</div>
+
+<div class="wrapper wrapper-content">
+       <div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+			   <div class="ibox-title">
+				  <h5>List of Categories </h5>
+				   
+				  <div class="ibox-tools">
+					 <a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					 </a>	 
+				  </div>
+			   </div>
+			   <div class="ibox-content">
+			        <div class="project-list table-responsive">
+	                   <%= form_for(@category, :url => partner_company_selected_categories_path, :html => {:class => 'form-horizontal', :method => 'post'}) do |f|  %>
+	                    <table class="table table-hover">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>SL No.</th>
+									<th>Name</th>	
+								</tr>
+							</thead>
+							
+							<tbody>
+								
+								<% if @categories.empty? %>
+									<tr><td colspan="3">No Categories yet posted</td></tr>
+								<% else %>
+									<% @count = 0 %>
+									<% @categories.each do |category| %>
+
+										<tr>
+										<td class="project-title">
+										<input type="checkbox" name="select_category[]" value="<%= category.id %>">
+										</td>
+										<td class="project-title"><%= @count += 1 %></td>
+										<td class="project-title"><%= category.name %></td>
+										</tr>
+									<% end %>
+								<% end %>		
+
+							</tbody>
+							  <button class="btn btn-primary" type="submit" name="commit" value="create" data-disable-with="Save">Save</button>
+							
+	                    </table>
+	                    <% end %>
+	                </div>
+
+			    </div>
+			</div>
+		</div>
+       </div>
+</div>
+       
+
+
+

@@ -1,0 +1,69 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success alert-dismissable">
+	  <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+	  <%= flash[:notice] %>
+	</div>
+<% end %>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+      <div class="col-lg-10">
+          <h2>Selected Categories </h2>
+
+      </div>
+      <div class="col-lg-2">
+
+      </div>
+</div>
+
+<div class="wrapper wrapper-content">
+       <div class="row">
+		<div class="col-lg-12">
+			<div class="ibox float-e-margins">
+			   <div class="ibox-title">
+				  <h5>List of Selected Categories </h5>
+
+				  <div class="ibox-tools">
+					 <a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					 </a>
+				  </div>
+			   </div>
+			   <div class="ibox-content">
+			        <div class="project-list table-responsive">
+
+	                    <table class="table table-hover">
+							<thead>
+								<tr>
+									<th>SL No.</th>
+									<th>Name</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+
+							<tbody>
+
+								<% if @categories.empty? %>
+									<tr><td colspan="3">No Categories yet posted</td></tr>
+								<% else %>
+									<% @count = 0 %>
+									<% @categories.each do |category| %>
+										<tr>
+										<td class="project-title"><%= @count += 1 %></td>
+										<td class="project-title"><%= category.category.name %></td>
+										<td class="project-title"> <%= link_to 'Destroy', partner_category_path(category), method: :delete, data: { confirm: 'Are you sure?' },:class=>'btn btn-outline btn-default' %></td>
+										</tr>
+									<% end %>
+								<% end %>
+
+							</tbody>
+
+
+	                    </table>
+
+	                </div>
+
+			    </div>
+			</div>
+		</div>
+       </div>
+</div>

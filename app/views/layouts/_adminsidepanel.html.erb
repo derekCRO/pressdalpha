@@ -1,0 +1,46 @@
+<nav id="sidebar" class="px-0 bg-dark bg-gradient sidebar mCustomScrollbar _mCS_5 mCS-autoHide" style="height: 592px;"><button class="hamburger hamburger--slider" type="button" data-target=".sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle Sidebar"><span class="hamburger-box"><span class="hamburger-inner"></span></span></button><div id="mCSB_5" class="mCustomScrollBox mCS-light mCSB_vertical mCSB_inside" tabindex="0" style="max-height: none;"><div id="mCSB_5_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+				<ul class="nav nav-pills flex-column">
+					<li class="logo-nav-item">
+						<a class="navbar-brand" href="">
+							<%= image_tag("logo/pressd_pro_white.png", class: "img-responsive", :style => "max-width: 75%; margin-left: 15%;") %>
+              <h3 class="nav-header">Pressd Admin</h3>
+						</a>
+					</li>
+<li class="nav-item"><%= active_link_to admin_users_dashboard_path, class: "nav-link" do %><i class="fas fa-tachometer-alt fapadding"></i>Dashboard<% end %></li>
+<li class="nav-item"><%= active_link_to admin_jobs_list_path, class: "nav-link" do %><i class="fas fa-shopping-cart fapadding"></i>App Bookings<% end %></li>
+<li class="nav-item"><%= active_link_to admin_jobs_list_manual_path, class: "nav-link" do %><i class="fas fa-people-carry fapadding"></i>Manual Bookings<% end %></li>
+<li class="nav-item"><%= active_link_to admin_subscriptions_path, class: "nav-link" do %><i class="fas fa-subscript fapadding"></i>Subscriptions<% end %></li>
+<li class="nav-item"><%= active_link_to partner_conversations_path, class: "nav-link" do %><i class="fas fa-comments fapadding"></i>Messages<% end %></li>
+<li class="nav-item"><%= active_link_to admin_transactions_list_path, class: "nav-link" do %><i class="far fa-credit-card fapadding"></i>Transaction History<% end %></li>
+<li class="nav-item"><%= active_link_to admin_categories_path, class: "nav-link" do %><i class="fas fa-tags fapadding"></i>Category Management<% end %></li>
+<li class="nav-item"><%= active_link_to admin_companies_path, class: "nav-link" do %><i class="fas fa-building fapadding"></i>Company Management<% end %></li>
+<li class="nav-item"><%= active_link_to admin_company_ratings_path, class: "nav-link" do %><i class="fas fa-bolt fapadding"></i>Company Ratings<% end %></li>
+<li class="nav-item"><%= active_link_to admin_users_partner_path, class: "nav-link" do %><i class="fa fa-child fapadding"></i>Partner Management<% end %></li>
+<li class="nav-item"><%= active_link_to admin_users_staff_path, class: "nav-link" do %><i class="fa fa-id-card fapadding"></i>Staff Management<% end %></li>
+<li class="nav-item"><%= active_link_to admin_users_customer_path, class: "nav-link" do %><i class="fa fa-address-book fapadding"></i>Customer Management<% end %></li>
+
+<li class="nav-item"><%= active_link_to admin_blogs_path, class: "nav-link" do %><i class="fa fa-file fapadding"></i>Blogs<% end %></li>
+<li class="nav-item"><%= active_link_to admin_blog_categories_path, class: "nav-link" do %><i class="fa fa-list-alt fapadding"></i>Blog Categories<% end %></li>
+<li class="nav-item"><%= active_link_to admin_postcodes_path, class: "nav-link" do %><i class="fa fa-map-marker fapadding"></i>Postcodes<% end %></li>
+<li class="nav-item"><%= active_link_to admin_packagedetails_path, class: "nav-link" do %><i class="fa fa-cubes fapadding"></i>Partner Packages<% end %></li>
+<li class="nav-item"><%= active_link_to admin_enquirypostcodes_path, class: "nav-link" do %><i class="fas fa-code-branch fapadding"></i>Enquiry Postcodes<% end %></li>
+<li class="nav-item"><%= active_link_to edit_admin_site_setting_path(1), class: "nav-link" do %><i class="fas fa-cogs fapadding"></i>Site Settings<% end %></li>
+
+<li class="nav-item">
+<a class="nav-link nav-parent">
+<i class="fas fa-chart-line fapadding"></i>Reports</a>
+	<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><%= active_link_to admin_reports_overall_bookings_path, class: "nav-link" do %>Overall Bookings<% end %></li>
+    <li class="nav-item"><%= active_link_to admin_reports_overall_revenue_path, class: "nav-link" do %>Overall Revenue<% end %></li>
+		<li class="nav-item"><%= active_link_to admin_reports_capacity_usage_path, class: "nav-link" do %>Capacity Usage<% end %></li>
+    <li class="nav-item"><%= active_link_to admin_reports_customer_retention_path, class: "nav-link" do %>Customer Retention<% end %></li>
+    <li class="nav-item"><%= active_link_to admin_reports_recurring_vs_new_customers_path, class: "nav-link" do %>Recurring vs New Customers<% end %></li>
+    <li class="nav-item"><%= active_link_to admin_reports_money_due_payrun_path, class: "nav-link" do %>Money Due on Next Payrun<% end %></li>
+	</ul>
+</li>
+					</li>
+					<br>
+					<br>
+					<br>
+				</ul>
+			</div></div></nav>

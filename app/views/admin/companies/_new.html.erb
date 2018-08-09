@@ -1,0 +1,83 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">New Company</h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<div class="modal-body">
+  <%= form_for(@company, :url => '/admin/companies/', remote: request.xhr?, :html => {:class => 'form-horizontal', :multipart => true}) do |f| %>
+
+      <%= f.fields_for :partner do |build| %>
+  	    <input type="hidden" value="Partner" name="company[partner_attributes][user_type]" id="company_partner_attributes_user_type">
+  	    <div class="form-group halflineformleft"><label class="col-sm-12 control-label" for="first_name">First Name</label>
+  		<div class="col-sm-12"><%= build.text_field :first_name, :class => 'form-control', :required => 'required' %></div>
+  	    </div>
+
+  	    <div class="form-group halflineformright"><label class="col-sm-12 control-label" for="last_name">Last Name</label>
+  		<div class="col-sm-12"><%= build.text_field :last_name, :class => 'form-control', :required => 'required' %></div>
+  	    </div>
+
+  	    <div class="form-group"><label class="col-sm-12 control-label" for="email">Email</label>
+  		 <div class="col-sm-12"><%= build.text_field :email, :class => 'form-control', :required => 'required' %></div>
+  	    </div>
+
+
+  	    <div class="form-group halflineformleft"><label class="col-sm-12 control-label" for="email">Password</label>
+  		 <div class="col-sm-12"><%= build.text_field :password, :class => 'form-control', :required => 'required' %></div>
+  	    </div>
+
+  	    <div class="form-group halflineformright"><label class="col-sm-12 control-label" for="email">Confirm Password</label>
+  		 <div class="col-sm-12"><%= build.text_field :password_confirmation, :class => 'form-control', :required => 'required' %></div>
+  	    </div>
+      <% end %>
+
+
+      </hr>
+
+      <div class="form-group"><label class="col-sm-12 control-label" for="company_name">Company Name</label>
+      <div class="col-sm-12"><%= f.text_field :company_name, :class => 'form-control', :required => 'required' %></div>
+      </div>
+
+      <div class="form-group"><label class="col-sm-12 control-label" for="image">Logo</label>
+      <div class="col-sm-12"><%= f.file_field :image, :class => 'form-control', :required => 'required' %></div>
+      </div>
+
+      <div class="form-group"><label class="col-sm-12 control-label" for="about_company">About Company</label>
+      <div class="col-sm-12"><%= f.text_area :about_company, :class => 'form-control', :required => 'required' %></div>
+      </div>
+
+      <div class="form-group halflineformleft"><label class="col-sm-12 control-label" for="location">Location</label>
+      <div class="col-sm-12"><%= f.text_field :location, :class => 'form-control', :required => 'required' %></div>
+      </div>
+
+      <div class="form-group halflineformright"><label class="col-sm-12 control-label" for="location">Zipcode</label>
+      <div class="col-sm-12"><%= f.text_field :zipcode, :class => 'form-control', :required => 'required' %></div>
+      </div>
+
+      <div class="form-group halflineformleft"><label class="col-sm-12 control-label" for="company_is_publish">Publish</label>
+        <div class="col-sm-12">
+        <select name="company[is_publish]" required id="company_is_publish" class="form-control">
+          <option value="1">Yes</option>
+          <option value="0">No</option>
+        </select>
+        </div>
+      </div>
+
+      <div class="form-group halflineformright"><label class="col-sm-12 control-label" for="company_is_active">Status</label>
+        <div class="col-sm-12">
+        <select name="company[is_active]" required id="company_is_active" class="form-control">
+          <option value="1">Active</option>
+          <option value="0">Inactive</option>
+        </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+       <div class="col-sm-12 col-sm-offset-2">
+           <button class="btn btn-success waves-effect waves-light float-right" type="submit" name="commit" value="create" data-disable-with="Save">Create Company</button>
+       </div>
+      </div>
+  <% end %>
+</div>
+<div class="modal-footer">
+</div>

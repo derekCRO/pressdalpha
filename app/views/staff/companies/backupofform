@@ -1,0 +1,83 @@
+<%= form_for(@company, :url => partner_companies_companyprofileupdate_path(@company.id), :id => @company.id, :html => {:class => 'form-horizontal', :multipart => true}) do |f|  %>
+
+	<div class="form-group"><label class="col-sm-2 control-label" for="company_name">Company Name</label>
+    <div class="col-sm-10"><input type="text" value="<%= @company.company_name %>" name="company[company_name]" id="company_company_name" class="form-control" required></div>
+  </div>
+
+  <div class="form-group"><label class="col-sm-2 control-label" for="about_company">About Company</label>
+    <div class="col-sm-10"><textarea name="company[about_company]" id="company_about_company" class="form-control" rows="5" required><%= @company.about_company %></textarea></div>
+  </div>
+
+  <div class="form-group"><label class="col-sm-2 control-label" for="email">Location</label>
+    <div class="col-sm-10"><input type="text" value="<%= @company.location %>" name="company[location]" id="user_location" class="form-control" required></div>
+  </div>
+
+  <div class="form-group"><label class="col-sm-2 control-label" for="email">Area Radius</label>
+    <div class="col-sm-10"><input type="number" value="<%= @company.servicearea_radius %>" name="company[servicearea_radius]" id="user_servicearea_radius" class="form-control" required></div>
+  </div>
+
+	<div class="form-group"><label class="col-sm-2 control-label" for="email">Postcode</label>
+        <%= select_tag "company[postcode_ids][]", options_from_collection_for_select(Postcode.all, "id", "name", selected: @company.postcode_id), :multiple => true, id: "simple-example", class: "js-example-basic-multiple" %>
+  </div>
+
+  <div class="form-group"><label class="col-sm-2 control-label" for="email">Start Time</label>
+    <div class="col-sm-10">
+    <select name="company[servicestart_time]" required id="company_servicestart_time" class="form-control">
+        <option value="00.00" <%= if company.servicestart_time=="00:00" then 'selected' else '' end %>>00:00</option>
+        <option value="1:00" <%= if company.servicestart_time=="1:00" then 'selected' else '' end %>>1:00</option>
+        <option value="2:00" <%= if company.servicestart_time=="2:00" then 'selected' else '' end %>>2:00</option>
+        <option value="3:00" <%= if company.servicestart_time=="3:00" then 'selected' else '' end %>>3:00</option>
+        <option value="4:00" <%= if company.servicestart_time=="4:00" then 'selected' else '' end %>>4:00</option>
+        <option value="5:00" <%= if company.servicestart_time=="5:00" then 'selected' else '' end %>>5:00</option>
+        <option value="6:00" <%= if company.servicestart_time=="6:00" then 'selected' else '' end %>>6:00</option>
+        <option value="7:00" <%= if company.servicestart_time=="7:00" then 'selected' else '' end %>>7:00</option>
+        <option value="8:00" <%= if company.servicestart_time=="8:00" then 'selected' else '' end %>>8:00</option>
+        <option value="9:00" <%= if company.servicestart_time=="9:00" then 'selected' else '' end %>>9:00</option>
+        <option value="10:00" <%= if company.servicestart_time=="10:00" then 'selected' else '' end %>>10:00</option>
+        <option value="11:00" <%= if company.servicestart_time=="11:00" then 'selected' else '' end %>>11:00</option>
+        <option value="12:00" <%= if company.servicestart_time=="12:00" then 'selected' else '' end %>>12:00</option>
+        <option value="13:00" <%= if company.servicestart_time=="13:00" then 'selected' else '' end %>>13:00</option>
+        <option value="14:00" <%= if company.servicestart_time=="14:00" then 'selected' else '' end %>>14:00</option>
+        <option value="15:00" <%= if company.servicestart_time=="15:00" then 'selected' else '' end %>>15:00</option>
+        <option value="16:00" <%= if company.servicestart_time=="16:00" then 'selected' else '' end %>>16:00</option>
+        <option value="17:00" <%= if company.servicestart_time=="17:00" then 'selected' else '' end %>>17:00</option>
+        <option value="18:00" <%= if company.servicestart_time=="18:00" then 'selected' else '' end %>>18:00</option>
+        <option value="19:00" <%= if company.servicestart_time=="19:00" then 'selected' else '' end %>>19:00</option>
+        <option value="20:00" <%= if company.servicestart_time=="20:00" then 'selected' else '' end %>>20:00</option>
+        <option value="21:00" <%= if company.servicestart_time=="21:00" then 'selected' else '' end %>>21:00</option>
+        <option value="22:00" <%= if company.servicestart_time=="22:00" then 'selected' else '' end %>>22:00</option>
+        <option value="23:00" <%= if company.servicestart_time=="23:00" then 'selected' else '' end %>>23:00</option>
+    </select>
+  </div>
+  </div>
+
+  <div class="form-group"><label class="col-sm-2 control-label" for="email">End Time</label>
+    <div class="col-sm-10">
+        <select name="company[serviceend_time]" required id="company_serviceend_time" class="form-control">
+        <option value="00.00" <%= if company.serviceend_time=="00:00" then 'selected' else '' end %>>00:00</option>
+        <option value="1:00" <%= if company.serviceend_time=="1:00" then 'selected' else '' end %>>1:00</option>
+        <option value="2:00" <%= if company.serviceend_time=="2:00" then 'selected' else '' end %>>2:00</option>
+        <option value="3:00" <%= if company.serviceend_time=="3:00" then 'selected' else '' end %>>3:00</option>
+        <option value="4:00" <%= if company.serviceend_time=="4:00" then 'selected' else '' end %>>4:00</option>
+        <option value="5:00" <%= if company.serviceend_time=="5:00" then 'selected' else '' end %>>5:00</option>
+        <option value="6:00" <%= if company.serviceend_time=="6:00" then 'selected' else '' end %>>6:00</option>
+        <option value="7:00" <%= if company.serviceend_time=="7:00" then 'selected' else '' end %>>7:00</option>
+        <option value="8:00" <%= if company.serviceend_time=="8:00" then 'selected' else '' end %>>8:00</option>
+        <option value="9:00" <%= if company.serviceend_time=="9:00" then 'selected' else '' end %>>9:00</option>
+        <option value="10:00" <%= if company.serviceend_time=="10:00" then 'selected' else '' end %>>10:00</option>
+        <option value="11:00" <%= if company.serviceend_time=="11:00" then 'selected' else '' end %>>11:00</option>
+        <option value="12:00" <%= if company.serviceend_time=="12:00" then 'selected' else '' end %>>12:00</option>
+        <option value="13:00" <%= if company.serviceend_time=="13:00" then 'selected' else '' end %>>13:00</option>
+        <option value="14:00" <%= if company.serviceend_time=="14:00" then 'selected' else '' end %>>14:00</option>
+        <option value="15:00" <%= if company.serviceend_time=="15:00" then 'selected' else '' end %>>15:00</option>
+        <option value="16:00" <%= if company.serviceend_time=="16:00" then 'selected' else '' end %>>16:00</option>
+        <option value="17:00" <%= if company.serviceend_time=="17:00" then 'selected' else '' end %>>17:00</option>
+        <option value="18:00" <%= if company.serviceend_time=="18:00" then 'selected' else '' end %>>18:00</option>
+        <option value="19:00" <%= if company.serviceend_time=="19:00" then 'selected' else '' end %>>19:00</option>
+        <option value="20:00" <%= if company.serviceend_time=="20:00" then 'selected' else '' end %>>20:00</option>
+        <option value="21:00" <%= if company.serviceend_time=="21:00" then 'selected' else '' end %>>21:00</option>
+        <option value="22:00" <%= if company.serviceend_time=="22:00" then 'selected' else '' end %>>22:00</option>
+        <option value="23:00" <%= if company.serviceend_time=="23:00" then 'selected' else '' end %>>23:00</option>
+    </select>
+    </div>
+  </div>

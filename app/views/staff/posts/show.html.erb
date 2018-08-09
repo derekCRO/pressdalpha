@@ -1,0 +1,40 @@
+<div class="page-heading">
+            <h3>
+                Content Detail
+            </h3>
+            
+			<p id="notice"><%= notice %></p>
+</div>
+
+<div class="wrapper">
+        <div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading">
+						Details
+					</header>
+					<div class="panel-body">
+
+
+<p>
+  <b>Name:</b>
+  <%= @post.name %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @post.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @post.content %>
+</p>
+
+<%= link_to 'Edit', edit_admin_post_path(@post), :class=>'btn btn-primary' %>
+<%= link_to 'Back', admin_posts_path, :class=>'btn btn-primary' %>
+					</div>
+				</section>
+			</div>
+		</div>
+</div>

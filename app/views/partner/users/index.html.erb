@@ -1,0 +1,113 @@
+<main class="main-content p-5" role="main">
+  <div class="row">
+    <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/partner">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Staff Management</li>
+      </ol>
+      <div class="row">
+        <div class="col-md-6">
+          <h1>&nbsp; Staff Management</h1>
+        </div>
+        <div class="col-md-6"><%= link_to 'Add Staff Member', new_partner_user_path, data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-success waves-effect waves-light float-right' %>
+  <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content"></div>
+    </div>
+  </div>
+</div>
+      </div>
+      <br>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body product-page">
+          <div class="tab-content" id="JobsTabContent">
+						<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+            <div class="table-responsive">
+              <table class="table table-striped dataTables-example" style="100%">
+                <thead>
+                   <tr>
+                     <th>Staff ID</th>
+                     <th>Image</th>
+                     <th>First name</th>
+                     <th>Last name</th>
+                     <th>Email Address </th>
+                     <th>Phone No.</th>
+                     <th>Address</th>
+                     <th>Created at</th>
+                     <th>Edit</th>
+                     <th>Destroy</th>
+                   </tr>
+                 </thead>
+                 <tbody>
+                   <% if @users.length > 0  %>
+                        <% @users.each do |user| %>
+                         <tr>
+                           <td><%= user.id %></td>
+                           <td><%= image_tag user.image.url(:thumb), :class => 'profile-picture img' %></td>
+                           <td><%= user.first_name %></td>
+                           <td><%= user.last_name %></td>
+                           <td><i class="fa fa-envelope"></i>&nbsp;&nbsp;<%= user.email %></td>
+                           <td><i class="fa fa-phone"></i>&nbsp;&nbsp;<%= user.phone %></td>
+                           <td><%= user.address %></td>
+                           <td><%= user.created_at.strftime( "%d-%B, %Y" ) %></td>
+													 <td><%= link_to 'Edit Staff', edit_partner_user_path(user), data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-success waves-effect waves-light' %>
+													 <div id="modal-window" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+														 <div class="modal-dialog" role="document">
+															 <div class="modal-content"></div>
+														 </div>
+													 </div></td>
+                           <td><%= link_to 'Destroy', partner_user_path(user), method: :delete, data: { confirm: 'Are you sure?' },:class=>'btn btn-danger waves-effect waves-light' %></td>
+                         </tr>
+                  <% end %>
+                  </tbody>
+                  <% else %>
+                    <tbody>
+                      <tr></tr>
+                    </tbody>
+                  <% end %>
+                </table>
+              </div>
+            </div>
+						</div>
+          </div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+
+        $(function () {
+
+          $('.dataTables-example').DataTable({
+            pageLength: 25,
+            orderable: true,
+            rowReorder: {
+              selector: 'td:first-child'
+            },
+            responsive: true,
+            dom: '<"html5buttons"B>lTfgitp',
+            buttons: [
+              {
+                extend: 'copy'
+              }, {
+                extend: 'csv',
+                title: 'Selected Customers'
+              }, {
+                extend: 'excel',
+                title: 'Selected Customers'
+              }, {
+                extend: 'pdf',
+                title: 'Selected Customers'
+              }, {
+                extend: 'print'
+              }
+            ]
+
+          });
+
+        });
+      </script>
+    </main>

@@ -1,0 +1,86 @@
+<section class="trackerstyle">
+        <div class="container">
+          <div class="col-md-12">
+
+            <!-- Page Title-->
+            <div class="page-title">
+              <div class="container">
+                <div class="column">
+                  <h1>register</h1>
+                </div>
+                 <div class="column">
+                  <ul class="breadcrumbs hideonmobile">
+                    <li><a href="index.html">home</a>
+                    </li>
+                    <li class="separator">&nbsp;</li>
+                    <li>register</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+     <div id='main-content'>
+     <div class='container'>
+       <div class="row">
+       	<div class="col-md-10 col-sm-8 center-div">
+       		<div class="log-in-area  p-20">
+       			<div class="form-group text-center">
+       				<div class=>
+            				<img src="/assets/logo-light.png"/>
+            			</div>
+       			</div>
+
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name), :html => {:class => 'sign-up-form', :multipart => true}) do |f| %>
+       			 <% if(devise_error_messages! ) %><div id="notice" class="alert alert-warning"><%= devise_error_messages! %></div><% end %>
+       			 <input type="hidden" name="customer[is_active]" id="customer_is_active" value="true">
+       			 <input type="hidden" name="customer[is_admin]" id="customer_is_admin" value="false">
+       			 <input type="hidden" value="Customer" name="customer[user_type]" id="customer_user_type">
+       				<div class="col-md-6">
+              <div class="form-group">
+       					<label>first name</label>
+       					<input  type="text" class="form-control" id="customer_first_name" name="customer[first_name]" required="required"/>
+       				</div>
+       				<div class="form-group">
+       					<label>last name</label>
+       					<input  type="text" class="form-control" id="customer_last_name" name="customer[last_name]" required="required"/>
+       				</div>
+       				<div class="form-group">
+       					<label>email </label>
+       					<input type="email" class="form-control" id="customer_email" name="customer[email]" required="required"/>
+       				</div>
+            </div>
+            <div class="col-md-6">
+       				<div class="form-group">
+       					<label>password</label>
+       					<input  type="password" class="form-control" id="customer_password" name="customer[password]" required="required"/>
+       				</div>
+       				<div class="form-group">
+       					<label>confirm password</label>
+       					<input  type="password" class="form-control" id="customer_password_confirmation" name="customer[password_confirmation]" required="required"/>
+       				</div>
+       				<div class="form-group">
+       					<label>mobile number</label>
+       					<input type="text" class="form-control" id="customer_phone" name="customer[phone]" required="required"/>
+       				</div>
+              </div>
+              <div class="col-md-12">
+       				<div class="form-group">
+       					<button class="btn btn-color upper findservicesbtn no-radius">sign up</button>
+       				</div>
+       				<div class="form-group text-center">
+       					<h4>already a member? <a class="back-log-in" href="/customers/sign_in"> &nbsp login</a></h4>
+       				</div>
+              </div>
+       			<% end %>
+
+       		</div>
+       	</div>
+       </div>
+     </div>
+   </div>
+</section>

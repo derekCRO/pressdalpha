@@ -1,0 +1,50 @@
+<main class="main-content p-5" role="main">
+	<div class="row">
+		<div class="col-md-12">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item">
+					<a href="/partner">Dashboard</a>
+				</li>
+				<li class="breadcrumb-item active">Company Profile</li>
+			</ol>
+			<div class="row">
+				<div class="col-md-12">
+					<h1>
+						&nbsp; Company Profile</h1>
+				</div>
+			</div>
+			<br>
+		</div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body product-page">
+          <div class="tab-content" id="JobsTabContent">
+            <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="profile-page-left">
+                <div class="row">
+                  <div class="col-lg-12 mb-4">
+                    <div class="profile-picture profile-picture-lg bg-gradient bg-primary mb-4">
+                      <%= image_tag @company.image.url(:small), :class => 'img-responsive' %>
+                    </div>
+                  </div>
+                  <div class="col-sm-12">
+                    <div class="h3 my-0"></strong><%= @company.company_name %></div>
+                    <h5 class="my-0"><i class="fa fa-envelope fapadding"></i></h5>
+                    <h5 class="my-0"><i class="fa fa-phone fapadding"></i></h5>
+                    <h5 class="my-0"><i class="fa fa-map-marker fapadding"></i><%= @company.location %></h5>
+                    <h5 class="my-0"><i class="fa fa-map-marker fapadding"></i></h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <%= render 'formcompany_profile', company: @company %>
+          </div>
+        </div>
+      </div>
+      </div>
+      </div>
+    </div>
+  </main>

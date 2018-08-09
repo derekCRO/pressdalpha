@@ -1,0 +1,126 @@
+<section class="trackerstyle">
+        <div class="container">
+          <div class="col-md-12">
+
+            <!-- Page Title-->
+            <div class="page-title">
+              <div class="container">
+                <div class="column">
+                  <h1>booking process</h1>
+                </div>
+                 <div class="column">
+                  <ul class="breadcrumbs hideonmobile">
+                    <li><a href="index.html">home</a>
+                    </li>
+                    <li class="separator">&nbsp;</li>
+                    <li>booking process</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+      <!-- Progress Tracker v2 -->
+      <div class="checkout-steps">
+      <a href="7confirm.html">7. booking complete</a>
+      <a href="6details.html"><span class="angle"></span>6. confirm and pay</a>
+      <a href="5personal.html"><span class="angle"></span>5. confirm details</a>
+      <a href="4partners.html"><span class="angle"></span>4. choose a partner</a>
+      <a href="3appointment.html"><span class="angle"></span>3. choose date</a>
+      <a href="2questions.html"><span class="angle"></span>2. quick questions</a>
+      <a class="active" href="1services.html"><span class="angle"></span>1. choose a service</a>
+      </div>
+
+      </section>
+
+      <section class="split-section servicesstyle">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-9 col-lg-8 col-sm-8 colcheckout">
+
+            <!-- Services-->
+            <%= form_for(@task, :html => {}) do |f|  %>
+                 <% @categories.each do |category| %>
+            <div class="fw-section rounded padding-top-4x padding-bottom-4x" style="background-image: url(<%#= image_path category.image.url(:detail) %>);"><span class="overlay rounded" style="opacity: .35;"></span>
+              <div class="text-center">
+                <h2 class="display-4 text-normal text-white text-shadow mb-1"><%= category.name %></h2>
+                <br><a class="btn btn-color margin-bottom-none" href=" /task/step3/<%= @task.id %>/<%= category.id %>/">book now</a>
+              </div>
+            </div>
+            <% end %>
+             <% end %>
+               </div>
+
+                <div class="col-xl-3 col-lg-4 col-sm-4">
+                  <aside class="sidebar">
+                    <div class="padding-top-2x hidden-lg-up"></div>
+                    <!-- Order Summary Widget-->
+                    <section class="widget widget-order-summary">
+                      <div class="card text-center cardside">
+                    <div class="card-header card-header-green"><span class="text-lg">your booking</span></div>
+                    <div class="card-body">
+                      <table class="table">
+                        <tr>
+                          <td><i class="fa-icon-map-marker"></i> <%= @task.zipcode %></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                    </section>
+                    <section class="widget widget-order-summary">
+                      <div class="card text-center cardside">
+                    <div class="card-header card-header-green"><span class="text-lg">search a different area</span></div>
+                    <div class="card-body">
+                      <div class="container-fluid">
+                      <form id="contact-form" action="" method="">
+                        <div class="form-group animated fadeInRight" data-animation="fadeInRight">
+                          <input class="form-control" type="text" name="name" data-required="" placeholder="location or postcode">
+                        </div>
+                        <div class="form-group mt-25 animated fadeInRight" data-animation="fadeInRight">
+                          <a class="btn btn-color margin-bottom-none" href="1services.html">find services</a>
+                          <p>&nbsp;</p>
+                        </div>
+                      </form>
+                    </div>
+                    </div>
+                  </div>
+                  </section>
+                    <!-- Featured Products Widget-->
+                    <section class="widget widget-featured-products">
+                      <div class="card text-center cardside">
+                    <div class="card-header card-header-green"><span class="text-lg">how pressd works</span></div>
+                    <div class="card-body">
+                    <div class="accordion" id="accordion2" role="tablist">
+                    <div class="card">
+                      <div class="card-header" role="tab">
+                        <h5><a href="#collapseOne" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>who are pressd</a></h5>
+                      </div>
+                      <div class="collapse" id="collapseOne" role="tabpanel">
+                        <div class="card-body">Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" role="tab">
+                        <h5><a class="collapsed" href="#collapseTwo" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>how do i book a service</a></h5>
+                      </div>
+                      <div class="collapse" id="collapseTwo" role="tabpanel">
+                        <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <div class="card-header" role="tab">
+                        <h5><a class="collapsed" href="#collapseThree" data-toggle="collapse" data-parent="#accordion2"><i class="pe-7s-help1"></i>what is the pressd promise</a></h5>
+                      </div>
+                      <div class="collapse" id="collapseThree" role="tabpanel">
+                        <div class="card-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                    </div>
+                  </div>
+                  </section>
+
+
+                </div></div>
+                </section>

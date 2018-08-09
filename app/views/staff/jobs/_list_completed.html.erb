@@ -1,0 +1,46 @@
+<div class="col-md-12">
+	<div><br></div>
+	<div class="table-responsive">
+		<table class="table table-striped dataTables-example2 display nowrap" style="width:100%">
+			<thead>
+				<tr>
+					<th>Job Id</th>
+					<th>Category</th>
+					<th>Price</th>
+					<th>Date of Booking</th>
+					<th>Date/Time of Service</th>
+					<th>Service Address</th>
+					<th>Customer Name</th>
+					<th>Job Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<% if @taskscompletedstaff.length > 0  %>
+					<% @taskscompletedstaff.each do |tasks| %>
+					<tr>
+						<td><%= tasks.view_job_id %></td>
+						<td><%= tasks.category.name %></td>
+						<td>£<%= tasks.price %></td>
+						<td><%= tasks.post_date %></td>
+						<td>
+							<%= "#{tasks.booking_date} - #{tasks.booking_time}" %>
+						</td>
+						<td>
+							<%= tasks.address %>,
+							<%= tasks.zipcode %>
+						</td>
+						<td>
+							<%= tasks.user.first_name %>
+							<%= tasks.user.last_name %>
+						</td>
+						<td><%= tasks.status %></td>
+					</tr>
+					<% end %>
+					<% else %>
+						<tr>
+						</tr>
+					<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

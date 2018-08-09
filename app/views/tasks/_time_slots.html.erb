@@ -1,0 +1,18 @@
+<% number_of_slots = ((time_slot.ending_time - time_slot.starting_time) / 1.hour) - params[:total_hours].to_i %>
+<% for i in 0..number_of_slots %>
+  <div class="time-slots-list">
+    <%= radio_button_tag 'test', "#{(time_slot.starting_time+i.hours).to_s(:time)}" %>
+    <label>
+      <%= (time_slot.starting_time+i.hours).to_s(:time) %> - <%= (time_slot.starting_time+(params[:total_hours].to_i+i).hours).to_s(:time) %>
+      <br>
+    </label>
+  </div>
+<% end %>
+<script>
+  $("input[type='radio'][id^='test_']").change(function(){
+    $(".time-slots-list label").removeClass("active");
+    $(this).parent().find('label').addClass("active");
+    $("#task_book_starting_time").val($(this).val())
+    $("#task_book_ending_time").val(moment($(this).val(), "HH:mm").add($("#task_book_total_hours").val(), 'hours').format("HH:mm"));
+  });
+</script>

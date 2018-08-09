@@ -1,0 +1,76 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Info for Job ID
+    <%= @task.id %>
+    on
+    <%= @task.booking_date %></h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal" action="">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for=""><strong>Booking Id</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @task.id %></p>
+      </div>
+      <label class="control-label col-sm-2" for=""><strong>Booking Price</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static">£<%= @task.price %>
+          /hour</p>
+      </div>
+      <label class="control-label col-sm-2" for=""><strong>Customer Name</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @task.user.first_name %>
+          <%= @task.user.last_name %></p>
+      </div>
+      <label class="control-label col-sm-2" for=""><strong>Date / Time</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @task.booking_date %>
+          (<%= @task.booking_time %>)</p>
+      </div>
+      <label class="control-label col-sm-2" for=""><strong>Address Line 1</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @task.address1 %></p>
+      </div>
+      <label class="control-label col-sm-2" for=""><strong>Address Line 2</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @task.address2 %></p>
+      </div>
+      <label class="control-label col-sm-2" for=""><strong>City</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @task.city %></p>
+      </div>
+      <label class="control-label col-sm-2" for=""><strong>Postcode</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static"><%= @task.zipcode %></p>
+      </div>
+      <label class="control-label col-sm-2" for=""><strong>Category</strong></label>
+      <div class="col-sm-12">
+        <p class="form-control-static">
+          <%= @category.name %>
+          </p>
+        </div>
+        <label class="control-label col-sm-2" for=""><strong>Services</strong></label>
+        <div class="col-sm-12">
+          <p class="form-control-static">
+            <% @text.to_a
+             @text.each do |k,v| %>
+              <p>
+                <i class="fa-icon-ok text-contrast"></i>
+                <span><%= k %></span></p>
+              <% v.to_a
+             v.each do |smk,smv| %>
+                <li>
+                  <b><%= smk %></b>:
+                  <%= smv %></li>
+              <% end%>
+              <p></p>
+            <% end %>
+          </p>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer"></div>

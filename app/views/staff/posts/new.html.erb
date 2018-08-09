@@ -1,0 +1,52 @@
+<div class="page-heading">
+            <h3>
+               New Content
+            </h3>
+			<% @post.errors.full_messages.each do |msg| %>
+			    <li class="error msg"><%= msg %></li>
+		    <% end %>
+</div>
+
+<div class="wrapper">
+        <div class="row">
+			<div class="col-sm-12">
+				<section class="panel">
+					<header class="panel-heading">
+						New Content
+					</header>
+					<div class="panel-body">
+
+<%= form_for(@post, :url => '/admin/posts/',:html => { :multipart => true }) do |f| %>
+
+    <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+    </div>
+	
+	<div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+    </div>
+	
+	<div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+    </div>
+	
+	
+    <%= f.submit %>
+	<%= link_to 'Back', admin_posts_path, :class=>'btn btn-primary' %>
+<% end %>
+
+
+					</div>
+				</section>
+			</div>
+		</div>
+</div>
+
+<h1>New post</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', posts_path %>

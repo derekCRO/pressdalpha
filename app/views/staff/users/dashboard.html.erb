@@ -1,0 +1,201 @@
+<main class="main-content p-5" role="main">
+					<div class="row">
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-primary bg-gradient text-center animated bounceInDown">
+								<div class="card-body p-4">
+									<!-- Accepts .invisible: Makes the items. Use this only when you want to have an animation called on it later -->
+									<div class="tile-left">
+										<i class="far fa-calendar-plus fa-4x"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number"><%= Job.jobs_last_week.where("staff_id = ?", current_staff.id).count %></div>
+										<div class="tile-description">Jobs Assigned (last 7 days)</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-secondary bg-gradient text-center animated bounceInDown">
+								<div class="card-body p-4">
+									<div class="tile-left">
+										<i class="batch-icon batch-icon-tag-alt-2 batch-icon-xxl"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number"><%= Staff.count %></div>
+										<div class="tile-description">Active Staff</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-primary bg-gradient text-center animated bounceInDown">
+								<div class="card-body p-4">
+									<div class="tile-left">
+										<i class="batch-icon batch-icon-list batch-icon-xxl"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number"><%= Job.jobs_created_last_week %></div>
+										<div class="tile-description">Bookings (last 7 days)</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-3 mb-5">
+							<div class="card card-tile card-xs bg-secondary bg-gradient text-center animated bounceInDown">
+								<div class="card-body p-4">
+									<div class="tile-left">
+										<i class="batch-icon batch-icon-star batch-icon-xxl"></i>
+									</div>
+									<div class="tile-right">
+										<div class="tile-number"><%= Job.count %></div>
+										<div class="tile-description">Bookings Completed (all time)</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+            <div class="col-md-6 col-lg-6 col-xl-8 mb-5">
+							<div class="card animated pulse">
+								<div class="card-header">
+									Bookings Completed (last 7 days)
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+										<%= line_chart "/staff/reports/bookings_complete_last_week_json", xtitle: "Date by Day", ytitle: "Total Bookings", label: "Bookings complete this day" %>
+									</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-4 mb-5">
+							<div class="card animated pulse">
+								<div class="card-header">
+									Bookings Today
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab" style="padding: 0%;">
+											<div class="col-md-12">
+												<div class="table-responsive ">
+													<table class="table table-striped dataTables-example1 display nowrap" style="width:100%">
+														<thead>
+															<tr>
+																<th>Job Id</th>
+																<th>Time of Service</th>
+																<th>Postcode</th>
+																<th>Job Details</th>
+															</tr>
+														</thead>
+														<tbody>
+															<% if @jobstoday.length > 0  %>
+																<% @jobstoday.each do |tasks| %>
+																	<tr>
+																		<td>
+																			<%= tasks.view_job_id %>
+																		</td>
+																		<td>
+																			<%= tasks.booking_time %>
+																		</td>
+																		<td>
+																			<%= tasks.zipcode %>
+																		</td>
+																		<td>
+																			<%= link_to 'Details', staff_jobs_details_path(tasks), data: {toggle: "modal", target: "#modal-window"}, remote: true, class: 'btn btn-success waves-effect waves-light' %>
+																		</td>
+																	</tr>
+																<% end %>
+															<% else %>
+																<tr>
+																</tr>
+															<% end %>
+														</tbody>
+													</table>
+												</div>
+											</div>
+								</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6 col-lg-4 mb-5">
+							<div class="card card-sm bg-primary bg-gradient animated pulse">
+								<div class="card-header">
+									Current Company Rating
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+										<div id="rateYo"></div>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-4 mb-5">
+							<div class="card card-sm bg-primary bg-gradient animated pulse">
+								<div class="card-header">
+									Blank Card
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+										<div>
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-4 mb-5">
+							<div class="card card-sm bg-primary bg-gradient animated pulse">
+								<div class="card-header">
+									Blank Card
+								</div>
+								<div class="card-body product-page">
+									<div class="tab-content" id="JobsTabContent">
+										<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+									</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+          <script>
+					//Star Rating script
+					$(function () {
+
+					$("#rateYo").rateYo({
+					  rating: <%= current_staff.company.average_rating %>,
+						readOnly: true
+					});
+
+					});
+					</script>
+
+					<script type="text/javascript">
+
+						$(function () {
+
+							$('.dataTables-example1').DataTable({
+								pageLength: 25,
+								orderable: false,
+								rowReorder: {
+									selector: 'td:first-child'
+								},
+								responsive: true,
+								searching: false,
+								lengthChange: false,
+								paging: false,
+								info: false
+							});
+
+						});
+					</script>
+
+				</main>

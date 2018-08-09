@@ -1,0 +1,286 @@
+
+<section class="grey-bg b-0 section-skewed greygradbackground">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 map-side">
+              <div id="map" style='width: 100%;'></div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <div class="col-md-6 mttwentypercent mapoffset col-sm-12">
+            <div class="title colorwhite">
+              <h2 class="fw-300 colorwhite"><span style="line-height: 100%;padding-left: 2%;padding-right: 2%;padding-bottom: 1%;font-size: 38px;font-weight: 500;">
+                let us help you with your <span class="typed-words fw-400" data-strings="[&quot;cleaning&quot;, &quot;gardening&quot;, &quot;handywork&quot;]" data-custom-color="#ffffff"></span>
+              </span></h2></div>
+            <div class="row pt-25 pb-25">
+              <div class="container-fluid">
+                <br>
+                <%= form_for(@task, :html => {:class => 'row'}) do |f|  %>
+
+
+                  <div class="form-group col-md-12" id="locationField">
+                    <input class='taskaddressfield' id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
+                    <input type="hidden" class='field' type"text" value='' name="task[zipcode]" id="postal_code" required maxlength="4" disabled="false" onkeyup="change(this);">
+                    <input type="hidden" class='' value='' name="task[latitude]" id="lat">
+	            			<input type="hidden" class='' value='' name="task[longitude]" id="lng">
+                    <p id="error-message"></p>
+                  </div>
+                  <div class="form-group col-md-4"></div>
+                  <div class="form-group col-md-4">
+
+                  <div class="form-group col-md-4" id="nextButton">
+                    <button class="btn btn-color upper findservicesbtn no-radius" type="submit" id="next" name="commit" value="step1">Next</button>
+                  </div>
+
+                <% end %>
+
+
+
+                <div class="row"><br></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="gradient-bg section-skewed " data-gradients="#70b859,#00a54e">
+        <div class="container">
+          <div class="row marginmodifierthree ">
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <div class="icon-box iconminustop align-center icon--big animated zoomIn whitecolor" data-animation="zoomIn">
+                <div class="animated-icon" data-icon="<%= image_path ("newicons/Cal.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                <div class="ib-content whitecolor">
+                  <h3 class="white-text">convenience</h3>
+                  <h4 class="white-text">book a service that suits your schedule</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <div class="icon-box iconminustop align-center icon--big animated zoomIn whitecolor" data-animation="zoomIn" data-delay="300">
+                <div class="animated-icon" data-icon="<%= image_path ("newicons/Staff.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                <div class="ib-content whitecolor">
+                  <h3 class="white-text">local experts</h3>
+                  <h4 class="white-text">we only work with selected local professionals to guarantee quality</h4>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-4">
+              <div class="icon-box iconminustop align-center icon--big animated zoomIn whitecolor" data-animation="zoomIn" data-delay="600">
+                <div class="animated-icon" data-icon="<%= image_path ("newicons/pressdicon.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                <div class="ib-content whitecolor">
+                  <h3 class="white-text">pressd promise</h3>
+                  <h4 class="white-text">if you’re not happy, we’ll make it right</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+              </div>
+      </section>
+      <section class="gradient-bgtwo big-padding-bt section-skewed" data-gradients="#fff,#fff"><div class="gradient-bg-wrapper"><div class="gradient-bg-element"></div></div>
+        <div class="container marginmodifierfour">
+          <div class="testimonials-slider">
+                          <div class="testimonial">
+                            <div class="testimonialoverride testimonial-content " style="padding: 0px 0px;">
+                              <img style="margin-top: -50px;border-radius: 0%;" src="<%= image_path ("newicons/Mobile.svg") %>" alt="">
+                              <div class="testimonial-comment">
+                                <h4>choose a location</h4>
+                                <p>enter your location into the search box, either by address or postcode. our system will find the services that are available in your area</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="testimonial">
+                            <div class="testimonialoverride testimonial-content " style="padding: 0px 0px;">
+                              <img style="margin-top: -50px;border-radius: 0%;" src="<%= image_path ("newicons/Tools1.svg") %>" alt="">
+                              <div class="testimonial-comment">
+                                <h4>choose a service</h4>
+                                <p>pick your service. currently, we offer domestic cleaning, gardening and handyman services</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="testimonial">
+                            <div class="testimonialoverride testimonial-content " style="padding: 0px 0px;">
+                              <img style="margin-top: -50px;border-radius: 0%;" src="<%= image_path ("newicons/Laptop.svg") %>" alt="">
+                              <div class="testimonial-comment">
+                                <h4>choose service requirements</h4>
+                                <p>answer a few questions about what kind of service you would like such as how many bathrooms you have or how big your garden is. here you can also choose extra add-on services</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="testimonial">
+                            <div class="testimonialoverride testimonial-content " style="padding: 0px 0px;">
+                              <img style="margin-top: -50px;border-radius: 0%;" src="<%= image_path ("newicons/Cal.svg") %>" alt="">
+                              <div class="testimonial-comment">
+                                <h4>pick a date and time</h4>
+                                <p>choose a convenient timeslot from our calendar where availability is shown by two colours. green time slots mean the job will be completed to your exact specifiction, whilst orange slots mean there may be some minor ammendments to your specification</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="testimonial">
+                            <div class="testimonialoverride testimonial-content " style="padding: 0px 0px;">
+                              <img style="margin-top: -50px;border-radius: 0%;" src="<%= image_path ("newicons/Staff.svg") %>" alt="">
+                              <div class="testimonial-comment">
+                                <h4>choose a partner</h4>
+                                <p>choose your pro from the list based on price, location and rating</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="testimonial">
+                            <div class="testimonialoverride testimonial-content " style="padding: 0px 0px;">
+                              <img style="margin-top: -50px;border-radius: 0%;" src="<%= image_path ("newicons/pressdicon.svg") %>" alt="">
+                              <div class="testimonial-comment">
+                                <h4>confirm details and book</h4>
+                                <p>provide your details in order to complete the booking. we will ask for your full address, phone number and payment details. remember, you can change your booking at any point, subject to cancellation policy, before the service begins.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+        </div>
+      </section>
+      <section class="gradient-bg big-padding-bt" data-gradients="#70b859,#00a54e"><div class="gradient-bg-wrapper"><div class="gradient-bg-element" style="background: linear-gradient(90deg, rgb(112, 184, 89) 0%, rgb(0, 165, 78) 100%);"></div></div>
+        <div class="container marginmodifierfive">
+          <div class="row mtminussevenpercent">
+            <div class="col-md-12 textcenter center-block">
+            <h3>we offer a range of services</h3>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <div class="icon-box iconminustop align-center icon--big animated zoomIn marginmodifierone" data-animation="zoomIn">
+                <div class="animated-icon" data-icon="<%= image_path ("newicons/Hoover2.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                <div class="ib-content">
+                  <h3>domestic cleaning</h3>
+                  <p>our domestic cleaning services include cleaning your bedrooms, bathroom and kitchen, cleaning
+                    your fridge or oven, assisting with laundry and more</p>
+                    <a href="/cleaning"><h4 class="darkgreycolor">learn more</h4></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <div class="icon-box iconminustop align-center icon--big animated zoomIn marginmodifierone" data-animation="zoomIn" data-delay="300">
+                <div class="animated-icon" data-icon="<%= image_path ("newicons/Mower2.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                <div class="ib-content">
+                  <h3>gardening services</h3>
+                  <p>our garden services include mowing of the lawn, tidying up, pond maintenance, power washing, hedge trimming and more</p>
+                  <a href="/gardening"><h4 class="darkgreycolor">learn more</h4></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+              <div class="icon-box iconminustop align-center icon--big animated zoomIn marginmodifierone" data-animation="zoomIn" data-delay="600">
+                <div class="animated-icon" data-icon="<%= image_path ("newicons/Tools2.svg") %>"><object type="image/svg+xml" built-by-vivus="true"></object></div>
+                <div class="ib-content">
+                  <h3>handyman services</h3>
+                  <p>our handyman services include assembling flat pack furniture, fixing locks, building shelves, hanging televisions and more</p>
+                  <a href="/handyman"><h4 class="darkgreycolor">learn more</h4></a>
+                </div>
+              </div>
+            </div>
+            <div class="row"><br></div>
+          </div>
+</div>
+      </section>
+
+      <script>
+
+        function initialize() {
+          initMap();
+          initAutocomplete();
+        }
+        var map, marker;
+
+        function initMap() {
+          map = new google.maps.Map(document.getElementById('map'), {
+          center: {
+          lat: -34.397,
+          lng: 150.644
+          },
+          zoom: 4
+    });
+  }
+            // This example displays an address form, using the autocomplete feature
+            // of the Google Places API to help users fill in the information.
+
+            // This example requires the Places library. Include the libraries=places
+            // parameter when you first load the API. For example:
+            // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+            var placeSearch, autocomplete;
+            var componentForm = {
+              postal_code: 'short_name'
+            };
+
+
+
+            function initAutocomplete() {
+              // Create the autocomplete object, restricting the search to geographical
+              // location types.
+              autocomplete = new google.maps.places.Autocomplete(
+                  /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+                  {types: ['geocode']});
+
+              // When the user selects an address from the dropdown, populate the address
+              // fields in the form.
+              autocomplete.addListener('place_changed', fillInAddress);
+            }
+
+            var input = document.getElementById('searchTextField');
+            var options = {
+              types: ['(cities)'],
+              componentRestrictions: {country: 'uk'}
+            };
+
+            function fillInAddress() {
+              // Get the place details from the autocomplete object.
+              var place = autocomplete.getPlace();
+
+              for (var component in componentForm) {
+                document.getElementById(component).value = '';
+                document.getElementById(component).disabled = false;
+              }
+              document.getElementById('lat').value = place.geometry.location.lat();
+              document.getElementById('lng').value = place.geometry.location.lng();
+
+              // Get each component of the address from the place details
+              // and fill the corresponding field on the form.
+              for (var i = 0; i < place.address_components.length; i++) {
+                var addressType = place.address_components[i].types[0];
+                if (componentForm[addressType]) {
+                  var val = place.address_components[i][componentForm[addressType]];
+                  document.getElementById(addressType).value = val;
+                }
+              }
+            }
+
+            // Bias the autocomplete object to the user's geographical location,
+            // as supplied by the browser's 'navigator.geolocation' object.
+            function geolocate() {
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                  var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                  };
+                  var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                  });
+                  autocomplete.setBounds(circle.getBounds());
+                });
+              }
+            }
+
+            function change (el) {
+              var max_len = 10;
+              if (el.value.length > max_len) {
+              el.value = el.value.substr(0, max_len);
+              }
+              document.getElementById('char_cnt').innerHTML = el.value.length;
+              document.getElementById('chars_left').innerHTML = max_len - el.value.length;
+              return true;
+            }
+
+          </script>
+
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9g6ai7uVZK1EXW1VK1NqTuysYnCxmgvQ&libraries=places&callback=initialize"></script>
+
+      <style>
+      #error-message{color: red;}
+      </style>

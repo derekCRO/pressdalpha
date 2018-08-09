@@ -1,0 +1,172 @@
+<script type='text/javascript'>
+$(document).ready(function(){
+  var todayDate = new Date();
+  var NextNinetyDay=todayDate.setDate(todayDate.getDate() + 90);
+  $('#fullcalendar').datepicker({
+    dateFormat: 'yy-mm-dd',
+    firstDay: 1, // Monday
+    minDate: 0,
+    defaultDate: Date(todayDate),
+    maxDate: new Date(NextNinetyDay),
+  });
+})
+
+function setCompany(cid,ttype){
+  $('#company_id').val(cid);
+  $('#task_type').val(ttype);
+  $('#set_company').submit();
+}
+</script>
+
+<section class="trackerstyle">
+  <div class="container">
+    <div class="row">
+
+      <!-- Page Title-->
+      <div class="col-md-12 col-xs-12 page-title">
+        <h1 class="pull-left">booking process</h1>
+
+        <ul class="breadcrumbs hideonmobile float-right">
+          <li><a href="index.html">home</a>
+          </li>
+          <li class="separator">&nbsp;</li>
+          <li>booking process</li>
+        </ul>
+      </div>
+      <div class="col-md-12 col-xs-12">
+        <!-- Progress Tracker v2 -->
+        <div class="checkout-steps">
+          <a href="7confirm.html">7. booking complete</a>
+          <a class="active" href="6details.html"><span class="angle"></span>6. confirm and pay</a>
+          <a class="active" href="5personal.html"><span class="angle"></span>5. confirm details</a>
+          <a class="active" href="4partners.html"><span class="angle"></span>4. choose a partner</a>
+          <a class="active" href="3appointment.html"><span class="angle"></span>3. choose date</a>
+          <a class="active" href="2questions.html"><span class="angle"></span>2. quick questions</a>
+          <a class="active" href="1services.html"><span class="angle"></span>1. choose a service</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="split-section servicesstyle">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-sm-12 colcheckout">
+        <!-- Services-->
+        <div class="row"><br></div>
+        <div class="span5 col-md-12">
+          <div class="span5 col-md-3">
+            <div class="card text-center cardend">
+              <div class="card-header card-header-green"><span class="text-lg">service details</span></div>
+              <div class="card-body">
+                <div class="row">
+                  <br>
+                  <h3 class="card-title"><%= @category.name %></h3>
+                  <p class="card-text">
+                    <tr>
+
+                    </tr>
+                  </div>
+                  <div><br>
+                    <h3 class="card-title">3 hours</h3></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="span5 col-md-3">
+          <div class="card text-center cardend">
+            <div class="card-header card-header-green"><span class="text-lg">selected time</span></div>
+            <div class="card-body">
+              <div class="row">
+                <br>
+                <h3 class="card-title"><%= @task.booking_date %></h3>
+              </div>
+              <div><br>
+                <h3 class="card-title"><%= @task.booking_time %></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="span5 col-md-3">
+          <div class="card text-center cardend">
+            <div class="card-header card-header-green"><span class="text-lg">selected partner</span></div>
+            <div class="card-body">
+              <div class="row">
+                <%#= image_tag @task.company.image.url(:small), :class => 'cardimg' %>
+                <br>
+                <h3 class="card-title"><%#= @task.company.company_name %></h3>
+                <p class="card-text">cardiff</p>
+                <p class="card-text"><i class="hc-star"></i><i class="hc-star"></i><i class="hc-star"></i></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="span5 col-md-3">
+          <div class="card text-center cardend">
+            <div class="card-header card-header-green"><span class="text-lg">selected location</span></div>
+            <div class="card-body">
+              <div class="row">
+                <br>
+                <h3 class="card-title">Cardiff</h3>
+                <br>
+                <p class="card-text"><%#= @task.address %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"><br></div>
+        <div class="row"><br></div>
+        <div class="span5 col-md-12">
+          <div class="card text-center cardend">
+            <div class="card-header card-header-green"><span class="text-lg">total price</span></div>
+            <div class="card-body">
+              <div class="row">
+                <br>
+                <p class="card-text">service total: £45.99</p>
+                <p class="card-text">pressd promise charge: £5.00</p>
+                <div class="form-group">
+                  <input class="form-control promobox" type="email" placeholder="insert promo code here">
+                  <div class="row"><br></div>
+                  <a href="#">apply discount code</a>
+                </div>
+                <h3 class="card-title">total price: £50.99</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"><br></div>
+        <div class="span5 col-md-12">
+
+          <div class="accordiongreen" id="accordion" role="tablist">
+            <div class="card">
+              <div class="card-header card-header-green" role="tab">
+                <h6><a href="#card" data-toggle="collapse" data-parent="#accordion"><i class="icon-columns"></i>Pay with Credit Card</a></h6>
+              </div>
+              <div class="collapse" id="card" role="tabpanel">
+                <div class="card-body">
+                  <p>We accept following credit cards:&nbsp;<img class="d-inline-block align-middle" src="/assets/creditcards/credit-cards.png" style="width: 120px;" alt="Cerdit Cards"></p>
+                  <%= form_for(@task, :url => tasks_step6update_path(@task.id,@category.id), :id => @task.id, :html => {:class => 'row', :id => 'set_company'}) do |f| %>
+                    <input type="hidden" name="task[id]" id="task_id" value="<%= @task.id %>">
+                    <input type="hidden" name="task[user_id]" id="user_id" value="<%= current_customer.id %>">
+                    <input type="hidden" name="task[is_active]" id="is_active" value="True">
+                    <span>Amount: $<%#= @task.price %></span>
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="<%= Rails.application.secrets.stripe_public_key %>" data-description="A month's subscription" data-amount="<%#= @order.price %>" data-locale="auto"></script>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row"><br></div>
+      <div class="checkout-footer">
+        <div class="col-sm-6 .col-md-offset-3">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

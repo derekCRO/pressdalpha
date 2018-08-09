@@ -1,0 +1,9 @@
+var conversations = $('#conversations-list');
+var conversation_item = conversations.find("[data-conversation-id='" + "<%= @conversation.id %>" + "']");
+
+if (conversation_item.length !== 1) {
+  conversations.append("<%= j(render 'partner/conversations/conversation_item', conversation: @conversation) %>");
+}
+
+var conversation = $('.conversation');
+conversation.html("<%= j(render 'partner/conversations/specific_conversation', conversation: @conversation, message: @message, context_user: current_customer) %>");

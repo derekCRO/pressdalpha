@@ -1,0 +1,56 @@
+<%= form_for(@user, :url => partner_users_path, :html => {:class => 'form-horizontal', :method => 'post', :multipart => true}) do |f|  %>
+<input type="hidden" value="Staff" name="user[user_type]" id="user_user_type">
+
+<input type="hidden" value="<%= @company.id %>" name="user[company_id]" id="user_company_id">
+  
+  <div class="form-group"><label class="col-sm-2 control-label" for="first_name">First Name</label>
+    <div class="col-sm-10"><%= f.text_field :first_name, :class => 'form-control', :required => 'required' %></div>
+  </div>
+
+  <div class="form-group"><label class="col-sm-2 control-label" for="last_name">Last Name</label>
+    <div class="col-sm-10"><%= f.text_field :last_name, :class => 'form-control', :required => 'required' %></div>
+  </div>
+
+  <div class="form-group"><label class="col-sm-2 control-label" for="email">Email</label>
+    <div class="col-sm-10"><%= f.text_field :email, :class => 'form-control', :required => 'required' %></div>
+  </div>
+
+  <div class="form-group"><label class="col-sm-2 control-label" for="last_name">Password</label>
+    <div class="col-sm-10"><%= f.password_field :password, :class => 'form-control', autocomplete: "off", :required => 'required' %></div>
+  </div>
+
+  <div class="form-group"><label class="col-sm-2 control-label" for="last_name">Password Confirmation</label>
+    <div class="col-sm-10"><%= f.password_field :password_confirmation, :class => 'form-control', autocomplete: "off", :required => 'required' %></div>
+  </div>
+
+   <div class="form-group"><label class="col-sm-2 control-label" for="phone">Phone</label>
+    <div class="col-sm-10"><%= f.text_field :phone, :class => 'form-control', :required => 'required' %></div>
+  </div>
+
+  <div class="form-group"><label class="col-sm-2 control-label" for="address">Address</label>
+    <div class="col-sm-10"><%= f.text_area :address, :class => 'form-control', :required => 'required' %></div>
+  </div>
+
+  <%= f.fields_for :companylocation do |build| %>
+  <div class="form-group"><label class="col-sm-2 control-label" for="zipcode">Zip Code</label>
+    <div class="col-sm-10"><%= build.text_field :zipcode, :class => 'form-control', :required => 'required' %></div>
+  </div>
+  <input type="hidden" value="<%= @company.id %>" name="user[companylocation_attributes][company_id]" id="user_company_id">
+  <% end %>
+ 
+  <div class="form-group"><label class="col-sm-2 control-label" for="image">Image</label>
+    <div class="col-sm-10"><%= f.file_field :image, :class => 'form-control' %></div>
+  </div>
+  
+  <div class="hr-line-dashed"></div>
+  
+    <div class="form-group">
+     <div class="col-sm-4 col-sm-offset-2">
+         <button class="btn btn-primary" type="submit" name="commit" value="create" data-disable-with="Save">Save</button>
+         <%= link_to 'Back', admin_users_path, :class=>'btn btn-white' %>
+     </div>
+    </div>
+    
+  
+<% end %>
+

@@ -1,0 +1,61 @@
+<main class="main-content p-5" role="main">
+  <div class="row">
+    <div class="col-md-12">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="/partner">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">Rota List</li>
+      </ol>
+      <div class="row">
+        <div class="col-md-12">
+          <h1>&nbsp; Rota List</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body product-page">
+          <div class="tab-content" id="JobsTabContent">
+						<div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+            <div id='calendar'></div>
+            </div>
+						</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="fullCalModal" class="modal fade">
+        <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modal-header">
+                   <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span> <span class="sr-only">close</span></button>
+                   <h4 id="modalTitle" class="modal-title"></h4>
+               </div>
+               <%= form_tag partner_save_staff_counts_path, method: :post do %>
+                <%= hidden_field_tag "start_time", '', id: "st" %>
+                <%= hidden_field_tag "end_time", '', id: "et" %>
+                 <div id="modalBody" class="modal-body">
+                   <%= label_tag 'Staffs:'%>
+                   <%= select_tag(:staff_ids, options_for_select(options_for_select_staffs(@company)), multiple: true) %>
+                 </div>
+                 <div class="modal-footer">
+                   <%= submit_tag 'Save', class:"btn btn-info" %>
+                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                 </div>
+               <% end %>
+           </div>
+        </div>
+      </div>
+
+      <script>
+        $(document).ready(function(){
+          $('#eventlist').remove();
+          var eventlist = '<%= content_tag "div", id: "eventlist", data: { events: @events, business_hours: current_partner.available_slots[0], restricted_hours: current_partner.available_slots[1] } do %>' +
+          '<% end %>'
+          $('#calendar').append(eventlist);
+          PA.Calendars.init("dfdffsf", "#", $('#eventlist').data('events'), {business_hours: $('#eventlist').data('business-hours'), restricted_hours: $('#eventlist').data('restricted-hours'), is_staff: false});
+        });
+      </script>
+
+    </main>

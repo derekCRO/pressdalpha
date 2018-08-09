@@ -1,0 +1,11 @@
+<div class="row">
+  <div class="col-sm-4">
+    <label>
+      <%= f.label field.name %>
+    </label>
+  </div>
+
+  <div class="col-sm-8">
+    <%= f.check_box "#{field.category_id}[#{field.id}]" , :class => 'control__indicator control control--checkbox' %>
+  </div>
+</div>
